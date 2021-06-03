@@ -1,6 +1,6 @@
 # Hiii & Welcome
 ## Kultur Notiert is my capstone project for neuefische Web Development Bootcamp
-In this app, you can have a list with all those books you never manage to read and all those films your best friend has told you to watch 1000 times.
+In this app, you can create a list with all those books you never manage to read and all those films your best friend has told you to watch 1000 times.
 
 You will end up with your personal culture watchlist (e.g. books, movies, exhibitions, festivals).
 
