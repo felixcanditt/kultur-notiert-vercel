@@ -9,7 +9,12 @@ function App() {
       .then((response) => setServerMessage(response));
   });
 
-  return <div className="App">{serverMessage}</div>;
+  return (
+    <div className="App">
+      <p>{serverMessage}</p>
+      <p>Hello World</p>
+    </div>
+  );
 }
 
 export default App;
