@@ -3,13 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
 
 //__________BASIC CSS RESET
-// fehlt was?
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: 2px red solid
+ 
 }
 
 body {
@@ -17,6 +16,7 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
 }
+
 
 h1,
 h2,
