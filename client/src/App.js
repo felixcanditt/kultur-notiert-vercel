@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-function App() {
+import Header from './pages/Header';
+import Footer from './pages/Footer';
+
+export default function App() {
   const [serverMessage, setServerMessage] = useState('');
 
   useEffect(() => {
@@ -11,10 +14,12 @@ function App() {
 
   return (
     <div className="App">
-      <p>{serverMessage}</p>
-      <p>Hello World</p>
+      <Header />
+      <main>
+        <h2>Home</h2>
+        <p>{serverMessage}</p>
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
