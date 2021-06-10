@@ -14,7 +14,6 @@ const StyledFooter = styled.footer`
 
   display: flex;
   justify-content: center;
-  p {
-    color: ivory;
-  }
+
+  color: ivory;
 `;
