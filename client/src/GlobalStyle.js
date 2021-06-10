@@ -12,11 +12,10 @@ export default createGlobalStyle`
 }
 
 body {
-  font-size: 1.25 rem;
+  font-size: 1.25rem;
   font-family: sans-serif;
   line-height: 1.5;
 }
-
 
 h1,
 h2,
@@ -24,8 +23,7 @@ h3 {
   line-height: 1.2;
 }
 
-ul,
-ul li {
+ul {
   list-style: none;
 }
 `;
