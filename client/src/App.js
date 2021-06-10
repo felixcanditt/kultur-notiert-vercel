@@ -1,3 +1,5 @@
+import { Route, Switch } from 'react-router-dom';
+
 import styled from 'styled-components/macro';
 
 import { useEffect, useState } from 'react';
@@ -17,10 +19,36 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Main>
-        <h2>Home</h2>
-        <p>{serverMessage}</p>
-      </Main>
+
+      <Switch>
+        <Route exact path="/">
+          <Main>
+            <h2>Home</h2>
+            <p>{serverMessage}</p>
+          </Main>
+        </Route>
+
+        <Route path="/watchlist">
+          <Main>
+            <h2>Meine Merkliste</h2>
+            <p>{serverMessage}</p>
+          </Main>
+        </Route>
+
+        <Route path="/library">
+          <Main>
+            <h2>Meine Sammlung</h2>
+            <p>{serverMessage}</p>
+          </Main>
+        </Route>
+
+        <Route path="/friends">
+          <Main>
+            <h2>Freund*innen</h2>
+            <p>{serverMessage}</p>
+          </Main>
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );
