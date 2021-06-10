@@ -1,9 +1,7 @@
 import styled from 'styled-components/macro';
-
 import { useEffect, useState } from 'react';
-
-import Header from './pages/Header';
-import Footer from './pages/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default function App() {
   const [serverMessage, setServerMessage] = useState('');
@@ -15,7 +13,7 @@ export default function App() {
   });
 
   return (
-    <div className="App">
+    <div>
       <Header />
       <Main>
         <h2>Home</h2>
@@ -27,9 +25,7 @@ export default function App() {
 }
 
 const Main = styled.main`
-  height: 100vh;
-  width: 100vw;
-  padding-top: 3rem;
+  margin-top: 4rem;
 
   h2 {
     text-align: center;
