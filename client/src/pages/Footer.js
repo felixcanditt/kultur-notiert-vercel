@@ -10,7 +10,7 @@ export default function Footer() {
           Home
         </NavLink>
         <NavLink activeClassName="active" className="link" to="/watchlist">
-          Merkzettel
+          Merkliste
         </NavLink>
         <NavLink activeClassName="active" className="link" to="/library">
           Meine Sammlung
