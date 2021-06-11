@@ -40,4 +40,7 @@ const StyledNav = styled.nav`
     text-decoration: none;
     color: ivory;
   }
+  .active {
+    color: turquoise;
+  }
 `;
