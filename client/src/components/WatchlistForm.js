@@ -1,15 +1,45 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
-export default function WatchlistForm() {
+export default function WatchlistForm({ onAddWatchlistItem }) {
+  const noItem = {
+    title: '',
+    category: ''
+  };
+
+  const [item, setItem] = useState(noItem);
+
+  function changeItem(event) {
+    const inputName = event.target.name;
+    let inputValue = event.target.value;
+    setItem({ ...item, [inputName]: inputValue });
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    onAddWatchlistItem(item);
+    setItem(noItem);
+  }
+
   return (
-    <FormStyled>
+    <FormStyled onSubmit={handleFormSubmit}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
       <label htmlFor="title">Titel</label>
-      <input type="text" name="title" />
+      <input
+        type="text"
+        name="title"
+        onChange={changeItem}
+        value={item.title}
+      />
 
       <label htmlFor="category">Kategorie</label>
-      <input type="text" name="category" />
+      <input
+        type="text"
+        name="category"
+        onChange={changeItem}
+        value={item.category}
+      />
 
       <button>speichern</button>
     </FormStyled>

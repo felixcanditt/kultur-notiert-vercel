@@ -9,7 +9,7 @@ export default function Home() {
 }
 
 const Main = styled.main`
-  margin-top: 4rem;
+  margin-top: 5rem;
 
   h2 {
     text-align: center;
