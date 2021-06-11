@@ -1,9 +1,10 @@
 import { Route, Switch } from 'react-router-dom';
-
 import styled from 'styled-components/macro';
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+import WatchlistForm from './components/WatchlistForm';
 
 export default function App() {
   const [serverMessage, setServerMessage] = useState('');
@@ -30,6 +31,7 @@ export default function App() {
           <Main>
             <h2>Meine Merkliste</h2>
             <p>{serverMessage}</p>
+            <WatchlistForm />
           </Main>
         </Route>
 
