@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export default function Friends() {
   return (
-    <Main>
+    <MainStyled>
       <h2>Freund*innen</h2>
-    </Main>
+    </MainStyled>
   );
 }
 
-const Main = styled.main`
+const MainStyled = styled.main`
   margin-top: 4rem;
 
   h2 {

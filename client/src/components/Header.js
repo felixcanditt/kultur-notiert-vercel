@@ -2,13 +2,13 @@ import styled from 'styled-components/macro';
 
 export default function Header() {
   return (
-    <StyledHeader>
+    <HeaderStyled>
       <h1>Kultur Notiert</h1>
-    </StyledHeader>
+    </HeaderStyled>
   );
 }
 
-const StyledHeader = styled.header`
+const HeaderStyled = styled.header`
   background: hotpink;
 
   position: fixed;

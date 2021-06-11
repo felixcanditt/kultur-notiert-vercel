@@ -4,17 +4,18 @@ import WatchlistForm from '../components/WatchlistForm';
 
 export default function Watchlist() {
   return (
-    <Main>
+    <MainStyled>
       <h2>Merkliste</h2>
       <WatchlistForm />
-    </Main>
+    </MainStyled>
   );
 }
 
-const Main = styled.main`
+const MainStyled = styled.main`
   margin-top: 4rem;
 
   h2 {
     text-align: center;
+    margin-bottom: 2rem;
   }
 `;
