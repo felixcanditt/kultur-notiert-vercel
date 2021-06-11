@@ -18,7 +18,7 @@ export default function WatchlistForm() {
 
 const FormStyled = styled.form`
   margin: 0 auto;
-  width: 25rem;
+  max-width: 25rem;
 
   box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
   border-radius: 1.8rem;
