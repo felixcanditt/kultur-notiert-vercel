@@ -1,6 +1,9 @@
+import styled from 'styled-components/macro';
 import { useEffect, useState } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-function App() {
+export default function App() {
   const [serverMessage, setServerMessage] = useState('');
 
   useEffect(() => {
@@ -10,11 +13,21 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <p>{serverMessage}</p>
-      <p>Hello World</p>
+    <div>
+      <Header />
+      <Main>
+        <h2>Home</h2>
+        <p>{serverMessage}</p>
+      </Main>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+const Main = styled.main`
+  margin-top: 4rem;
+
+  h2 {
+    text-align: center;
+  }
+`;
