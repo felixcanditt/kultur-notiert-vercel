@@ -2,16 +2,21 @@ import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
 
-export default function Watchlist({ onAddWatchlistItem, watchlistItems }) {
+export default function Watchlist({
+  watchlist,
+  onAddToWatchlist,
+  onRemoveFromWatchlist
+}) {
   return (
     <Main>
       <h2>Merkliste</h2>
-      <WatchlistForm onAddWatchlistItem={onAddWatchlistItem} />
+      <WatchlistForm onAddToWatchlist={onAddToWatchlist} />
       <Grid>
-        {watchlistItems.map((item, index) => (
+        {watchlist.map((item, index) => (
           <ItemCard key={index}>
             <p>{item.title}</p>
             <p>{item.category}</p>
+            <button onClick={() => onRemoveFromWatchlist(item)}>x</button>
           </ItemCard>
         ))}
       </Grid>
@@ -20,7 +25,7 @@ export default function Watchlist({ onAddWatchlistItem, watchlistItems }) {
 }
 
 const Main = styled.main`
-  margin-top: 5rem;
+  margin: 5rem 0;
 
   h2 {
     text-align: center;

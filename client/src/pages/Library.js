@@ -9,8 +9,7 @@ export default function Library() {
 }
 
 const Main = styled.main`
-  margin-top: 5rem;
-
+  margin: 5rem 0;
   h2 {
     text-align: center;
   }

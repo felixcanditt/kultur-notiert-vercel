@@ -9,18 +9,34 @@ import Friends from './pages/Friends';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+
 export default function App() {
-  // const [serverMessage, setServerMessage] = useState('');
-  const [watchlistItems, setWatchlistItems] = useState([]);
+  const [serverMessage, setServerMessage] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:4000/')
-  //     .then((res) => res.json())
-  //     .then((response) => setServerMessage(response));
-  // });
+  const [watchlist, setWatchlist] = useState(
+    loadFromLocalStorage('kulturNotiertWatchlist') ?? []
+  );
 
-  function addWatchlistItem(newWatchListItem) {
-    setWatchlistItems([newWatchListItem, ...watchlistItems]);
+  useEffect(() => {
+    fetch('http://localhost:4000/')
+      .then((res) => res.json())
+      .then((response) => setServerMessage(response));
+  }, []);
+
+  useEffect(() => {
+    addToLocalStorage('kulturNotiertWatchlist', watchlist);
+  }, [watchlist]);
+
+  function addToWatchlist(newItem) {
+    setWatchlist([newItem, ...watchlist]);
+  }
+
+  function removeFromWatchlist(itemToBeRemoved) {
+    const updatedWatchlist = watchlist.filter(
+      (item) => itemToBeRemoved.title !== item.title
+    );
+    setWatchlist(updatedWatchlist);
   }
 
   return (
@@ -30,13 +46,14 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <Home />
-          {/* <p>{serverMessage}</p> */}
+          <p>{serverMessage}</p>
         </Route>
 
         <Route path="/watchlist">
           <Watchlist
-            onAddWatchlistItem={addWatchlistItem}
-            watchlistItems={watchlistItems}
+            watchlist={watchlist}
+            onAddToWatchlist={addToWatchlist}
+            onRemoveFromWatchlist={removeFromWatchlist}
           />
         </Route>
 
