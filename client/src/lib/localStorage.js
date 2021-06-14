@@ -1,12 +1,15 @@
-export function addToLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
+// I might need localStorage for offline mode later on
+//
+// export function addToLocalStorage(key, data) {
+//   localStorage.setItem(key, JSON.stringify(data));
+// }
 
-export function loadFromLocalStorage(key) {
-  try {
-    const localData = localStorage.getItem(key);
-    return JSON.parse(localData);
-  } catch (error) {
-    console.error(error);
-  }
-}
+// export function loadFromLocalStorage(key) {
+//   try {
+//     const localData = localStorage.getItem(key);
+//     return JSON.parse(localData);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+//

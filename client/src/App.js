@@ -9,14 +9,12 @@ import Friends from './pages/Friends';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+// import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
 
 export default function App() {
   const [serverMessage, setServerMessage] = useState([]);
-
-  const [watchlist, setWatchlist] = useState(
-    loadFromLocalStorage('kulturNotiertWatchlist') ?? []
-  );
+  const [watchlist, setWatchlist] = useState([]);
+  console.log(watchlist);
 
   useEffect(() => {
     fetch('http://localhost:4000/')
@@ -25,19 +23,57 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    addToLocalStorage('kulturNotiertWatchlist', watchlist);
-  }, [watchlist]);
+    fetch('http://localhost:4000/watchlist')
+      .then((result) => result.json())
+      .then((apiWatchlist) => setWatchlist(apiWatchlist))
+      .catch((error) => console.error(error));
+  }, []);
 
   function addToWatchlist(newItem) {
-    setWatchlist([newItem, ...watchlist]);
+    fetch('http://localhost:4000/watchlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: newItem.title,
+        category: newItem.category
+      })
+    })
+      .then((result) => result.json())
+      .then((savedItem) => setWatchlist([...watchlist, savedItem]))
+      .catch((error) => console.error(error));
   }
 
   function removeFromWatchlist(itemToBeRemoved) {
-    const updatedWatchlist = watchlist.filter(
-      (item) => itemToBeRemoved.title !== item.title
-    );
-    setWatchlist(updatedWatchlist);
+    fetch('http://localhost:4000/watchlist/' + itemToBeRemoved._id, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((result) => result.json())
+      .then((response) => {
+        if (response.data && response.data._id) {
+          const updatedWatchlist = watchlist.filter(
+            (item) => item._id !== response.data._id
+          );
+          setWatchlist(updatedWatchlist);
+        } else {
+          console.log('Na ge bitte.');
+        }
+      });
   }
+
+  /*
+  I might need localStorage for offline mode later on
+
+  const [watchlist, setWatchlist] = useState(
+    loadFromLocalStorage('kulturNotiertWatchlist') ?? []
+  );
+  
+   useEffect(() => {
+    addToLocalStorage('kulturNotiertWatchlist', watchlist);
+  }, [watchlist]);
+  */
 
   return (
     <div>
