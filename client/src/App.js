@@ -33,13 +33,10 @@ export default function App() {
         </Route>
 
         <Route path="/watchlist">
-          <Watchlist onAddWatchlistItem={addWatchlistItem} />
-          {watchlistItems.map((item, index) => (
-            <div key={index}>
-              <p>{item.title}</p>
-              <p>{item.category}</p>
-            </div>
-          ))}
+          <Watchlist
+            onAddWatchlistItem={addWatchlistItem}
+            watchlistItems={watchlistItems}
+          />
         </Route>
 
         <Route path="/library">
