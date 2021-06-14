@@ -10,14 +10,14 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [serverMessage, setServerMessage] = useState('');
+  // const [serverMessage, setServerMessage] = useState('');
   const [watchlistItems, setWatchlistItems] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:4000/')
-      .then((res) => res.json())
-      .then((response) => setServerMessage(response));
-  });
+  // useEffect(() => {
+  //   fetch('http://localhost:4000/')
+  //     .then((res) => res.json())
+  //     .then((response) => setServerMessage(response));
+  // });
 
   function addWatchlistItem(newWatchListItem) {
     setWatchlistItems([newWatchListItem, ...watchlistItems]);
@@ -29,7 +29,8 @@ export default function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home serverMessage={serverMessage} />
+          <Home />
+          {/* <p>{serverMessage}</p> */}
         </Route>
 
         <Route path="/watchlist">

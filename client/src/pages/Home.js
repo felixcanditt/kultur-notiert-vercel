@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-export default function Home({ serverMessage }) {
+export default function Home() {
   return (
     <Main>
       <h2>Home</h2>
-      <p>{serverMessage}</p>
     </Main>
   );
 }
