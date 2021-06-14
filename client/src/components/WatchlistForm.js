@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 export default function WatchlistForm({ onAddWatchlistItem }) {
-  const noItem = {
+  const initialState = {
     title: '',
     category: ''
   };
 
-  const [item, setItem] = useState(noItem);
+  const [item, setItem] = useState(initialState);
 
   function changeItem(event) {
     const inputName = event.target.name;
@@ -18,11 +18,11 @@ export default function WatchlistForm({ onAddWatchlistItem }) {
   function handleFormSubmit(event) {
     event.preventDefault();
     onAddWatchlistItem(item);
-    setItem(noItem);
+    setItem(initialState);
   }
 
   return (
-    <FormStyled onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmit}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
       <label htmlFor="title">Titel</label>
@@ -42,11 +42,11 @@ export default function WatchlistForm({ onAddWatchlistItem }) {
       />
 
       <button>speichern</button>
-    </FormStyled>
+    </Form>
   );
 }
 
-const FormStyled = styled.form`
+const Form = styled.form`
   margin: 0 auto;
   max-width: 25rem;
 
@@ -76,7 +76,7 @@ const FormStyled = styled.form`
   }
 
   button {
-    margin: 0.7rem auto 0 auto;
+    margin: 0.7rem auto 0;
 
     cursor: pointer;
 

@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export default function Library() {
   return (
-    <MainStyled>
+    <Main>
       <h2>Meine Sammlung</h2>
-    </MainStyled>
+    </Main>
   );
 }
 
-const MainStyled = styled.main`
+const Main = styled.main`
   margin-top: 5rem;
 
   h2 {

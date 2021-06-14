@@ -12,7 +12,6 @@ import Footer from './components/Footer';
 export default function App() {
   const [serverMessage, setServerMessage] = useState('');
   const [watchlistItems, setWatchlistItems] = useState([]);
-  console.log('these are all stored items', watchlistItems);
 
   useEffect(() => {
     fetch('http://localhost:4000/')
@@ -21,7 +20,6 @@ export default function App() {
   });
 
   function addWatchlistItem(newWatchListItem) {
-    console.log('item to be added to db', newWatchListItem);
     setWatchlistItems([newWatchListItem, ...watchlistItems]);
   }
 
@@ -31,14 +29,13 @@ export default function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home />
-          <p>{serverMessage}</p>
+          <Home serverMessage={serverMessage} />
         </Route>
 
         <Route path="/watchlist">
           <Watchlist onAddWatchlistItem={addWatchlistItem} />
-          {watchlistItems.map((item) => (
-            <div>
+          {watchlistItems.map((item, index) => (
+            <div key={index}>
               <p>{item.title}</p>
               <p>{item.category}</p>
             </div>

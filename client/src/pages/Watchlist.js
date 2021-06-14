@@ -4,14 +4,14 @@ import WatchlistForm from '../components/WatchlistForm';
 
 export default function Watchlist({ onAddWatchlistItem }) {
   return (
-    <MainStyled>
+    <Main>
       <h2>Merkliste</h2>
       <WatchlistForm onAddWatchlistItem={onAddWatchlistItem} />
-    </MainStyled>
+    </Main>
   );
 }
 
-const MainStyled = styled.main`
+const Main = styled.main`
   margin-top: 5rem;
 
   h2 {
