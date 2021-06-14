@@ -1,12 +1,17 @@
 import { Route, Switch } from 'react-router-dom';
-
-import styled from 'styled-components/macro';
 import { useEffect, useState } from 'react';
+
+import Home from './pages/Home';
+import Watchlist from './pages/Watchlist';
+import Library from './pages/Library';
+import Friends from './pages/Friends';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 export default function App() {
   const [serverMessage, setServerMessage] = useState('');
+  const [watchlistItems, setWatchlistItems] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:4000/')
@@ -14,48 +19,39 @@ export default function App() {
       .then((response) => setServerMessage(response));
   });
 
+  function addWatchlistItem(newWatchListItem) {
+    setWatchlistItems([newWatchListItem, ...watchlistItems]);
+  }
+
   return (
     <div>
       <Header />
 
       <Switch>
         <Route exact path="/">
-          <Main>
-            <h2>Home</h2>
-            <p>{serverMessage}</p>
-          </Main>
+          <Home serverMessage={serverMessage} />
         </Route>
 
         <Route path="/watchlist">
-          <Main>
-            <h2>Meine Merkliste</h2>
-            <p>{serverMessage}</p>
-          </Main>
+          <Watchlist onAddWatchlistItem={addWatchlistItem} />
+          {watchlistItems.map((item, index) => (
+            <div key={index}>
+              <p>{item.title}</p>
+              <p>{item.category}</p>
+            </div>
+          ))}
         </Route>
 
         <Route path="/library">
-          <Main>
-            <h2>Meine Sammlung</h2>
-            <p>{serverMessage}</p>
-          </Main>
+          <Library />
         </Route>
 
         <Route path="/friends">
-          <Main>
-            <h2>Freund*innen</h2>
-            <p>{serverMessage}</p>
-          </Main>
+          <Friends />
         </Route>
       </Switch>
+
       <Footer />
     </div>
   );
 }
-
-const Main = styled.main`
-  margin-top: 4rem;
-
-  h2 {
-    text-align: center;
-  }
-`;

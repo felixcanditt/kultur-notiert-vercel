@@ -4,8 +4,8 @@ import styled from 'styled-components/macro';
 
 export default function Footer() {
   return (
-    <StyledFooter>
-      <StyledNav>
+    <FooterStyled>
+      <Nav>
         <NavLink activeClassName="active" className="link" exact to="/">
           Home
         </NavLink>
@@ -18,12 +18,12 @@ export default function Footer() {
         <NavLink activeClassName="active" className="link" to="/friends">
           Freund*innen
         </NavLink>
-      </StyledNav>
-    </StyledFooter>
+      </Nav>
+    </FooterStyled>
   );
 }
 
-const StyledFooter = styled.footer`
+const FooterStyled = styled.footer`
   background: hotpink;
 
   position: fixed;
@@ -32,7 +32,7 @@ const StyledFooter = styled.footer`
   right: 0;
 `;
 
-const StyledNav = styled.nav`
+const Nav = styled.nav`
   display: flex;
   justify-content: center;
   gap: 0.2rem;
