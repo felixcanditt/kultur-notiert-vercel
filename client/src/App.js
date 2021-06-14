@@ -9,12 +9,11 @@ import Friends from './pages/Friends';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+// not needed now, maybe later: import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
 
 export default function App() {
   const [serverMessage, setServerMessage] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
-  console.log(watchlist);
 
   useEffect(() => {
     fetch('http://localhost:4000/')
