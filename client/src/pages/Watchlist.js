@@ -14,9 +14,9 @@ export default function Watchlist({
       <Grid>
         {watchlist.map((item, index) => (
           <ItemCard key={index}>
+            <button onClick={() => onRemoveFromWatchlist(item)}>x</button>
             <p>{item.title}</p>
             <p>{item.category}</p>
-            <button onClick={() => onRemoveFromWatchlist(item)}>x</button>
           </ItemCard>
         ))}
       </Grid>
@@ -41,9 +41,17 @@ const Grid = styled.div`
 `;
 
 const ItemCard = styled.div`
-  max-width: 10rem;
+  max-width: 15rem;
   border-radius: 0.4rem;
   padding: 1.2rem 1rem;
   background: hotpink;
   color: ivory;
+
+  display: grid;
+  gap: 0.8rem;
+
+  button {
+    justify-self: end;
+    padding: 0.2rem;
+  }
 `;
