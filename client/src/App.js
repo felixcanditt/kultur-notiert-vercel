@@ -17,7 +17,7 @@ export default function App() {
 
   useEffect(() => {
     fetch('http://localhost:4000/')
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((response) => setServerMessage(response));
   }, []);
 
@@ -25,7 +25,12 @@ export default function App() {
     fetch('http://localhost:4000/watchlist')
       .then((result) => result.json())
       .then((apiWatchlist) => setWatchlist(apiWatchlist))
-      .catch((error) => console.error(error));
+      .catch((error) =>
+        console.error(
+          `Could not fetch watchlist, please check the following error message: `,
+          error
+        )
+      );
   }, []);
 
   function addToWatchlist(newItem) {
@@ -41,7 +46,12 @@ export default function App() {
     })
       .then((result) => result.json())
       .then((savedItem) => setWatchlist([...watchlist, savedItem]))
-      .catch((error) => console.error(error));
+      .catch((error) =>
+        console.error(
+          `Could not add the item ${newItem.title} to watchlist, please check the following error message: `,
+          error
+        )
+      );
   }
 
   function removeFromWatchlist(itemToBeRemoved) {
@@ -57,7 +67,7 @@ export default function App() {
           );
           setWatchlist(updatedWatchlist);
         } else {
-          console.log('Na ge bitte.');
+          console.log(`Could not remove the item ${response.data.title}.`);
         }
       });
   }

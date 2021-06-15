@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 export default function WatchlistForm({ onAddToWatchlist }) {
-  const initialState = {
+  const initialItem = {
     title: '',
     category: ''
   };
 
-  const [item, setItem] = useState(initialState);
+  const [item, setItem] = useState(initialItem);
 
   function changeItem(event) {
     const inputName = event.target.name;
@@ -18,7 +18,7 @@ export default function WatchlistForm({ onAddToWatchlist }) {
   function handleFormSubmit(event) {
     event.preventDefault();
     onAddToWatchlist(item);
-    setItem(initialState);
+    setItem(initialItem);
   }
 
   return (

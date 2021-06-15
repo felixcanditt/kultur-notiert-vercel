@@ -17,8 +17,8 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.get('/', (req, res) =>
-  res.json('Das ist meine Testnachricht um zu sehen, ob der Server läuft.')
+server.get('/', (request, response) =>
+  response.json('Das ist meine Testnachricht um zu sehen, ob der Server läuft.')
 );
 
 server.use(watchlistRoutes);
