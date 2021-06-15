@@ -18,7 +18,7 @@ server.use(cors());
 server.use(express.json());
 
 server.get('/', (request, response) =>
-  response.json('Das ist meine Testnachricht um zu sehen, ob der Server läuft.')
+  response.json('This is my test message to see if the server is running.')
 );
 
 server.use(watchlistRoutes);
