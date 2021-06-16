@@ -9,7 +9,7 @@ import Friends from './pages/Friends';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import { addToLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+import { updateLocalStorage, loadFromLocalStorage } from './lib/localStorage';
 
 export default function App() {
   const [watchlist, setWatchlist] = useState(
@@ -17,7 +17,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    addToLocalStorage('kulturNotiertWatchlist', watchlist);
+    updateLocalStorage('kulturNotiertWatchlist', watchlist);
   }, [watchlist]);
 
   function addToWatchlist(newItem) {
