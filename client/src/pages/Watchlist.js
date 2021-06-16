@@ -8,7 +8,7 @@ export default function Watchlist({
   onRemoveFromWatchlist
 }) {
   return (
-    <Main>
+    <main>
       <h2>Merkliste</h2>
       <WatchlistForm onAddToWatchlist={onAddToWatchlist} />
       <Grid>
@@ -22,18 +22,9 @@ export default function Watchlist({
           </ItemCard>
         ))}
       </Grid>
-    </Main>
+    </main>
   );
 }
-
-const Main = styled.main`
-  margin: 5rem 0;
-
-  h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-`;
 
 const Grid = styled.div`
   margin-top: 3rem;

@@ -8,7 +8,6 @@ export default createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- 
 }
 
 body {
@@ -17,8 +16,17 @@ body {
   line-height: 1.5;
 }
 
+main {
+  margin: 5rem 0;
+}
+
+ h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
 h1,
-h2,
 h3 {
   line-height: 1.2;
 }
