@@ -4,14 +4,15 @@ import { useState } from 'react';
 export default function WatchlistForm({ onAddToWatchlist }) {
   const initialItem = {
     title: '',
-    category: ''
+    category: '',
+    isWatched: false
   };
 
   const [item, setItem] = useState(initialItem);
 
   function changeItem(event) {
     const inputName = event.target.name;
-    let inputValue = event.target.value;
+    const inputValue = event.target.value;
     setItem({ ...item, [inputName]: inputValue });
   }
 
