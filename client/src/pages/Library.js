@@ -1,17 +1,7 @@
-import styled from 'styled-components';
-
 export default function Library() {
   return (
-    <Main>
+    <main>
       <h2>Meine Sammlung</h2>
-    </Main>
+    </main>
   );
 }
-
-const Main = styled.main`
-  margin-top: 5rem;
-
-  h2 {
-    text-align: center;
-  }
-`;
