@@ -14,7 +14,9 @@ export default function Watchlist({
       <Grid>
         {watchlist.map((item, index) => (
           <ItemCard key={index}>
-            <button onClick={() => onRemoveFromWatchlist(item)}>x</button>
+            <button onClick={() => onRemoveFromWatchlist(item, index)}>
+              x
+            </button>
             <p>{item.title}</p>
             <p>{item.category}</p>
           </ItemCard>
