@@ -10,7 +10,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             type="text"
             name="author"
             onChange={onChangeItem}
-            value={formItem.title}
+            value={formItem.author}
           />
         </label>
       );
@@ -49,53 +49,11 @@ export default function InputOptions({ formItem, onChangeItem }) {
           />
         </label>
       );
-    } else if (formItem.category === 'stage') {
-      return (
-        <>
-          <label>
-            <span>Wo?</span>
-            <input
-              type="text"
-              name="location"
-              onChange={onChangeItem}
-              value={formItem.location}
-            />
-          </label>
-          <label>
-            <span>Wann?</span>
-            <input
-              type="text"
-              name="time"
-              onChange={onChangeItem}
-              value={formItem.time}
-            />
-          </label>
-        </>
-      );
-    } else if (formItem.category === 'exhibition') {
-      return (
-        <>
-          <label>
-            <span>Wo?</span>
-            <input
-              type="text"
-              name="location"
-              onChange={onChangeItem}
-              value={formItem.location}
-            />
-          </label>
-          <label>
-            <span>Wann?</span>
-            <input
-              type="text"
-              name="time"
-              onChange={onChangeItem}
-              value={formItem.time}
-            />
-          </label>
-        </>
-      );
-    } else if (formItem.category === 'festival') {
+    } else if (
+      formItem.category === 'stage' ||
+      formItem.category === 'exhibition' ||
+      formItem.category === 'festival'
+    ) {
       return (
         <>
           <label>

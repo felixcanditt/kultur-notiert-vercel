@@ -7,7 +7,11 @@ export default function WatchlistForm({ onAddToWatchlist }) {
   const initialFormItem = {
     title: '',
     category: '',
-    isWatched: false
+    isWatched: false,
+    author: '',
+    director: '',
+    location: '',
+    time: ''
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
@@ -18,30 +22,27 @@ export default function WatchlistForm({ onAddToWatchlist }) {
     setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
+  function selectCategory(event) {
+    const selectedCategory = event.target.value;
+
+    const itemWithCategory = {
+      title: formItem.title,
+      category: selectedCategory,
+      isWatched: false,
+      author: '',
+      director: '',
+      location: '',
+      time: ''
+    };
+
+    setFormItem(itemWithCategory);
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
     onAddToWatchlist(formItem);
     setFormItem(initialFormItem);
   }
-
-  // function testFunction() {
-  //   if (item.category === 'film') {
-  //     return (
-  //       <>
-  //         <label htmlFor="where">wo?</label>
-  //         <input
-  //           type="text"
-  //           id="where"
-  //           name="where"
-  //           onChange={changeItem}
-  //           value={item.where}
-  //         />
-  //       </>
-  //     );
-  //   } else if (item.category === 'series') {
-  //     return;
-  //   }
-  // }
 
   return (
     <Form onSubmit={handleFormSubmit}>
@@ -57,17 +58,13 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         />
       </label>
 
-      {/* <label htmlFor="category">Kategorie</label>
-      <input
-        type="text"
-        name="category"
-        onChange={changeItem}
-        value={item.category}
-      /> */}
-
       <label>
         <span>Kategorie</span>
-        <select name="category" onChange={changeItem} value={formItem.category}>
+        <select
+          name="category"
+          onChange={selectCategory}
+          value={formItem.category}
+        >
           <option value=""></option>
           <option value="book">Buch</option>
           <option value="film">Film</option>
@@ -79,15 +76,6 @@ export default function WatchlistForm({ onAddToWatchlist }) {
       </label>
 
       <InputOptions formItem={formItem} onChangeItem={changeItem} />
-
-      {/* {testFunction()} */}
-
-      {/* {clubs &&
-          clubs.map((club) => (
-            <option key={club._id} value={club.name}>
-              {club.name}
-            </option>
-          ))} */}
 
       <button>speichern</button>
     </Form>
@@ -113,13 +101,8 @@ const Form = styled.form`
     text-align: center;
   }
 
-  label {
-    xpadding-left: 0.4rem;
-  }
-
   input,
   select {
-    xmargin-bottom: 0.3rem;
     margin-left: 0.7rem;
     border-radius: 0.8rem;
     padding: 0.5rem;
