@@ -1,25 +1,27 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
+import InputOptions from './InputOptions';
+
 export default function WatchlistForm({ onAddToWatchlist }) {
-  const initialItem = {
+  const initialFormItem = {
     title: '',
     category: '',
     isWatched: false
   };
 
-  const [item, setItem] = useState(initialItem);
+  const [formItem, setFormItem] = useState(initialFormItem);
 
   function changeItem(event) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
-    setItem({ ...item, [inputName]: inputValue });
+    setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    onAddToWatchlist(item);
-    setItem(initialItem);
+    onAddToWatchlist(formItem);
+    setFormItem(initialFormItem);
   }
 
   // function testFunction() {
@@ -45,36 +47,38 @@ export default function WatchlistForm({ onAddToWatchlist }) {
     <Form onSubmit={handleFormSubmit}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
-      <label htmlFor="title">Titel</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        onChange={changeItem}
-        value={item.title}
-      />
-
-      <label htmlFor="category">Kategorie</label>
-      <input
-        type="text"
-        name="category"
-        onChange={changeItem}
-        value={item.category}
-      />
+      <label>
+        <span>Titel</span>
+        <input
+          type="text"
+          name="title"
+          onChange={changeItem}
+          value={formItem.title}
+        />
+      </label>
 
       {/* <label htmlFor="category">Kategorie</label>
-      <select
+      <input
+        type="text"
         name="category"
-        id="category"
         onChange={changeItem}
         value={item.category}
-      >
-        <option value=""></option>
-      
-        <option value="film">Film</option>
-        <option value="series">Serie</option>
-        <option value="book">Buch</option>
-      </select> */}
+      /> */}
+
+      <label>
+        <span>Kategorie</span>
+        <select name="category" onChange={changeItem} value={formItem.category}>
+          <option value=""></option>
+          <option value="book">Buch</option>
+          <option value="film">Film</option>
+          <option value="series">Serie</option>
+          <option value="stage">Bühne</option>
+          <option value="exhibition">Ausstellung</option>
+          <option value="festival">Festival</option>
+        </select>
+      </label>
+
+      <InputOptions formItem={formItem} onChangeItem={changeItem} />
 
       {/* {testFunction()} */}
 
@@ -99,28 +103,30 @@ const Form = styled.form`
 
   background-color: ivory;
 
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
 
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
 
   h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-align: center;
   }
 
   label {
-    padding-left: 0.4rem;
+    xpadding-left: 0.4rem;
   }
 
-  input {
-    margin-bottom: 0.3rem;
+  input,
+  select {
+    xmargin-bottom: 0.3rem;
+    margin-left: 0.7rem;
     border-radius: 0.8rem;
     padding: 0.5rem;
   }
 
   button {
-    margin: 0.7rem auto 0;
+    margin: 0.5rem auto 0;
 
     cursor: pointer;
 

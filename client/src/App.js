@@ -15,12 +15,10 @@ export default function App() {
   const [watchlist, setWatchlist] = useState(
     loadFromLocalStorage('kulturNotiertWatchlist') ?? []
   );
-  console.log(watchlist);
 
   const [library, setLibrary] = useState(
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
-  console.log(library);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
