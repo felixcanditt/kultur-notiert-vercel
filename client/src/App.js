@@ -54,6 +54,17 @@ export default function App() {
     removeFromWatchlist(checkedItem, checkedIndex);
   }
 
+  function addToLibrary(newItem) {
+    setLibrary([newItem, ...library]);
+  }
+
+  function removeFromLibrary(itemToBeRemoved, indexToBeRemoved) {
+    const updatedLibrary = library.filter(
+      (item, index) => index !== indexToBeRemoved
+    );
+    setLibrary(updatedLibrary);
+  }
+
   return (
     <div>
       <Header />
@@ -74,9 +85,9 @@ export default function App() {
 
         <Route path="/library">
           <Library
-            watchlist={watchlist}
-            onRemoveFromWatchlist={removeFromWatchlist}
-            onCheckItem={checkItem}
+            library={library}
+            onAddToLibrary={addToLibrary}
+            onRemoveFromLibrary={removeFromLibrary}
           />
         </Route>
 

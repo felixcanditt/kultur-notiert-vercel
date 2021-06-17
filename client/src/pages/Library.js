@@ -1,28 +1,19 @@
-import WatchlistCards from '../components/WatchlistCards';
+import LibraryForm from '../components/LibraryForm';
+import LibraryCards from '../components/LibraryCards';
 
 export default function Library({
-  watchlist,
-  onRemoveFromWatchlist,
-  onCheckItem
+  library,
+  onAddToLibrary,
+  onRemoveFromLibrary
 }) {
-  const watchedOnly = watchlist.filter((item) => item.isWatched);
-  console.log(watchedOnly);
-
   return (
     <main>
       <h2>Meine Sammlung</h2>
-      {watchedOnly.map((item) => (
-        <p>{item.title}</p>
-      ))}
-      <p>Stop</p>
-      {watchlist.map((item) => (
-        <p>{item.title}</p>
-      ))}
-      <p>Stop</p>
-      <WatchlistCards
-        watchlist={watchlist}
-        onRemoveFromWatchlist={onRemoveFromWatchlist}
-        onCheckItem={onCheckItem}
+      <LibraryForm onAddToLibrary={onAddToLibrary} />
+
+      <LibraryCards
+        library={library}
+        onRemoveFromLibrary={onRemoveFromLibrary}
       />
     </main>
   );
