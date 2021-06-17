@@ -24,10 +24,24 @@ export default function App() {
     setWatchlist([newItem, ...watchlist]);
   }
 
-  function removeFromWatchlist(itemToBeRemoved, indexOfItemToBeRemoved) {
+  function removeFromWatchlist(itemToBeRemoved, indexToBeRemoved) {
     const updatedWatchlist = watchlist.filter(
-      (item, index) => index !== indexOfItemToBeRemoved
+      (item, index) => index !== indexToBeRemoved
     );
+    setWatchlist(updatedWatchlist);
+  }
+
+  function checkItem(event, checkedItem, checkedIndex) {
+    const isDone = event.target.name;
+    const doneStatus = event.target.checked;
+
+    const updatedWatchlist = watchlist.map((item, index) => {
+      if (index === checkedIndex) {
+        item[isDone] = doneStatus;
+      }
+      return item;
+    });
+
     setWatchlist(updatedWatchlist);
   }
 
@@ -45,6 +59,7 @@ export default function App() {
             watchlist={watchlist}
             onAddToWatchlist={addToWatchlist}
             onRemoveFromWatchlist={removeFromWatchlist}
+            onCheckItem={checkItem}
           />
         </Route>
 
