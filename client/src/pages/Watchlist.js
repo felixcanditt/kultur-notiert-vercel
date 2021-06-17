@@ -1,7 +1,5 @@
-import styled from 'styled-components';
-
 import WatchlistForm from '../components/WatchlistForm';
-import WatchlistItems from '../components/WatchlistItems';
+import WatchlistCards from '../components/WatchlistCards';
 
 export default function Watchlist({
   watchlist,
@@ -13,7 +11,7 @@ export default function Watchlist({
     <main>
       <h2>Merkliste</h2>
       <WatchlistForm onAddToWatchlist={onAddToWatchlist} />
-      <WatchlistItems
+      <WatchlistCards
         watchlist={watchlist}
         onRemoveFromWatchlist={onRemoveFromWatchlist}
         onCheckItem={onCheckItem}

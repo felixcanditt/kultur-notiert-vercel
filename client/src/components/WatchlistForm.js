@@ -54,7 +54,7 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         value={item.title}
       />
 
-      <label htmlFor="category">Kategorie</label>
+      {/* <label htmlFor="category">Kategorie</label>
       <select
         name="category"
         id="category"
@@ -62,18 +62,20 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         value={item.category}
       >
         <option value=""></option>
-        {/* {clubs &&
+      
+        <option value="film">Film</option>
+        <option value="series">Serie</option>
+        <option value="book">Buch</option>
+      </select> */}
+
+      {/* {testFunction()} */}
+
+      {/* {clubs &&
           clubs.map((club) => (
             <option key={club._id} value={club.name}>
               {club.name}
             </option>
           ))} */}
-        <option value="film">Film</option>
-        <option value="series">Serie</option>
-        <option value="book">Buch</option>
-      </select>
-
-      {/* {testFunction()} */}
 
       <button>speichern</button>
     </Form>

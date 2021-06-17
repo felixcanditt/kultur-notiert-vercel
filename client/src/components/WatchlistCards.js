@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function WatchlistItems({
+export default function WatchlistCards({
   watchlist,
   onRemoveFromWatchlist,
   onCheckItem
@@ -8,7 +8,7 @@ export default function WatchlistItems({
   return (
     <Grid>
       {watchlist.map((item, index) => (
-        <ItemCard key={index}>
+        <Card key={index}>
           <p>{item.title}</p>
           <p>{item.category}</p>
 
@@ -25,7 +25,7 @@ export default function WatchlistItems({
           <button onClick={() => onRemoveFromWatchlist(item, index)}>
             löschen
           </button>
-        </ItemCard>
+        </Card>
       ))}
     </Grid>
   );
@@ -38,7 +38,7 @@ const Grid = styled.div`
   gap: 1rem;
 `;
 
-const ItemCard = styled.div`
+const Card = styled.div`
   max-width: 15rem;
   border-radius: 0.4rem;
   padding: 1.2rem 1rem;

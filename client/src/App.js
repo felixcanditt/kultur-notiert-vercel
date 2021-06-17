@@ -64,7 +64,11 @@ export default function App() {
         </Route>
 
         <Route path="/library">
-          <Library />
+          <Library
+            watchlist={watchlist}
+            onRemoveFromWatchlist={removeFromWatchlist}
+            onCheckItem={checkItem}
+          />
         </Route>
 
         <Route path="/friends">
