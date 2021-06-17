@@ -22,24 +22,24 @@ export default function WatchlistForm({ onAddToWatchlist }) {
     setItem(initialItem);
   }
 
-  function testFunction() {
-    if (item.category === 'film') {
-      return (
-        <>
-          <label htmlFor="where">wo?</label>
-          <input
-            type="text"
-            id="where"
-            name="where"
-            onChange={changeItem}
-            value={item.where}
-          />
-        </>
-      );
-    } else if (item.category === 'series') {
-      return;
-    }
-  }
+  // function testFunction() {
+  //   if (item.category === 'film') {
+  //     return (
+  //       <>
+  //         <label htmlFor="where">wo?</label>
+  //         <input
+  //           type="text"
+  //           id="where"
+  //           name="where"
+  //           onChange={changeItem}
+  //           value={item.where}
+  //         />
+  //       </>
+  //     );
+  //   } else if (item.category === 'series') {
+  //     return;
+  //   }
+  // }
 
   return (
     <Form onSubmit={handleFormSubmit}>
@@ -73,7 +73,7 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         <option value="book">Buch</option>
       </select>
 
-      {testFunction()}
+      {/* {testFunction()} */}
 
       <button>speichern</button>
     </Form>
