@@ -22,6 +22,25 @@ export default function WatchlistForm({ onAddToWatchlist }) {
     setItem(initialItem);
   }
 
+  function testFunction() {
+    if (item.category === 'film') {
+      return (
+        <>
+          <label htmlFor="where">wo?</label>
+          <input
+            type="text"
+            id="where"
+            name="where"
+            onChange={changeItem}
+            value={item.where}
+          />
+        </>
+      );
+    } else if (item.category === 'series') {
+      return;
+    }
+  }
+
   return (
     <Form onSubmit={handleFormSubmit}>
       <h3>Neuen Eintrag hinzufügen</h3>
@@ -29,18 +48,32 @@ export default function WatchlistForm({ onAddToWatchlist }) {
       <label htmlFor="title">Titel</label>
       <input
         type="text"
+        id="title"
         name="title"
         onChange={changeItem}
         value={item.title}
       />
 
       <label htmlFor="category">Kategorie</label>
-      <input
-        type="text"
+      <select
         name="category"
+        id="category"
         onChange={changeItem}
         value={item.category}
-      />
+      >
+        <option value=""></option>
+        {/* {clubs &&
+          clubs.map((club) => (
+            <option key={club._id} value={club.name}>
+              {club.name}
+            </option>
+          ))} */}
+        <option value="film">Film</option>
+        <option value="series">Serie</option>
+        <option value="book">Buch</option>
+      </select>
+
+      {testFunction()}
 
       <button>speichern</button>
     </Form>
