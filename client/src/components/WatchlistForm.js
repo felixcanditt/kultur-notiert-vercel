@@ -54,6 +54,14 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         value={item.title}
       />
 
+      <label htmlFor="category">Kategorie</label>
+      <input
+        type="text"
+        name="category"
+        onChange={changeItem}
+        value={item.category}
+      />
+
       {/* <label htmlFor="category">Kategorie</label>
       <select
         name="category"

@@ -16,6 +16,9 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertWatchlist') ?? []
   );
 
+  const [library, setLibrary] = useState([]);
+  console.log(library);
+
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
   }, [watchlist]);
@@ -35,14 +38,24 @@ export default function App() {
     const isDone = event.target.name;
     const doneStatus = event.target.checked;
 
-    const updatedWatchlist = watchlist.map((item, index) => {
-      if (index === checkedIndex) {
-        item[isDone] = doneStatus;
-      }
-      return item;
-    });
+    const newLibraryItem = watchlist.find(
+      (item, index) => index === checkedIndex
+    );
 
-    setWatchlist(updatedWatchlist);
+    newLibraryItem[isDone] = doneStatus;
+
+    setLibrary([newLibraryItem, ...library]);
+
+    removeFromWatchlist(checkedItem, checkedIndex);
+
+    // const updatedWatchlist = watchlist.map((item, index) => {
+    //   if (index === checkedIndex) {
+    //     item[isDone] = doneStatus;
+    //   }
+    //   return item;
+    // });
+
+    // setWatchlist(updatedWatchlist);
   }
 
   return (
