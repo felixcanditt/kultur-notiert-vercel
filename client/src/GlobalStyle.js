@@ -20,15 +20,21 @@ main {
   margin: 5rem 0;
 }
 
- h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  line-height: 1.2;
-}
-
 h1,
 h3 {
   line-height: 1.2;
+  
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  font-size: 2.125rem
+}
+
+h3 {
+  font-size: 1.375rem;
 }
 
 ul {

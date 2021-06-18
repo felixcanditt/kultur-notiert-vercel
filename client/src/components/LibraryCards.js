@@ -17,15 +17,16 @@ export default function LibraryCards({ library, onRemoveFromLibrary }) {
   );
 }
 
-const Grid = styled.div`
-  margin-top: 3rem;
+const Grid = styled.section`
+  margin-top: 4rem;
   display: grid;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
-const Card = styled.div`
+const Card = styled.article`
   max-width: 15rem;
+  box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
   border-radius: 0.4rem;
   padding: 1.2rem 1rem;
   background: hotpink;
