@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 export default function InputOptions({ formItem, onChangeItem }) {
   function renderOptions() {
     if (formItem.category === 'book') {
@@ -14,7 +12,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
           />
         </label>
       );
-    } else if (formItem.category === 'film') {
+    } else if (formItem.category === 'movie') {
       return (
         <>
           <label>
@@ -49,9 +47,31 @@ export default function InputOptions({ formItem, onChangeItem }) {
           />
         </label>
       );
+    } else if (formItem.category === 'exhibition') {
+      return (
+        <>
+          <label>
+            <span>Wo?</span>
+            <input
+              type="text"
+              name="location"
+              onChange={onChangeItem}
+              value={formItem.location}
+            />
+          </label>
+          <label>
+            <span>Läuft bis:</span>
+            <input
+              type="text"
+              name="time"
+              onChange={onChangeItem}
+              value={formItem.time}
+            />
+          </label>
+        </>
+      );
     } else if (
       formItem.category === 'stage' ||
-      formItem.category === 'exhibition' ||
       formItem.category === 'festival'
     ) {
       return (
@@ -79,10 +99,5 @@ export default function InputOptions({ formItem, onChangeItem }) {
     }
   }
 
-  return <Grid>{renderOptions()}</Grid>;
+  return <>{renderOptions()}</>;
 }
-
-const Grid = styled.div`
-  display: grid;
-  gap: 1rem;
-`;
