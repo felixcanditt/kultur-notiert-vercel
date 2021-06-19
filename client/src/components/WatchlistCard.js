@@ -10,7 +10,7 @@ export default function WatchlistCard({
   onRemoveFromWatchlist
 }) {
   return (
-    <Card key={index}>
+    <Card>
       <p>{item.title}</p>
       <WatchlistCardDetails item={item} />
       <WatchlistCheckbox item={item} index={index} onCheckItem={onCheckItem} />
