@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function LibraryForm({
   onAddToLibrary,
@@ -29,7 +30,9 @@ export default function LibraryForm({
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    itemToBeEdited ? onEditLibrary(item) : onAddToLibrary(item);
+    itemToBeEdited
+      ? onEditLibrary(item)
+      : onAddToLibrary({ ...item, id: uuidv4() });
 
     setItem(initialItem);
   }

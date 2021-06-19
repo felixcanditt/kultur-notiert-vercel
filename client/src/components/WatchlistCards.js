@@ -4,6 +4,7 @@ import WatchlistCard from './WatchlistCard';
 
 export default function WatchlistCards({
   watchlist,
+  onSetItemToBeEdited,
   onRemoveFromWatchlist,
   onCheckItem
 }) {
@@ -15,6 +16,7 @@ export default function WatchlistCards({
           item={item}
           index={index}
           onCheckItem={onCheckItem}
+          onSetItemToBeEdited={onSetItemToBeEdited}
           onRemoveFromWatchlist={onRemoveFromWatchlist}
         />
       ))}

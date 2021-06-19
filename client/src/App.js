@@ -60,6 +60,14 @@ export default function App() {
     setLibrary([newItem, ...library]);
   }
 
+  function editWatchlist(editedItem) {
+    const editedWatchlist = watchlist.slice();
+    const indexToBeEdited = itemToBeEdited[1];
+    editedWatchlist[indexToBeEdited] = editedItem;
+    setWatchlist(editedWatchlist);
+    setItemToBeEdited();
+  }
+
   function editLibrary(editedItem) {
     const editedLibrary = library.slice();
     const indexToBeEdited = itemToBeEdited[1];
@@ -88,6 +96,9 @@ export default function App() {
           <Watchlist
             watchlist={watchlist}
             onAddToWatchlist={addToWatchlist}
+            itemToBeEdited={itemToBeEdited}
+            onSetItemToBeEdited={setItemToBeEdited}
+            onEditWatchlist={editWatchlist}
             onRemoveFromWatchlist={removeFromWatchlist}
             onCheckItem={checkItem}
           />
