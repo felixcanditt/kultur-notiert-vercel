@@ -20,6 +20,13 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
 
+  const [isLibrary, setLibraryStatus] = useState(false);
+  console.log(isLibrary);
+
+  function sayHi() {
+    setLibraryStatus(!isLibrary);
+  }
+
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
   }, [watchlist]);
@@ -78,6 +85,7 @@ export default function App() {
             onAddToWatchlist={addToWatchlist}
             onRemoveFromWatchlist={removeFromWatchlist}
             onCheckItem={checkItem}
+            isLibrary={isLibrary}
           />
         </Route>
 
@@ -86,6 +94,7 @@ export default function App() {
             library={library}
             onAddToLibrary={addToLibrary}
             onRemoveFromLibrary={removeFromLibrary}
+            onSayHi={sayHi}
           />
         </Route>
 

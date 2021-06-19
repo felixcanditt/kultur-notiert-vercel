@@ -5,12 +5,16 @@ export default function Watchlist({
   watchlist,
   onAddToWatchlist,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
+  isLibrary
 }) {
   return (
     <main>
       <h2>Merkliste</h2>
-      <WatchlistForm onAddToWatchlist={onAddToWatchlist} />
+      <WatchlistForm
+        onAddToWatchlist={onAddToWatchlist}
+        isLibrary={isLibrary}
+      />
       <WatchlistCards
         watchlist={watchlist}
         onRemoveFromWatchlist={onRemoveFromWatchlist}

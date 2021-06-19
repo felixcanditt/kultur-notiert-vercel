@@ -11,6 +11,7 @@ export default function WatchlistCards({
     <Grid>
       {watchlist.map((item, index) => (
         <WatchlistCard
+          key={index}
           item={item}
           index={index}
           onCheckItem={onCheckItem}

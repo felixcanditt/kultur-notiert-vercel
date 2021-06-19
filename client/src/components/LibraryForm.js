@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-export default function LibraryForm({ onAddToLibrary }) {
+export default function LibraryForm({ onAddToLibrary, isLibrary }) {
   const initialItem = {
     title: '',
     category: '',
@@ -25,6 +25,7 @@ export default function LibraryForm({ onAddToLibrary }) {
   return (
     <Form onSubmit={handleFormSubmit}>
       <h3>Neuen Eintrag hinzufügen</h3>
+      <p>{isLibrary ? 'hiii' : ''}</p>
 
       <label htmlFor="title">Titel</label>
       <input

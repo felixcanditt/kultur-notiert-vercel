@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import WatchlistFormOptions from './WatchlistFormOptions';
 
-export default function WatchlistForm({ onAddToWatchlist }) {
+export default function WatchlistForm({ onAddToWatchlist, isLibrary }) {
   const initialFormItem = {
     title: '',
     category: '',
@@ -75,7 +75,11 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         </select>
       </label>
 
-      <WatchlistFormOptions formItem={formItem} onChangeItem={changeItem} />
+      {isLibrary ? (
+        ''
+      ) : (
+        <WatchlistFormOptions formItem={formItem} onChangeItem={changeItem} />
+      )}
 
       <button>speichern</button>
     </Form>
