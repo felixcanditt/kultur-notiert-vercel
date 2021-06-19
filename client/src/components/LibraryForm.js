@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function LibraryForm({ onAddToLibrary }) {
+export default function LibraryForm({
+  onAddToLibrary,
+  itemToBeEdited,
+  onEditLibrary
+}) {
   const initialItem = {
     title: '',
     category: '',
@@ -9,6 +13,13 @@ export default function LibraryForm({ onAddToLibrary }) {
   };
 
   const [item, setItem] = useState(initialItem);
+  // console.log(item.title);
+
+  useEffect(() => {
+    if (itemToBeEdited) {
+      setItem(itemToBeEdited[0]);
+    }
+  }, [itemToBeEdited]);
 
   function changeItem(event) {
     const inputName = event.target.name;
@@ -18,7 +29,8 @@ export default function LibraryForm({ onAddToLibrary }) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    onAddToLibrary(item);
+    itemToBeEdited ? onEditLibrary(item) : onAddToLibrary(item);
+
     setItem(initialItem);
   }
 
