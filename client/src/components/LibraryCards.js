@@ -11,12 +11,10 @@ export default function LibraryCards({
         <Card key={index}>
           <p>{item.title}</p>
           <p>{item.category}</p>
-          <button onClick={(event) => onSetItemToBeEdited([item, index])}>
+          <button onClick={(event) => onSetItemToBeEdited(item)}>
             bearbeiten
           </button>
-          <button onClick={() => onRemoveFromLibrary(item, index)}>
-            löschen
-          </button>
+          <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
         </Card>
       ))}
     </Grid>

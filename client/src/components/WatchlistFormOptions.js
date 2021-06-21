@@ -1,4 +1,4 @@
-export default function InputOptions({ formItem, onChangeItem }) {
+export default function InputOptions({ formItem, onUpdateFormItem }) {
   function renderOptions() {
     if (formItem.category === 'book') {
       return (
@@ -7,7 +7,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
           <input
             type="text"
             name="author"
-            onChange={onChangeItem}
+            onChange={onUpdateFormItem}
             value={formItem.author}
           />
         </label>
@@ -20,7 +20,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="director"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.director}
             />
           </label>
@@ -29,7 +29,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="location"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.location}
             />
           </label>
@@ -42,7 +42,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
           <input
             type="text"
             name="location"
-            onChange={onChangeItem}
+            onChange={onUpdateFormItem}
             value={formItem.location}
           />
         </label>
@@ -55,7 +55,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="location"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.location}
             />
           </label>
@@ -64,7 +64,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="time"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.time}
             />
           </label>
@@ -81,7 +81,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="location"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.location}
             />
           </label>
@@ -90,7 +90,7 @@ export default function InputOptions({ formItem, onChangeItem }) {
             <input
               type="text"
               name="time"
-              onChange={onChangeItem}
+              onChange={onUpdateFormItem}
               value={formItem.time}
             />
           </label>

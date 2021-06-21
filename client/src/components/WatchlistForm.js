@@ -23,11 +23,11 @@ export default function WatchlistForm({
 
   useEffect(() => {
     if (itemToBeEdited) {
-      setFormItem(itemToBeEdited[0]);
+      setFormItem(itemToBeEdited);
     }
   }, [itemToBeEdited]);
 
-  function changeItem(event) {
+  function updateFormItem(event) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     setFormItem({ ...formItem, [inputName]: inputValue });
@@ -66,7 +66,7 @@ export default function WatchlistForm({
         <input
           type="text"
           name="title"
-          onChange={changeItem}
+          onChange={updateFormItem}
           value={formItem.title}
         />
       </label>
@@ -88,7 +88,10 @@ export default function WatchlistForm({
         </select>
       </label>
 
-      <WatchlistFormOptions formItem={formItem} onChangeItem={changeItem} />
+      <WatchlistFormOptions
+        formItem={formItem}
+        onUpdateFormItem={updateFormItem}
+      />
 
       <button>speichern</button>
     </Form>

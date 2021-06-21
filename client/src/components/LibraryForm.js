@@ -7,33 +7,33 @@ export default function LibraryForm({
   itemToBeEdited,
   onEditLibrary
 }) {
-  const initialItem = {
+  const initialFormItem = {
     title: '',
     category: '',
     isWatched: true
   };
 
-  const [item, setItem] = useState(initialItem);
+  const [formItem, setFormItem] = useState(initialFormItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
-      setItem(itemToBeEdited[0]);
+      setFormItem(itemToBeEdited);
     }
   }, [itemToBeEdited]);
 
-  function changeItem(event) {
+  function updateFormItem(event) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
-    setItem({ ...item, [inputName]: inputValue });
+    setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
     itemToBeEdited
-      ? onEditLibrary(item)
-      : onAddToLibrary({ ...item, id: uuidv4() });
+      ? onEditLibrary(formItem)
+      : onAddToLibrary({ ...formItem, id: uuidv4() });
 
-    setItem(initialItem);
+    setFormItem(initialFormItem);
   }
 
   return (
@@ -45,16 +45,16 @@ export default function LibraryForm({
         type="text"
         id="title"
         name="title"
-        onChange={changeItem}
-        value={item.title}
+        onChange={updateFormItem}
+        value={formItem.title}
       />
 
       <label htmlFor="category">Kategorie</label>
       <input
         type="text"
         name="category"
-        onChange={changeItem}
-        value={item.category}
+        onChange={updateFormItem}
+        value={formItem.category}
       />
 
       <button>speichern</button>
