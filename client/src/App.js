@@ -19,10 +19,8 @@ export default function App() {
   const [library, setLibrary] = useState(
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
-  console.log('library', library);
 
   const [itemToBeEdited, setItemToBeEdited] = useState();
-  // console.log(itemToBeEdited[0].title);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);

@@ -14,7 +14,6 @@ export default function LibraryForm({
   };
 
   const [item, setItem] = useState(initialItem);
-  // console.log(item.title);
 
   useEffect(() => {
     if (itemToBeEdited) {
