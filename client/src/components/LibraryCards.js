@@ -1,31 +1,17 @@
 import styled from 'styled-components';
 
-export default function WatchlistItems({
-  watchlist,
-  onRemoveFromWatchlist,
-  onCheckItem
-}) {
+export default function LibraryCards({ library, onRemoveFromLibrary }) {
   return (
     <Grid>
-      {watchlist.map((item, index) => (
-        <ItemCard key={index}>
+      {library.map((item, index) => (
+        <Card key={index}>
           <p>{item.title}</p>
           <p>{item.category}</p>
 
-          <label>
-            <input
-              type="checkbox"
-              name="isWatched"
-              checked={item.isWatched}
-              onChange={(event) => onCheckItem(event, item, index)}
-            />
-            angeschaut
-          </label>
-
-          <button onClick={() => onRemoveFromWatchlist(item, index)}>
+          <button onClick={() => onRemoveFromLibrary(item, index)}>
             löschen
           </button>
-        </ItemCard>
+        </Card>
       ))}
     </Grid>
   );
@@ -38,7 +24,7 @@ const Grid = styled.div`
   gap: 1rem;
 `;
 
-const ItemCard = styled.div`
+const Card = styled.div`
   max-width: 15rem;
   border-radius: 0.4rem;
   padding: 1.2rem 1rem;

@@ -16,9 +16,17 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertWatchlist') ?? []
   );
 
+  const [library, setLibrary] = useState(
+    loadFromLocalStorage('kulturNotiertLibrary') ?? []
+  );
+
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
   }, [watchlist]);
+
+  useEffect(() => {
+    updateLocalStorage('kulturNotiertLibrary', library);
+  }, [library]);
 
   function addToWatchlist(newItem) {
     setWatchlist([newItem, ...watchlist]);
@@ -35,14 +43,24 @@ export default function App() {
     const isDone = event.target.name;
     const doneStatus = event.target.checked;
 
-    const updatedWatchlist = watchlist.map((item, index) => {
-      if (index === checkedIndex) {
-        item[isDone] = doneStatus;
-      }
-      return item;
-    });
+    const newLibraryItem = watchlist.find(
+      (item, index) => index === checkedIndex
+    );
+    newLibraryItem[isDone] = doneStatus;
+    setLibrary([newLibraryItem, ...library]);
 
-    setWatchlist(updatedWatchlist);
+    removeFromWatchlist(checkedItem, checkedIndex);
+  }
+
+  function addToLibrary(newItem) {
+    setLibrary([newItem, ...library]);
+  }
+
+  function removeFromLibrary(itemToBeRemoved, indexToBeRemoved) {
+    const updatedLibrary = library.filter(
+      (item, index) => index !== indexToBeRemoved
+    );
+    setLibrary(updatedLibrary);
   }
 
   return (
@@ -64,7 +82,11 @@ export default function App() {
         </Route>
 
         <Route path="/library">
-          <Library />
+          <Library
+            library={library}
+            onAddToLibrary={addToLibrary}
+            onRemoveFromLibrary={removeFromLibrary}
+          />
         </Route>
 
         <Route path="/friends">
