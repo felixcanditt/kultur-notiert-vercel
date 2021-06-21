@@ -1,28 +1,25 @@
 import styled from 'styled-components';
 
-export default function LibraryCards({ library, onRemoveFromLibrary }) {
-  return (
-    <Grid>
-      {library.map((item, index) => (
-        <Card key={index}>
-          <p>{item.title}</p>
-          <p>{item.category}</p>
+import WatchlistCardDetails from './WatchlistCardDetails';
+import WatchlistCheckbox from './WatchlistCheckbox';
 
-          <button onClick={() => onRemoveFromLibrary(item, index)}>
-            löschen
-          </button>
-        </Card>
-      ))}
-    </Grid>
+export default function WatchlistCard({
+  item,
+  index,
+  onCheckItem,
+  onRemoveFromWatchlist
+}) {
+  return (
+    <Card key={index}>
+      <p>{item.title}</p>
+      <WatchlistCardDetails item={item} />
+      <WatchlistCheckbox item={item} index={index} onCheckItem={onCheckItem} />
+      <button onClick={() => onRemoveFromWatchlist(item, index)}>
+        löschen
+      </button>
+    </Card>
   );
 }
-
-const Grid = styled.section`
-  margin-top: 4rem;
-  display: grid;
-  justify-content: center;
-  gap: 2rem;
-`;
 
 const Card = styled.article`
   max-width: 15rem;

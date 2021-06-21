@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import InputOptions from './InputOptions';
+import WatchlistFormOptions from './WatchlistFormOptions';
 
 export default function WatchlistForm({ onAddToWatchlist }) {
   const initialFormItem = {
@@ -67,7 +67,7 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         >
           <option value=""></option>
           <option value="book">Buch</option>
-          <option value="film">Film</option>
+          <option value="movie">Film</option>
           <option value="series">Serie</option>
           <option value="stage">Bühne</option>
           <option value="exhibition">Ausstellung</option>
@@ -75,7 +75,7 @@ export default function WatchlistForm({ onAddToWatchlist }) {
         </select>
       </label>
 
-      <InputOptions formItem={formItem} onChangeItem={changeItem} />
+      <WatchlistFormOptions formItem={formItem} onChangeItem={changeItem} />
 
       <button>speichern</button>
     </Form>
