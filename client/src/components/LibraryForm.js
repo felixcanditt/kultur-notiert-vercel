@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function LibraryForm({
   onAddToLibrary,
   itemToBeEdited,
+  onSetItemToBeEdited,
   onEditLibrary
 }) {
   const initialFormItem = {
@@ -27,17 +28,23 @@ export default function LibraryForm({
     setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
-  function handleFormSubmit(event) {
+  function handleFormSubmission(event) {
     event.preventDefault();
     itemToBeEdited
       ? onEditLibrary(formItem)
       : onAddToLibrary({ ...formItem, id: uuidv4() });
+    setFormItem(initialFormItem);
+  }
 
+  function handleFormCancelation() {
+    if (itemToBeEdited) {
+      onSetItemToBeEdited();
+    }
     setFormItem(initialFormItem);
   }
 
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmission}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
       <label htmlFor="title">Titel</label>
@@ -56,8 +63,12 @@ export default function LibraryForm({
         onChange={updateFormItem}
         value={formItem.category}
       />
-
-      <button>speichern</button>
+      <Buttons>
+        <button type="reset" onClick={() => handleFormCancelation()}>
+          abbrechen
+        </button>
+        <button>speichern</button>
+      </Buttons>
     </Form>
   );
 }
@@ -90,10 +101,14 @@ const Form = styled.form`
     border-radius: 0.8rem;
     padding: 0.5rem;
   }
+`;
+
+const Buttons = styled.div`
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-evenly;
 
   button {
-    margin: 0.7rem auto 0;
-
     cursor: pointer;
 
     border: none;

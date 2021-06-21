@@ -15,7 +15,7 @@ export default function WatchlistCard({
       <p>{item.title}</p>
       <WatchlistCardDetails item={item} />
       <WatchlistCheckbox item={item} index={index} onCheckItem={onCheckItem} />
-      <button onClick={(event) => onSetItemToBeEdited(item)}>bearbeiten</button>
+      <button onClick={() => onSetItemToBeEdited(item)}>bearbeiten</button>
       <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>
     </Card>
   );

@@ -7,6 +7,7 @@ import WatchlistFormOptions from './WatchlistFormOptions';
 export default function WatchlistForm({
   onAddToWatchlist,
   itemToBeEdited,
+  onSetItemToBeEdited,
   onEditWatchlist
 }) {
   const initialFormItem = {
@@ -49,7 +50,7 @@ export default function WatchlistForm({
     setFormItem(itemWithCategory);
   }
 
-  function handleFormSubmit(event) {
+  function handleFormSubmission(event) {
     event.preventDefault();
     itemToBeEdited
       ? onEditWatchlist(formItem)
@@ -57,8 +58,15 @@ export default function WatchlistForm({
     setFormItem(initialFormItem);
   }
 
+  function handleFormCancelation() {
+    if (itemToBeEdited) {
+      onSetItemToBeEdited();
+    }
+    setFormItem(initialFormItem);
+  }
+
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmission}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
       <label>
@@ -93,7 +101,12 @@ export default function WatchlistForm({
         onUpdateFormItem={updateFormItem}
       />
 
-      <button>speichern</button>
+      <Buttons>
+        <button type="reset" onClick={() => handleFormCancelation()}>
+          abbrechen
+        </button>
+        <button>speichern</button>
+      </Buttons>
     </Form>
   );
 }
@@ -123,10 +136,14 @@ const Form = styled.form`
     border-radius: 0.8rem;
     padding: 0.5rem;
   }
+`;
+
+const Buttons = styled.div`
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-evenly;
 
   button {
-    margin: 0.5rem auto 0;
-
     cursor: pointer;
 
     border: none;

@@ -21,6 +21,7 @@ export default function App() {
   );
 
   const [itemToBeEdited, setItemToBeEdited] = useState();
+  console.log(itemToBeEdited);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);

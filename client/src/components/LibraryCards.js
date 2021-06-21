@@ -14,6 +14,7 @@ export default function LibraryCards({
           <button onClick={(event) => onSetItemToBeEdited(item)}>
             bearbeiten
           </button>
+
           <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
         </Card>
       ))}
