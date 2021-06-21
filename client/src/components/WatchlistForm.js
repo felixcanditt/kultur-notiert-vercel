@@ -1,9 +1,14 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import WatchlistFormOptions from './WatchlistFormOptions';
 
-export default function WatchlistForm({ onAddToWatchlist }) {
+export default function WatchlistForm({
+  onAddToWatchlist,
+  itemToBeEdited,
+  onEditWatchlist
+}) {
   const initialFormItem = {
     title: '',
     category: '',
@@ -15,6 +20,12 @@ export default function WatchlistForm({ onAddToWatchlist }) {
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
+
+  useEffect(() => {
+    if (itemToBeEdited) {
+      setFormItem(itemToBeEdited[0]);
+    }
+  }, [itemToBeEdited]);
 
   function changeItem(event) {
     const inputName = event.target.name;
@@ -40,7 +51,9 @@ export default function WatchlistForm({ onAddToWatchlist }) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    onAddToWatchlist(formItem);
+    itemToBeEdited
+      ? onEditWatchlist(formItem)
+      : onAddToWatchlist({ ...formItem, id: uuidv4() });
     setFormItem(initialFormItem);
   }
 

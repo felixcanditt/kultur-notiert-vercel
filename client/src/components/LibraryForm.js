@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-export default function LibraryForm({ onAddToLibrary }) {
+export default function LibraryForm({
+  onAddToLibrary,
+  itemToBeEdited,
+  onEditLibrary
+}) {
   const initialItem = {
     title: '',
     category: '',
@@ -9,6 +14,12 @@ export default function LibraryForm({ onAddToLibrary }) {
   };
 
   const [item, setItem] = useState(initialItem);
+
+  useEffect(() => {
+    if (itemToBeEdited) {
+      setItem(itemToBeEdited[0]);
+    }
+  }, [itemToBeEdited]);
 
   function changeItem(event) {
     const inputName = event.target.name;
@@ -18,7 +29,10 @@ export default function LibraryForm({ onAddToLibrary }) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    onAddToLibrary(item);
+    itemToBeEdited
+      ? onEditLibrary(item)
+      : onAddToLibrary({ ...item, id: uuidv4() });
+
     setItem(initialItem);
   }
 

@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export default function LibraryCards({ library, onRemoveFromLibrary }) {
+export default function LibraryCards({
+  library,
+  onSetItemToBeEdited,
+  onRemoveFromLibrary
+}) {
   return (
     <Grid>
       {library.map((item, index) => (
         <Card key={index}>
           <p>{item.title}</p>
           <p>{item.category}</p>
-
+          <button onClick={(event) => onSetItemToBeEdited([item, index])}>
+            bearbeiten
+          </button>
           <button onClick={() => onRemoveFromLibrary(item, index)}>
             löschen
           </button>

@@ -20,6 +20,8 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
 
+  const [itemToBeEdited, setItemToBeEdited] = useState();
+
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
   }, [watchlist]);
@@ -56,6 +58,22 @@ export default function App() {
     setLibrary([newItem, ...library]);
   }
 
+  function editWatchlist(editedItem) {
+    const editedWatchlist = watchlist.slice();
+    const indexToBeEdited = itemToBeEdited[1];
+    editedWatchlist[indexToBeEdited] = editedItem;
+    setWatchlist(editedWatchlist);
+    setItemToBeEdited();
+  }
+
+  function editLibrary(editedItem) {
+    const editedLibrary = library.slice();
+    const indexToBeEdited = itemToBeEdited[1];
+    editedLibrary[indexToBeEdited] = editedItem;
+    setLibrary(editedLibrary);
+    setItemToBeEdited();
+  }
+
   function removeFromLibrary(itemToBeRemoved, indexToBeRemoved) {
     const updatedLibrary = library.filter(
       (item, index) => index !== indexToBeRemoved
@@ -76,6 +94,9 @@ export default function App() {
           <Watchlist
             watchlist={watchlist}
             onAddToWatchlist={addToWatchlist}
+            itemToBeEdited={itemToBeEdited}
+            onSetItemToBeEdited={setItemToBeEdited}
+            onEditWatchlist={editWatchlist}
             onRemoveFromWatchlist={removeFromWatchlist}
             onCheckItem={checkItem}
           />
@@ -85,6 +106,9 @@ export default function App() {
           <Library
             library={library}
             onAddToLibrary={addToLibrary}
+            itemToBeEdited={itemToBeEdited}
+            onSetItemToBeEdited={setItemToBeEdited}
+            onEditLibrary={editLibrary}
             onRemoveFromLibrary={removeFromLibrary}
           />
         </Route>
