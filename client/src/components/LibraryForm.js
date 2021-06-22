@@ -11,6 +11,7 @@ export default function LibraryForm({
   const initialFormItem = {
     title: '',
     category: '',
+    notes: '',
     isWatched: true
   };
 
@@ -74,8 +75,13 @@ export default function LibraryForm({
         </select>
       </label>
 
-      <label htmlFor="notes">Notizen</label>
-      <input type="text" />
+      <label htmlFor="notes">Meine Notizen</label>
+      <textarea
+        id="notes"
+        name="notes"
+        onChange={updateFormItem}
+        value={formItem.notes}
+      ></textarea>
 
       <Buttons>
         <button type="reset" onClick={handleFormCancelation}>
@@ -86,9 +92,6 @@ export default function LibraryForm({
     </Form>
   );
 }
-
-/* border: ${(props) =>
-      props.isNotes ? '100px red solid' : '100px blue solid'}; */
 
 const Form = styled.form`
   margin: 0 auto;
@@ -110,9 +113,15 @@ const Form = styled.form`
   }
 
   input,
-  select {
+  select,
+  textarea {
     border-radius: 0.8rem;
     padding: 0.5rem;
+  }
+
+  textarea {
+    resize: none;
+    height: 5.35rem;
   }
 
   span {

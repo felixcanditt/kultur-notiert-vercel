@@ -16,6 +16,14 @@ export default function LibraryCard({
         {item.category === 'exhibition' ? 'Ausstellung' : ''}
         {item.category === 'festival' ? 'Festival' : ''}
       </p>
+      {item.notes ? (
+        <p>
+          Meine Notizen: <br />
+          {item.notes}
+        </p>
+      ) : (
+        ''
+      )}
 
       <button onClick={(event) => onSetItemToBeEdited(item)}>bearbeiten</button>
       <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>

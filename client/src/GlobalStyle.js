@@ -37,6 +37,12 @@ h3 {
   font-size: 1.375rem;
 }
 
+input, select, textarea {
+  outline: none;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+}
+
 ul {
   list-style: none;
 }
