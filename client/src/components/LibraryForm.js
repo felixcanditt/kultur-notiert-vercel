@@ -125,10 +125,6 @@ export default function LibraryForm({
             formItem.rating >= 5 ? { opacity: '100%' } : { opacity: '25%' }
           }
         />
-        {/* <Star2 src={star} alt="this is a star for rating purposes" />
-        <Star3 src={star} alt="this is a star for rating purposes" />
-        <Star4 src={star} alt="this is a star for rating purposes" />
-        <Star5 src={star} alt="this is a star for rating purposes" /> */}
       </Stars>
 
       <label htmlFor="notes">Notizen</label>
@@ -189,38 +185,12 @@ const Stars = styled.div`
   margin: 1.5rem;
   display: flex;
   gap: 1rem;
+
+  img {
+    width: 2rem;
+    cursor: pointer;
+  }
 `;
-
-// const Star1 = styled.img`
-//   width: 2rem;
-//   cursor: pointer;
-//   opacity: 25%;
-//   opacity: ${{ stars } === 1 ? '100%' : '25%'};
-// `;
-
-// const Star2 = styled.img`
-//   width: 2rem;
-//   cursor: pointer;
-//   opacity: 25%;
-// `;
-
-// const Star3 = styled.img`
-//   width: 2rem;
-//   cursor: pointer;
-//   opacity: 25%;
-// `;
-
-// const Star4 = styled.img`
-//   width: 2rem;
-//   cursor: pointer;
-//   opacity: 25%;
-// `;
-
-// const Star5 = styled.img`
-//   width: 2rem;
-//   cursor: pointer;
-//   opacity: 100%;
-// `;
 
 const Buttons = styled.div`
   margin-top: 0.7rem;
