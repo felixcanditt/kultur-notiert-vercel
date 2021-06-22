@@ -18,6 +18,6 @@ Enjoy <3
 
 ## How to install and run this app
 
-After cloning this repository, simply run `npm install` in the main directory – this will also install all dependencies of the `client` and the Express `server`.
+After cloning this repository, simply run `npm install` in the main directory – this will also install all dependencies of `client`.
 
-Start the app in development mode by entering `npm run dev`.
+Then start the app by entering `npm run client`.
