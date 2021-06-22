@@ -74,6 +74,9 @@ export default function LibraryForm({
         </select>
       </label>
 
+      <label htmlFor="notes">Notizen</label>
+      <input type="text" />
+
       <Buttons>
         <button type="reset" onClick={handleFormCancelation}>
           abbrechen
@@ -83,6 +86,9 @@ export default function LibraryForm({
     </Form>
   );
 }
+
+/* border: ${(props) =>
+      props.isNotes ? '100px red solid' : '100px blue solid'}; */
 
 const Form = styled.form`
   margin: 0 auto;
@@ -105,9 +111,12 @@ const Form = styled.form`
 
   input,
   select {
-    margin-left: 0.7rem;
     border-radius: 0.8rem;
     padding: 0.5rem;
+  }
+
+  span {
+    margin-right: 0.7rem;
   }
 `;
 
