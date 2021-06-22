@@ -16,6 +16,7 @@ export default function Watchlist({
       <WatchlistForm
         onAddToWatchlist={onAddToWatchlist}
         itemToBeEdited={itemToBeEdited}
+        onSetItemToBeEdited={onSetItemToBeEdited}
         onEditWatchlist={onEditWatchlist}
       />
       <WatchlistCards

@@ -7,16 +7,15 @@ export default function LibraryCards({
 }) {
   return (
     <Grid>
-      {library.map((item, index) => (
-        <Card key={index}>
+      {library.map((item) => (
+        <Card key={item.id}>
           <p>{item.title}</p>
           <p>{item.category}</p>
-          <button onClick={(event) => onSetItemToBeEdited([item, index])}>
+          <button onClick={(event) => onSetItemToBeEdited(item)}>
             bearbeiten
           </button>
-          <button onClick={() => onRemoveFromLibrary(item, index)}>
-            löschen
-          </button>
+
+          <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
         </Card>
       ))}
     </Grid>

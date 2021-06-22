@@ -15,6 +15,7 @@ export default function Library({
       <LibraryForm
         onAddToLibrary={onAddToLibrary}
         itemToBeEdited={itemToBeEdited}
+        onSetItemToBeEdited={onSetItemToBeEdited}
         onEditLibrary={onEditLibrary}
       />
 

@@ -34,49 +34,42 @@ export default function App() {
     setWatchlist([newItem, ...watchlist]);
   }
 
-  function removeFromWatchlist(itemToBeRemoved, indexToBeRemoved) {
+  function editWatchlist(editedItem) {
     const updatedWatchlist = watchlist.filter(
-      (item, index) => index !== indexToBeRemoved
+      (item) => item.id !== editedItem.id
+    );
+    setWatchlist([editedItem, ...updatedWatchlist]);
+    setItemToBeEdited();
+  }
+
+  function removeFromWatchlist(itemToBeRemoved) {
+    const updatedWatchlist = watchlist.filter(
+      (item) => item.id !== itemToBeRemoved.id
     );
     setWatchlist(updatedWatchlist);
   }
 
-  function checkItem(event, checkedItem, checkedIndex) {
+  function checkItem(event, checkedItem) {
     const isDone = event.target.name;
     const doneStatus = event.target.checked;
-
-    const newLibraryItem = watchlist.find(
-      (item, index) => index === checkedIndex
-    );
-    newLibraryItem[isDone] = doneStatus;
-    setLibrary([newLibraryItem, ...library]);
-
-    removeFromWatchlist(checkedItem, checkedIndex);
+    checkedItem[isDone] = doneStatus;
+    setLibrary([checkedItem, ...library]);
+    removeFromWatchlist(checkedItem);
   }
 
   function addToLibrary(newItem) {
     setLibrary([newItem, ...library]);
   }
 
-  function editWatchlist(editedItem) {
-    const editedWatchlist = watchlist.slice();
-    const indexToBeEdited = itemToBeEdited[1];
-    editedWatchlist[indexToBeEdited] = editedItem;
-    setWatchlist(editedWatchlist);
-    setItemToBeEdited();
-  }
-
   function editLibrary(editedItem) {
-    const editedLibrary = library.slice();
-    const indexToBeEdited = itemToBeEdited[1];
-    editedLibrary[indexToBeEdited] = editedItem;
-    setLibrary(editedLibrary);
+    const editedLibrary = library.filter((item) => item.id !== editedItem.id);
+    setLibrary([editedItem, ...editedLibrary]);
     setItemToBeEdited();
   }
 
-  function removeFromLibrary(itemToBeRemoved, indexToBeRemoved) {
+  function removeFromLibrary(itemToBeRemoved) {
     const updatedLibrary = library.filter(
-      (item, index) => index !== indexToBeRemoved
+      (item) => item.id !== itemToBeRemoved.id
     );
     setLibrary(updatedLibrary);
   }

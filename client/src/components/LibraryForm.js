@@ -5,39 +5,46 @@ import { v4 as uuidv4 } from 'uuid';
 export default function LibraryForm({
   onAddToLibrary,
   itemToBeEdited,
+  onSetItemToBeEdited,
   onEditLibrary
 }) {
-  const initialItem = {
+  const initialFormItem = {
     title: '',
     category: '',
     isWatched: true
   };
 
-  const [item, setItem] = useState(initialItem);
+  const [formItem, setFormItem] = useState(initialFormItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
-      setItem(itemToBeEdited[0]);
+      setFormItem(itemToBeEdited);
     }
   }, [itemToBeEdited]);
 
-  function changeItem(event) {
+  function updateFormItem(event) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
-    setItem({ ...item, [inputName]: inputValue });
+    setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
-  function handleFormSubmit(event) {
+  function handleFormSubmission(event) {
     event.preventDefault();
     itemToBeEdited
-      ? onEditLibrary(item)
-      : onAddToLibrary({ ...item, id: uuidv4() });
+      ? onEditLibrary(formItem)
+      : onAddToLibrary({ ...formItem, id: uuidv4() });
+    setFormItem(initialFormItem);
+  }
 
-    setItem(initialItem);
+  function handleFormCancelation() {
+    if (itemToBeEdited) {
+      onSetItemToBeEdited();
+    }
+    setFormItem(initialFormItem);
   }
 
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmission}>
       <h3>Neuen Eintrag hinzufügen</h3>
 
       <label htmlFor="title">Titel</label>
@@ -45,19 +52,23 @@ export default function LibraryForm({
         type="text"
         id="title"
         name="title"
-        onChange={changeItem}
-        value={item.title}
+        onChange={updateFormItem}
+        value={formItem.title}
       />
 
       <label htmlFor="category">Kategorie</label>
       <input
         type="text"
         name="category"
-        onChange={changeItem}
-        value={item.category}
+        onChange={updateFormItem}
+        value={formItem.category}
       />
-
-      <button>speichern</button>
+      <Buttons>
+        <button type="reset" onClick={handleFormCancelation}>
+          abbrechen
+        </button>
+        <button>speichern</button>
+      </Buttons>
     </Form>
   );
 }
@@ -90,10 +101,14 @@ const Form = styled.form`
     border-radius: 0.8rem;
     padding: 0.5rem;
   }
+`;
+
+const Buttons = styled.div`
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-evenly;
 
   button {
-    margin: 0.7rem auto 0;
-
     cursor: pointer;
 
     border: none;

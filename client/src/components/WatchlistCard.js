@@ -5,7 +5,6 @@ import WatchlistCheckbox from './WatchlistCheckbox';
 
 export default function WatchlistCard({
   item,
-  index,
   onCheckItem,
   onSetItemToBeEdited,
   onRemoveFromWatchlist
@@ -14,13 +13,9 @@ export default function WatchlistCard({
     <Card>
       <p>{item.title}</p>
       <WatchlistCardDetails item={item} />
-      <WatchlistCheckbox item={item} index={index} onCheckItem={onCheckItem} />
-      <button onClick={(event) => onSetItemToBeEdited([item, index])}>
-        bearbeiten
-      </button>
-      <button onClick={() => onRemoveFromWatchlist(item, index)}>
-        löschen
-      </button>
+      <WatchlistCheckbox item={item} onCheckItem={onCheckItem} />
+      <button onClick={() => onSetItemToBeEdited(item)}>bearbeiten</button>
+      <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>
     </Card>
   );
 }

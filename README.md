@@ -20,4 +20,4 @@ Enjoy <3
 
 After cloning this repository, simply run `npm install` in the main directory – this will also install all dependencies of `client`.
 
-Start the app in development mode by entering `npm run dev`.
+Then start the app by entering `npm run client`.

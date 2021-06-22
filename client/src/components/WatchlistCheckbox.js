@@ -1,11 +1,11 @@
-export default function WatchlistCheckbox({ item, index, onCheckItem }) {
+export default function WatchlistCheckbox({ item, onCheckItem }) {
   return (
     <label>
       <input
         type="checkbox"
         name="isWatched"
         checked={item.isWatched}
-        onChange={(event) => onCheckItem(event, item, index)}
+        onChange={(event) => onCheckItem(event, item)}
       />
       {item.category === '' ? 'gesehen' : ''}
       {item.category === 'book' ? 'gelesen' : ''}
