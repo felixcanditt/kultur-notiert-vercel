@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import star from '../images/star.svg';
+
 export default function LibraryForm({
   onAddToLibrary,
   itemToBeEdited,
@@ -11,6 +13,7 @@ export default function LibraryForm({
   const initialFormItem = {
     title: '',
     category: '',
+    rating: '',
     notes: '',
     isWatched: true
   };
@@ -44,6 +47,12 @@ export default function LibraryForm({
     setFormItem(initialFormItem);
   }
 
+  function rateFormItem(clickedStars) {
+    formItem.rating === clickedStars
+      ? setFormItem({ ...formItem, rating: '' })
+      : setFormItem({ ...formItem, rating: clickedStars });
+  }
+
   return (
     <Form onSubmit={handleFormSubmission}>
       <h3>Neuen Eintrag hinzufügen</h3>
@@ -75,7 +84,54 @@ export default function LibraryForm({
         </select>
       </label>
 
-      <label htmlFor="notes">Meine Notizen</label>
+      <Stars>
+        <img
+          src={star}
+          alt="this is a star for rating purposes"
+          onClick={() => rateFormItem(1)}
+          style={
+            formItem.rating >= 1 ? { opacity: '100%' } : { opacity: '25%' }
+          }
+        />
+        <img
+          src={star}
+          alt="this is a star for rating purposes"
+          onClick={() => rateFormItem(2)}
+          style={
+            formItem.rating >= 2 ? { opacity: '100%' } : { opacity: '25%' }
+          }
+        />
+        <img
+          src={star}
+          alt="this is a star for rating purposes"
+          onClick={() => rateFormItem(3)}
+          style={
+            formItem.rating >= 3 ? { opacity: '100%' } : { opacity: '25%' }
+          }
+        />
+        <img
+          src={star}
+          alt="this is a star for rating purposes"
+          onClick={() => rateFormItem(4)}
+          style={
+            formItem.rating >= 4 ? { opacity: '100%' } : { opacity: '25%' }
+          }
+        />
+        <img
+          src={star}
+          alt="this is a star for rating purposes"
+          onClick={() => rateFormItem(5)}
+          style={
+            formItem.rating >= 5 ? { opacity: '100%' } : { opacity: '25%' }
+          }
+        />
+        {/* <Star2 src={star} alt="this is a star for rating purposes" />
+        <Star3 src={star} alt="this is a star for rating purposes" />
+        <Star4 src={star} alt="this is a star for rating purposes" />
+        <Star5 src={star} alt="this is a star for rating purposes" /> */}
+      </Stars>
+
+      <label htmlFor="notes">Notizen</label>
       <textarea
         id="notes"
         name="notes"
@@ -128,6 +184,43 @@ const Form = styled.form`
     margin-right: 0.7rem;
   }
 `;
+
+const Stars = styled.div`
+  margin: 1.5rem;
+  display: flex;
+  gap: 1rem;
+`;
+
+// const Star1 = styled.img`
+//   width: 2rem;
+//   cursor: pointer;
+//   opacity: 25%;
+//   opacity: ${{ stars } === 1 ? '100%' : '25%'};
+// `;
+
+// const Star2 = styled.img`
+//   width: 2rem;
+//   cursor: pointer;
+//   opacity: 25%;
+// `;
+
+// const Star3 = styled.img`
+//   width: 2rem;
+//   cursor: pointer;
+//   opacity: 25%;
+// `;
+
+// const Star4 = styled.img`
+//   width: 2rem;
+//   cursor: pointer;
+//   opacity: 25%;
+// `;
+
+// const Star5 = styled.img`
+//   width: 2rem;
+//   cursor: pointer;
+//   opacity: 100%;
+// `;
 
 const Buttons = styled.div`
   margin-top: 0.7rem;
