@@ -10,11 +10,10 @@ export default function WatchlistCards({
 }) {
   return (
     <Grid>
-      {watchlist.map((item, index) => (
+      {watchlist.map((item) => (
         <WatchlistCard
-          key={index}
+          key={item.id}
           item={item}
-          index={index}
           onCheckItem={onCheckItem}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onRemoveFromWatchlist={onRemoveFromWatchlist}

@@ -1,4 +1,4 @@
-export default function WatchlistCheckbox({ item, index, onCheckItem }) {
+export default function WatchlistCheckbox({ item, onCheckItem }) {
   return (
     <label>
       <input

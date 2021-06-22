@@ -7,8 +7,8 @@ export default function LibraryCards({
 }) {
   return (
     <Grid>
-      {library.map((item, index) => (
-        <Card key={index}>
+      {library.map((item) => (
+        <Card key={item.id}>
           <p>{item.title}</p>
           <p>{item.category}</p>
           <button onClick={(event) => onSetItemToBeEdited(item)}>

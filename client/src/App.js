@@ -21,7 +21,6 @@ export default function App() {
   );
 
   const [itemToBeEdited, setItemToBeEdited] = useState();
-  console.log(itemToBeEdited);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
@@ -36,10 +35,10 @@ export default function App() {
   }
 
   function editWatchlist(editedItem) {
-    const editedWatchlist = watchlist.filter(
+    const updatedWatchlist = watchlist.filter(
       (item) => item.id !== editedItem.id
     );
-    setWatchlist([editedItem, ...editedWatchlist]);
+    setWatchlist([editedItem, ...updatedWatchlist]);
     setItemToBeEdited();
   }
 
@@ -53,11 +52,8 @@ export default function App() {
   function checkItem(event, checkedItem) {
     const isDone = event.target.name;
     const doneStatus = event.target.checked;
-
-    const newLibraryItem = watchlist.find((item) => item.id === checkedItem.id);
-    newLibraryItem[isDone] = doneStatus;
-    setLibrary([newLibraryItem, ...library]);
-
+    checkedItem[isDone] = doneStatus;
+    setLibrary([checkedItem, ...library]);
     removeFromWatchlist(checkedItem);
   }
 

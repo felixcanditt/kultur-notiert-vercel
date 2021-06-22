@@ -64,7 +64,7 @@ export default function LibraryForm({
         value={formItem.category}
       />
       <Buttons>
-        <button type="reset" onClick={() => handleFormCancelation()}>
+        <button type="reset" onClick={handleFormCancelation}>
           abbrechen
         </button>
         <button>speichern</button>

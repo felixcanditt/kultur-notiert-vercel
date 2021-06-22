@@ -102,7 +102,7 @@ export default function WatchlistForm({
       />
 
       <Buttons>
-        <button type="reset" onClick={() => handleFormCancelation()}>
+        <button type="reset" onClick={handleFormCancelation}>
           abbrechen
         </button>
         <button>speichern</button>
