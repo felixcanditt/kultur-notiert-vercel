@@ -120,7 +120,7 @@ const Form = styled.form`
 
   background-color: ivory;
 
-  padding: 1.5rem 2rem;
+  padding: 2rem;
 
   display: grid;
   gap: 1rem;
