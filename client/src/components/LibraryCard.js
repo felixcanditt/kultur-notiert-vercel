@@ -5,10 +5,27 @@ export default function LibraryCard({
   onSetItemToBeEdited,
   onRemoveFromLibrary
 }) {
+  function displayCategory(category) {
+    const getCategory = {
+      book: 'Buch',
+
+      default: ''
+    };
+
+    return getCategory[category]
+      ? getCategory[category]
+      : getCategory['default'];
+  }
+
+  console.log(displayCategory(''));
+
+  const hose = '';
+
   return (
     <Card>
       <p>{item.title}</p>
 
+      {displayCategory(hose) ? <p>{hose}</p> : ''}
       {item.category === 'book' ? <p>Buch</p> : ''}
       {item.category === 'movie' ? <p>Film</p> : ''}
       {item.category === 'series' ? <p>Serie</p> : ''}
