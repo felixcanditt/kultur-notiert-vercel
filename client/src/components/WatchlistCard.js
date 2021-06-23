@@ -11,7 +11,8 @@ export default function WatchlistCard({
 }) {
   return (
     <Card>
-      <p>{item.title}</p>
+      {item.title ? <p>{item.title}</p> : <p>Ohne Titel</p>}
+
       <WatchlistCardDetails item={item} />
       <WatchlistCheckbox item={item} onCheckItem={onCheckItem} />
       <button onClick={() => onSetItemToBeEdited(item)}>bearbeiten</button>

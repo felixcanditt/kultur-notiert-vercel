@@ -1,39 +1,20 @@
 import styled from 'styled-components';
 
+import displayCategory from '../lib/displayCard';
+
 export default function LibraryCard({
   item,
   onSetItemToBeEdited,
   onRemoveFromLibrary
 }) {
-  function displayCategory(category) {
-    const getCategory = {
-      book: 'Buch',
-
-      default: ''
-    };
-
-    return getCategory[category]
-      ? getCategory[category]
-      : getCategory['default'];
-  }
-
-  console.log(displayCategory(''));
-
-  const hose = '';
-
   return (
     <Card>
-      <p>{item.title}</p>
+      {item.title ? <p>{item.title}</p> : <p>Ohne Titel</p>}
 
-      {displayCategory(hose) ? <p>{hose}</p> : ''}
-      {item.category === 'book' ? <p>Buch</p> : ''}
-      {item.category === 'movie' ? <p>Film</p> : ''}
-      {item.category === 'series' ? <p>Serie</p> : ''}
-      {item.category === 'stage' ? <p>Bühne</p> : ''}
-      {item.category === 'exhibition' ? <p>Ausstellung</p> : ''}
-      {item.category === 'festival' ? <p>Festival</p> : ''}
+      {displayCategory(item.category)}
 
       {item.rating ? <p>Meine Bewertung: {item.rating}/5 Sterne</p> : ''}
+
       {item.notes ? (
         <p>
           Meine Notizen: <br />
