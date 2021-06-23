@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-//__________BASIC CSS RESET
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -35,6 +33,11 @@ h2 {
 
 h3 {
   font-size: 1.375rem;
+}
+
+input, select, textarea {
+  font-size: 1.25rem;
+  font-family: sans-serif;
 }
 
 ul {
