@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import starIcon from '../images/star.svg';
 
 export default function LibraryFormStars({ formItem, onSetFormItem }) {
-  function displayStar(positionOfStar) {
+  function displayStar(positionOfClickedStar) {
     function rateFormItem(submittedRating) {
       formItem.rating === submittedRating
         ? onSetFormItem({ ...formItem, rating: 0 })
@@ -13,9 +13,9 @@ export default function LibraryFormStars({ formItem, onSetFormItem }) {
       <img
         src={starIcon}
         alt="Stern zum Bewerten"
-        onClick={() => rateFormItem(positionOfStar)}
+        onClick={() => rateFormItem(positionOfClickedStar)}
         style={
-          formItem.rating >= positionOfStar
+          formItem.rating >= positionOfClickedStar
             ? { opacity: '100%' }
             : { opacity: '25%' }
         }
