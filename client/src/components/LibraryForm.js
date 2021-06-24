@@ -80,13 +80,17 @@ export default function LibraryForm({
 
       <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
 
-      <label htmlFor="notes">Notizen</label>
-      <textarea
-        id="notes"
-        name="notes"
-        onChange={updateFormItem}
-        value={formItem.notes}
-      ></textarea>
+      <Notes>
+        <label htmlFor="notes" className="notesLabel">
+          Notizen
+        </label>
+        <textarea
+          id="notes"
+          name="notes"
+          onChange={updateFormItem}
+          value={formItem.notes}
+        ></textarea>
+      </Notes>
 
       <Buttons>
         <button type="reset" onClick={handleFormCancelation}>
@@ -110,32 +114,47 @@ const Form = styled.form`
   padding: 2rem;
 
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
-  }
-
-  input,
-  select,
-  textarea {
-    border-radius: 0.8rem;
-    padding: 0.5rem;
-  }
-
-  textarea {
-    resize: none;
-    height: 5.35rem;
   }
 
   span {
     margin-right: 0.7rem;
   }
+
+  input,
+  select {
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  input {
+    width: 11rem;
+    border: 1px black solid;
+  }
+
+  select {
+    background: white;
+  }
+`;
+
+const Notes = styled.div`
+  display: grid;
+  gap: 0.5rem;
+
+  textarea {
+    resize: none;
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    height: 5rem;
+  }
 `;
 
 const Buttons = styled.div`
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
 

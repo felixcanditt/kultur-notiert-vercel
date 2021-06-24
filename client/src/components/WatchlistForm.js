@@ -122,23 +122,35 @@ const Form = styled.form`
   padding: 2rem;
 
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
+  }
+
+  span {
+    margin-right: 0.7rem;
   }
 
   input,
   select {
-    margin-left: 0.7rem;
     border-radius: 0.8rem;
     padding: 0.5rem;
+  }
+
+  input {
+    width: 11rem;
+    border: 1px black solid;
+  }
+
+  select {
+    background: white;
   }
 `;
 
 const Buttons = styled.div`
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
 
