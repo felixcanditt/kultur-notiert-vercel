@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import displayCategory from '../lib/displayCard';
+import { displayCategory } from '../lib/displayCard';
 
 import starIcon from '../images/star.svg';
 

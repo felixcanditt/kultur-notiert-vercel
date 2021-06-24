@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
 
+import { displayButtonText } from '../lib/displayCard';
+
 export default function WatchlistCard({
   item,
   onCheckItem,
@@ -15,13 +17,7 @@ export default function WatchlistCard({
       <WatchlistCardDetails item={item} />
 
       <button onClick={() => onCheckItem(item)}>
-        {item.category === '' ? 'gesehen' : ''}
-        {item.category === 'book' ? 'gelesen' : ''}
-        {item.category === 'movie' ? 'gesehen' : ''}
-        {item.category === 'series' ? 'gesehen' : ''}
-        {item.category === 'stage' ? 'gesehen' : ''}
-        {item.category === 'exhibition' ? 'besucht' : ''}
-        {item.category === 'festival' ? 'besucht' : ''}
+        {displayButtonText(item.category)}
       </button>
       <button onClick={() => onSetItemToBeEdited(item)}>bearbeiten</button>
       <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>

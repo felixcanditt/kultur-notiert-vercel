@@ -1,4 +1,4 @@
-import displayCategory from '../lib/displayCard';
+import { displayCategory } from '../lib/displayCard';
 
 export default function WatchlistCardDetails({ item }) {
   function displayDetails() {
