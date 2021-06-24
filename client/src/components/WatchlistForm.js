@@ -125,7 +125,7 @@ const Form = styled.form`
   gap: 1.5rem;
 
   h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-align: center;
   }
 
@@ -150,9 +150,9 @@ const Form = styled.form`
 `;
 
 const Buttons = styled.div`
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   button {
     cursor: pointer;

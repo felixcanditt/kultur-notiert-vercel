@@ -25,7 +25,7 @@ export default function LibraryCard({
 
   return (
     <Card>
-      {item.title ? <p>{item.title}</p> : <p>Ohne Titel</p>}
+      {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
       {displayCategory(item.category)}
 
@@ -49,14 +49,18 @@ export default function LibraryCard({
       ) : (
         ''
       )}
-
-      <button onClick={(event) => onSetItemToBeEdited(item)}>bearbeiten</button>
-      <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
+      <Buttons>
+        <button onClick={(event) => onSetItemToBeEdited(item)}>
+          bearbeiten
+        </button>
+        <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
+      </Buttons>
     </Card>
   );
 }
 
 const Card = styled.article`
+  width: 20rem;
   box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
   border-radius: 0.4rem;
   padding: 2rem;
@@ -64,24 +68,34 @@ const Card = styled.article`
   color: ivory;
 
   display: grid;
-  gap: 2rem;
+  gap: 0.5rem;
 
-  button {
-    justify-self: end;
-    cursor: pointer;
-    border: none;
-    border-radius: 0.3rem;
-    background: turquoise;
-    padding: 0.2rem 0.3rem;
-    font-size: 1.25rem;
+  h4 {
+    margin-bottom: 0.3rem;
   }
 `;
 
 const Stars = styled.div`
+  margin: 1rem 0;
   display: flex;
   gap: 1rem;
 
   img {
-    width: 2rem;
+    width: 2.2rem;
+  }
+`;
+
+const Buttons = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 0.4rem;
+    background: turquoise;
+    padding: 0.2rem 0.3rem;
+    font-size: 1rem;
   }
 `;
