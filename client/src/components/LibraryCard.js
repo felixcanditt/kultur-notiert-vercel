@@ -83,6 +83,5 @@ const Stars = styled.div`
 
   img {
     width: 2rem;
-    color: white;
   }
 `;
