@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import star from '../images/star.svg';
+import LibraryFormStars from './LibraryFormStars';
 
 export default function LibraryForm({
   onAddToLibrary,
@@ -13,7 +13,7 @@ export default function LibraryForm({
   const initialFormItem = {
     title: '',
     category: '',
-    rating: '',
+    rating: 0,
     notes: '',
     isWatched: true
   };
@@ -47,12 +47,6 @@ export default function LibraryForm({
     setFormItem(initialFormItem);
   }
 
-  function rateFormItem(clickedStars) {
-    formItem.rating === clickedStars
-      ? setFormItem({ ...formItem, rating: '' })
-      : setFormItem({ ...formItem, rating: clickedStars });
-  }
-
   return (
     <Form onSubmit={handleFormSubmission}>
       <h3>Neuen Eintrag hinzufügen</h3>
@@ -84,48 +78,7 @@ export default function LibraryForm({
         </select>
       </label>
 
-      <Stars>
-        <img
-          src={star}
-          alt="this is a star for rating purposes"
-          onClick={() => rateFormItem(1)}
-          style={
-            formItem.rating >= 1 ? { opacity: '100%' } : { opacity: '25%' }
-          }
-        />
-        <img
-          src={star}
-          alt="this is a star for rating purposes"
-          onClick={() => rateFormItem(2)}
-          style={
-            formItem.rating >= 2 ? { opacity: '100%' } : { opacity: '25%' }
-          }
-        />
-        <img
-          src={star}
-          alt="this is a star for rating purposes"
-          onClick={() => rateFormItem(3)}
-          style={
-            formItem.rating >= 3 ? { opacity: '100%' } : { opacity: '25%' }
-          }
-        />
-        <img
-          src={star}
-          alt="this is a star for rating purposes"
-          onClick={() => rateFormItem(4)}
-          style={
-            formItem.rating >= 4 ? { opacity: '100%' } : { opacity: '25%' }
-          }
-        />
-        <img
-          src={star}
-          alt="this is a star for rating purposes"
-          onClick={() => rateFormItem(5)}
-          style={
-            formItem.rating >= 5 ? { opacity: '100%' } : { opacity: '25%' }
-          }
-        />
-      </Stars>
+      <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
 
       <label htmlFor="notes">Notizen</label>
       <textarea
@@ -178,17 +131,6 @@ const Form = styled.form`
 
   span {
     margin-right: 0.7rem;
-  }
-`;
-
-const Stars = styled.div`
-  margin: 1.5rem;
-  display: flex;
-  gap: 1rem;
-
-  img {
-    width: 2rem;
-    cursor: pointer;
   }
 `;
 
