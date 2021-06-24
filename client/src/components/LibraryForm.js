@@ -126,14 +126,15 @@ const Form = styled.form`
   }
 
   input,
-  select {
+  select,
+  textarea {
     border-radius: 0.8rem;
     padding: 0.5rem;
+    border: 0.06rem black solid;
   }
 
   input {
     width: 11rem;
-    border: 1px black solid;
   }
 
   select {
@@ -147,8 +148,6 @@ const Notes = styled.div`
 
   textarea {
     resize: none;
-    border-radius: 0.8rem;
-    padding: 0.5rem;
     height: 5rem;
   }
 `;
