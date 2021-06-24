@@ -27,11 +27,10 @@ export default function WatchlistCard({
 
 const Card = styled.article`
   width: 20rem;
-  box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
-  border-radius: 0.4rem;
+  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
+  border-radius: 1.8rem;
   padding: 2rem;
-  background: hotpink;
-  color: ivory;
+  background: var(--secondary-lightest);
 
   display: grid;
   gap: 0.5rem;
@@ -50,7 +49,7 @@ const Buttons = styled.div`
     cursor: pointer;
     border: none;
     border-radius: 0.4rem;
-    background: turquoise;
+    background: var(--secondary);
     padding: 0.2rem 0.3rem;
     font-size: 1rem;
   }

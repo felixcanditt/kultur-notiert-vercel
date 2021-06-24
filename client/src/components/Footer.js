@@ -15,16 +15,13 @@ export default function Footer() {
         <NavLink activeClassName="active" className="link" to="/library">
           Meine Sammlung
         </NavLink>
-        <NavLink activeClassName="active" className="link" to="/friends">
-          Freund*innen
-        </NavLink>
       </Nav>
     </FooterStyled>
   );
 }
 
 const FooterStyled = styled.footer`
-  background: hotpink;
+  background: var(--primary);
 
   position: fixed;
   bottom: 0;
@@ -33,14 +30,18 @@ const FooterStyled = styled.footer`
 `;
 
 const Nav = styled.nav`
-  display: flex;
-  justify-content: center;
-  gap: 0.2rem;
+  padding: 0.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  text-align: center;
+
   .link {
     text-decoration: none;
-    color: ivory;
+    color: var(--grey-dark);
   }
+
   .active {
-    color: turquoise;
+    color: var(--grey-lightest);
   }
 `;

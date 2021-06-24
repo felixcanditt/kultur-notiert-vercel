@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Watchlist from './pages/Watchlist';
 import Library from './pages/Library';
-import Friends from './pages/Friends';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -101,10 +100,6 @@ export default function App() {
             onEditLibrary={editLibrary}
             onRemoveFromLibrary={removeFromLibrary}
           />
-        </Route>
-
-        <Route path="/friends">
-          <Friends />
         </Route>
       </Switch>
 

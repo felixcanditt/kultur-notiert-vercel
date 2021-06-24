@@ -24,7 +24,7 @@ export default function WatchlistCards({
 }
 
 const Grid = styled.section`
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: grid;
   justify-content: center;
   gap: 2rem;

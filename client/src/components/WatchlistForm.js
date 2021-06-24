@@ -114,10 +114,10 @@ const Form = styled.form`
   margin: 0 auto;
   max-width: 25rem;
 
-  box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
+  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
   border-radius: 1.8rem;
 
-  background-color: ivory;
+  background-color: var(--primary-lightest);
 
   padding: 2rem;
 
@@ -136,16 +136,13 @@ const Form = styled.form`
   input,
   select {
     border-radius: 0.8rem;
+    background: white;
     padding: 0.5rem;
     border: 0.06rem black solid;
   }
 
   input {
     width: 11rem;
-  }
-
-  select {
-    background: white;
   }
 `;
 
@@ -160,10 +157,8 @@ const Buttons = styled.div`
     border: none;
     border-radius: 0.4rem;
 
-    background-color: turquoise;
+    background-color: var(--secondary);
 
     padding: 0.6rem;
-
-    font-size: 1.25rem;
   }
 `;
