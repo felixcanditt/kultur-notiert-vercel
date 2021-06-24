@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import LibraryFormStars from './LibraryFormStars';
+
 export default function LibraryForm({
   onAddToLibrary,
   itemToBeEdited,
@@ -11,6 +13,7 @@ export default function LibraryForm({
   const initialFormItem = {
     title: '',
     category: '',
+    rating: 0,
     notes: '',
     isWatched: true
   };
@@ -75,7 +78,9 @@ export default function LibraryForm({
         </select>
       </label>
 
-      <label htmlFor="notes">Meine Notizen</label>
+      <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
+
+      <label htmlFor="notes">Notizen</label>
       <textarea
         id="notes"
         name="notes"

@@ -1,5 +1,5 @@
 export default function WatchlistCardDetails({ item }) {
-  function renderDetails() {
+  function displayDetails() {
     if (item.category === 'book') {
       return (
         <>
@@ -49,5 +49,5 @@ export default function WatchlistCardDetails({ item }) {
     }
   }
 
-  return <>{renderDetails()}</>;
+  return <>{displayDetails()}</>;
 }
