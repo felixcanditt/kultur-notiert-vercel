@@ -13,7 +13,6 @@ export default function WatchlistForm({
   const initialFormItem = {
     title: '',
     category: '',
-    isWatched: false,
     author: '',
     director: '',
     location: '',

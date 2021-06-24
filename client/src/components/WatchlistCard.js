@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
-import WatchlistCheckbox from './WatchlistCheckbox';
 
 export default function WatchlistCard({
   item,
@@ -11,10 +10,19 @@ export default function WatchlistCard({
 }) {
   return (
     <Card>
-      {item.title ? <p>{item.title}</p> : <p>Ohne Titel</p>}
+      {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
       <WatchlistCardDetails item={item} />
-      <WatchlistCheckbox item={item} onCheckItem={onCheckItem} />
+
+      <button onClick={() => onCheckItem(item)}>
+        {item.category === '' ? 'gesehen' : ''}
+        {item.category === 'book' ? 'gelesen' : ''}
+        {item.category === 'movie' ? 'gesehen' : ''}
+        {item.category === 'series' ? 'gesehen' : ''}
+        {item.category === 'stage' ? 'gesehen' : ''}
+        {item.category === 'exhibition' ? 'besucht' : ''}
+        {item.category === 'festival' ? 'besucht' : ''}
+      </button>
       <button onClick={() => onSetItemToBeEdited(item)}>bearbeiten</button>
       <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>
     </Card>
@@ -22,7 +30,6 @@ export default function WatchlistCard({
 }
 
 const Card = styled.article`
-  max-width: 15rem;
   box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
   border-radius: 0.4rem;
   padding: 1.2rem 1rem;
@@ -31,11 +38,6 @@ const Card = styled.article`
 
   display: grid;
   gap: 0.8rem;
-
-  input {
-    transform: scale(1.5);
-    margin-right: 0.7rem;
-  }
 
   button {
     justify-self: end;
