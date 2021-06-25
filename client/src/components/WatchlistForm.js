@@ -131,8 +131,8 @@ export default function WatchlistForm({
 }
 
 const Form = styled.form`
-  margin: 0 auto;
-  xwidth: 90vw;
+  xmargin: 0 auto;
+  width: 90vw;
 
   box-shadow: 0.3rem 0.3rem 0.8rem var(--grey);
   border-radius: 1.8rem;

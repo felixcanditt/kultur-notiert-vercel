@@ -57,14 +57,14 @@ const Div = styled.div`
 `;
 
 const FormWrapper = styled.div`
-  backdrop-filter: blur(0.6rem);
-  display: block;
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: grid;
-  place-items: center;
   z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(0.6rem);
 `;
