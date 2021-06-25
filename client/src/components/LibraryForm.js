@@ -81,9 +81,7 @@ export default function LibraryForm({
       <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
 
       <Notes>
-        <label htmlFor="notes" className="notesLabel">
-          Notizen
-        </label>
+        <label htmlFor="notes">Notizen</label>
         <textarea
           id="notes"
           name="notes"

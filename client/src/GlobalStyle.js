@@ -20,7 +20,9 @@ export default createGlobalStyle`
   --secondary-lightest: hsl(150,100%,96%);
  }
 
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

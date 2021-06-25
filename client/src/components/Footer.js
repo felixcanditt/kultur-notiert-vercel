@@ -6,13 +6,13 @@ export default function Footer() {
   return (
     <FooterStyled>
       <Nav>
-        <NavLink activeClassName="active" className="link" exact to="/">
+        <NavLink className="link" exact to="/">
           Home
         </NavLink>
-        <NavLink activeClassName="active" className="link" to="/watchlist">
+        <NavLink className="link" to="/watchlist">
           Merkliste
         </NavLink>
-        <NavLink activeClassName="active" className="link" to="/library">
+        <NavLink className="link" to="/library">
           Meine Sammlung
         </NavLink>
       </Nav>
