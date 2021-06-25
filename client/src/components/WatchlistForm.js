@@ -13,7 +13,6 @@ export default function WatchlistForm({
   const initialFormItem = {
     title: '',
     category: '',
-    isWatched: false,
     author: '',
     director: '',
     location: '',
@@ -115,33 +114,42 @@ const Form = styled.form`
   margin: 0 auto;
   max-width: 25rem;
 
-  box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
+  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
   border-radius: 1.8rem;
 
-  background-color: ivory;
+  background-color: var(--primary-lightest);
 
   padding: 2rem;
 
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 
   h3 {
     margin-bottom: 0.5rem;
     text-align: center;
   }
 
+  span {
+    margin-right: 0.7rem;
+  }
+
   input,
   select {
-    margin-left: 0.7rem;
     border-radius: 0.8rem;
+    background: white;
     padding: 0.5rem;
+    border: 0.06rem black solid;
+  }
+
+  input {
+    width: 11rem;
   }
 `;
 
 const Buttons = styled.div`
-  margin-top: 0.7rem;
+  margin-top: 0.5rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   button {
     cursor: pointer;
@@ -149,10 +157,8 @@ const Buttons = styled.div`
     border: none;
     border-radius: 0.4rem;
 
-    background-color: turquoise;
+    background-color: var(--secondary);
 
     padding: 0.6rem;
-
-    font-size: 1.25rem;
   }
 `;

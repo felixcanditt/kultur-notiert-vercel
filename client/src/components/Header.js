@@ -9,15 +9,15 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.header`
-  background: hotpink;
+  background: var(--primary);
 
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
 
   text-align: center;
-  h1 {
-    color: ivory;
-  }
+  padding: 0.5rem 0;
+  color: var(--grey-lightest);
 `;

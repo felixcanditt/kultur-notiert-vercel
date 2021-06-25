@@ -35,12 +35,12 @@ export default function LibraryFormStars({ formItem, onSetFormItem }) {
 }
 
 const Stars = styled.div`
-  margin: 1.5rem;
+  margin: 0.5rem;
   display: flex;
   gap: 1rem;
 
   img {
-    width: 2rem;
+    width: 2.2rem;
     cursor: pointer;
   }
 `;

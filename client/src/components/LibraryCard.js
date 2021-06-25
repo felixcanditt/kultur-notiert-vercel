@@ -1,22 +1,46 @@
 import styled from 'styled-components';
 
+import { displayCategory } from '../lib/displayCard';
+
+import starIcon from '../images/star.svg';
+
 export default function LibraryCard({
   item,
   onSetItemToBeEdited,
   onRemoveFromLibrary
 }) {
+  function displayStar(positionOfClickedStar) {
+    return (
+      <img
+        src={starIcon}
+        alt="Stern zeigt die Bewertung an"
+        style={
+          item.rating >= positionOfClickedStar
+            ? { opacity: '100%' }
+            : { opacity: '25%' }
+        }
+      />
+    );
+  }
+
   return (
     <Card>
-      <p>{item.title}</p>
+      {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
-      {item.category === 'book' ? <p>Buch</p> : ''}
-      {item.category === 'movie' ? <p>Film</p> : ''}
-      {item.category === 'series' ? <p>Serie</p> : ''}
-      {item.category === 'stage' ? <p>Bühne</p> : ''}
-      {item.category === 'exhibition' ? <p>Ausstellung</p> : ''}
-      {item.category === 'festival' ? <p>Festival</p> : ''}
+      {displayCategory(item.category)}
 
-      {item.rating ? <p>Meine Bewertung: {item.rating}/5 Sterne</p> : ''}
+      {item.rating ? (
+        <Stars>
+          {displayStar(1)}
+          {displayStar(2)}
+          {displayStar(3)}
+          {displayStar(4)}
+          {displayStar(5)}
+        </Stars>
+      ) : (
+        ''
+      )}
+
       {item.notes ? (
         <p>
           Meine Notizen: <br />
@@ -25,30 +49,52 @@ export default function LibraryCard({
       ) : (
         ''
       )}
-
-      <button onClick={(event) => onSetItemToBeEdited(item)}>bearbeiten</button>
-      <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
+      <Buttons>
+        <button onClick={(event) => onSetItemToBeEdited(item)}>
+          bearbeiten
+        </button>
+        <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
+      </Buttons>
     </Card>
   );
 }
 
 const Card = styled.article`
-  box-shadow: 0.3rem 0.3rem 0.8rem lightgrey;
-  border-radius: 0.4rem;
-  padding: 1.2rem 1rem;
-  background: hotpink;
-  color: ivory;
+  width: 20rem;
+  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
+  border-radius: 1.8rem;
+  padding: 2rem;
+  background: var(--secondary-lightest);
 
   display: grid;
-  gap: 0.8rem;
+  gap: 0.5rem;
+
+  h4 {
+    margin-bottom: 0.3rem;
+  }
+`;
+
+const Stars = styled.div`
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 2.2rem;
+  }
+`;
+
+const Buttons = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
 
   button {
-    justify-self: end;
     cursor: pointer;
     border: none;
-    border-radius: 0.3rem;
-    background: turquoise;
+    border-radius: 0.4rem;
+    background: var(--secondary);
     padding: 0.2rem 0.3rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 `;
