@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import WatchlistFormOptions from './WatchlistFormOptions';
 
 export default function WatchlistForm({
+  onSetFormOnScreen,
   onAddToWatchlist,
   itemToBeEdited,
   onSetItemToBeEdited,
@@ -55,18 +56,37 @@ export default function WatchlistForm({
       ? onEditWatchlist(formItem)
       : onAddToWatchlist({ ...formItem, id: uuidv4() });
     setFormItem(initialFormItem);
+    onSetFormOnScreen(false);
   }
 
-  function handleFormCancelation() {
+  function handleFormCancelation(event) {
+    event.preventDefault();
+    if (itemToBeEdited) {
+      onSetItemToBeEdited();
+    }
+    setFormItem(initialFormItem);
+    onSetFormOnScreen(false);
+  }
+
+  function handleFormReset() {
     if (itemToBeEdited) {
       onSetItemToBeEdited();
     }
     setFormItem(initialFormItem);
   }
 
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      handleFormSubmission(event);
+    }
+  }
+
   return (
-    <Form onSubmit={handleFormSubmission}>
-      <h3>Neuen Eintrag hinzufügen</h3>
+    <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
+      <button onClick={handleFormCancelation}>x</button>
+      <h3>
+        {itemToBeEdited ? 'Eintrag bearbeiten' : 'Neuen Eintrag hinzufügen'}
+      </h3>
 
       <label>
         <span>Titel</span>
@@ -101,8 +121,8 @@ export default function WatchlistForm({
       />
 
       <Buttons>
-        <button type="reset" onClick={handleFormCancelation}>
-          abbrechen
+        <button type="reset" onClick={handleFormReset}>
+          zurücksetzen
         </button>
         <button>speichern</button>
       </Buttons>
@@ -112,9 +132,9 @@ export default function WatchlistForm({
 
 const Form = styled.form`
   margin: 0 auto;
-  max-width: 25rem;
+  xwidth: 90vw;
 
-  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
+  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey);
   border-radius: 1.8rem;
 
   background-color: var(--primary-lightest);
@@ -123,6 +143,11 @@ const Form = styled.form`
 
   display: grid;
   gap: 1.5rem;
+
+  button {
+    justify-self: end;
+    margin-bottom: -1rem;
+  }
 
   h3 {
     margin-bottom: 0.5rem;
@@ -138,7 +163,6 @@ const Form = styled.form`
     border-radius: 0.8rem;
     background: white;
     padding: 0.5rem;
-    border: 0.06rem black solid;
   }
 
   input {

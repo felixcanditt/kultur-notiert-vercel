@@ -5,6 +5,7 @@ import WatchlistCard from './WatchlistCard';
 export default function WatchlistCards({
   watchlist,
   onSetItemToBeEdited,
+  onSetFormOnScreen,
   onRemoveFromWatchlist,
   onCheckItem
 }) {
@@ -14,9 +15,10 @@ export default function WatchlistCards({
         <WatchlistCard
           key={item.id}
           item={item}
-          onCheckItem={onCheckItem}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onRemoveFromWatchlist={onRemoveFromWatchlist}
+          onCheckItem={onCheckItem}
+          onSetFormOnScreen={onSetFormOnScreen}
         />
       ))}
     </Grid>

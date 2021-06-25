@@ -35,7 +35,7 @@ textarea,
 button {
   font-size: 1.25rem;
   font-family: sans-serif;
-  color: var(--grey-darkest)
+  color: var(--grey-darkest);
 }
 
 body {
@@ -61,6 +61,12 @@ h2 {
 
 h3 {
   font-size: 1.375rem;
+}
+
+input,
+select,
+textarea {
+  border: 0.06rem var(--grey-darkest) solid;
 }
 
 ul {
