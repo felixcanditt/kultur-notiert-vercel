@@ -4,6 +4,9 @@ import { displayButtonText } from '../lib/displayCard';
 import { displayCategory } from '../lib/displayCard';
 
 import starIcon from '../images/star.svg';
+import checkIcon from '../images/002-check-1.svg';
+import editIcon from '../images/006-feather.svg';
+import removeIcon from '../images/003-remove.svg';
 
 export default function LibraryCard({
   item,
@@ -58,11 +61,15 @@ export default function LibraryCard({
         ''
       )}
       <Buttons>
-        <Button isCheck onClick={() => onCheckItem(item)}>
-          ✔️ {displayButtonText(item.category)}
-        </Button>
-        <Button onClick={() => handleClickOnEdit(item)}>bearbeiten</Button>
-        <Button onClick={() => onRemoveFromLibrary(item)}>löschen</Button>
+        <img src={checkIcon} alt="" onClick={() => onCheckItem(item)} />
+
+        <img src={editIcon} alt="" onClick={() => handleClickOnEdit(item)} />
+
+        <img
+          src={removeIcon}
+          alt=""
+          onClick={() => onRemoveFromLibrary(item)}
+        />
       </Buttons>
     </Card>
   );
@@ -98,16 +105,9 @@ const Buttons = styled.div`
   margin-top: 1rem;
   display: flex;
   justify-content: space-around;
-`;
 
-const Button = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 0.4rem;
-  background: ${(props) =>
-    props.isCheck ? 'var(--secondary-dark)' : 'var(--secondary-light)'};
-  padding: 0.2rem 0.3rem;
-  color: ${(props) =>
-    props.isCheck ? 'var(--primary-lightest)' : 'var(--grey-darkest)'};
-  font-size: 1rem;
+  img {
+    cursor: pointer;
+    width: 2.2rem;
+  }
 `;
