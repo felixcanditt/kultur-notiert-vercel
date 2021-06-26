@@ -18,7 +18,7 @@ export default function Watchlist({
   return (
     <main>
       <TitleWrapper>
-        <h2>Merkliste </h2>
+        <h2>Merkliste</h2>
         <button onClick={() => setFormOnScreen(true)}>+</button>
       </TitleWrapper>
 
@@ -33,6 +33,7 @@ export default function Watchlist({
           />
         </FormWrapper>
       )}
+
       <WatchlistCards
         watchlist={watchlist}
         onSetItemToBeEdited={onSetItemToBeEdited}

@@ -15,6 +15,7 @@ export default function WatchlistCard({
     onSetItemToBeEdited(clickedItem);
     onSetFormOnScreen(true);
   }
+
   return (
     <Card>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
