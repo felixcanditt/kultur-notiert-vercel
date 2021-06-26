@@ -83,7 +83,9 @@ export default function WatchlistForm({
 
   return (
     <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
-      <button onClick={handleFormCancelation}>x</button>
+      <button className="closeButton" onClick={handleFormCancelation}>
+        x
+      </button>
       <h3>
         {itemToBeEdited ? 'Eintrag bearbeiten' : 'Neuen Eintrag hinzufügen'}
       </h3>
@@ -144,9 +146,10 @@ const Form = styled.form`
   display: grid;
   gap: 1.5rem;
 
-  button {
+  .closeButton {
     justify-self: end;
-    margin-bottom: -1rem;
+    border: none;
+    font-size: 1.7rem;
   }
 
   h3 {

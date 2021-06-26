@@ -47,12 +47,22 @@ export default function Watchlist({
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
   gap: 2rem;
+
+  h2 {
+    margin: 0;
+  }
 
   button {
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
+    border: none;
+    background: var(--secondary-dark);
+    color: var(--primary-lightest);
+    font-size: 2rem;
   }
 `;
 
