@@ -5,6 +5,7 @@ import LibraryCard from './LibraryCard';
 export default function LibraryCards({
   library,
   onSetItemToBeEdited,
+  onSetFormOnScreen,
   onRemoveFromLibrary
 }) {
   return (
@@ -15,6 +16,7 @@ export default function LibraryCards({
           item={item}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onRemoveFromLibrary={onRemoveFromLibrary}
+          onSetFormOnScreen={onSetFormOnScreen}
         />
       ))}
     </Grid>
@@ -25,5 +27,5 @@ const Grid = styled.section`
   margin-top: 3rem;
   display: grid;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 `;

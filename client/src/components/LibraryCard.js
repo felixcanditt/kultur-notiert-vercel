@@ -7,6 +7,7 @@ import starIcon from '../images/star.svg';
 export default function LibraryCard({
   item,
   onSetItemToBeEdited,
+  onSetFormOnScreen,
   onRemoveFromLibrary
 }) {
   function displayStar(positionOfClickedStar) {
@@ -21,6 +22,11 @@ export default function LibraryCard({
         }
       />
     );
+  }
+
+  function handleClickOnEdit(clickedItem) {
+    onSetItemToBeEdited(clickedItem);
+    onSetFormOnScreen(true);
   }
 
   return (
@@ -50,9 +56,7 @@ export default function LibraryCard({
         ''
       )}
       <Buttons>
-        <button onClick={(event) => onSetItemToBeEdited(item)}>
-          bearbeiten
-        </button>
+        <button onClick={() => handleClickOnEdit(item)}>bearbeiten</button>
         <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
       </Buttons>
     </Card>
@@ -60,7 +64,9 @@ export default function LibraryCard({
 }
 
 const Card = styled.article`
-  width: 20rem;
+  width: 85vw;
+  max-width: 20rem;
+
   box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
   border-radius: 1.8rem;
   padding: 2rem;
