@@ -10,7 +10,8 @@ export default function Library({
   itemToBeEdited,
   onSetItemToBeEdited,
   onEditLibrary,
-  onRemoveFromLibrary
+  onRemoveFromLibrary,
+  onCheckItem
 }) {
   const [formOnScreen, setFormOnScreen] = useState(false);
 
@@ -38,6 +39,7 @@ export default function Library({
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromLibrary={onRemoveFromLibrary}
+        onCheckItem={onCheckItem}
       />
     </main>
   );

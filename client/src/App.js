@@ -49,8 +49,13 @@ export default function App() {
   }
 
   function checkItem(checkedItem) {
-    setLibrary([checkedItem, ...library]);
-    removeFromWatchlist(checkedItem);
+    if (watchlist.find((item) => item.id === checkedItem.id)) {
+      setLibrary([checkedItem, ...library]);
+      removeFromWatchlist(checkedItem);
+    } else if (library.find((item) => item.id === checkedItem.id)) {
+      setWatchlist([checkedItem, ...watchlist]);
+      removeFromLibrary(checkedItem);
+    }
   }
 
   function addToLibrary(newItem) {
@@ -99,6 +104,7 @@ export default function App() {
             onSetItemToBeEdited={setItemToBeEdited}
             onEditLibrary={editLibrary}
             onRemoveFromLibrary={removeFromLibrary}
+            onCheckItem={checkItem}
           />
         </Route>
       </Switch>

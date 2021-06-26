@@ -6,7 +6,8 @@ export default function LibraryCards({
   library,
   onSetItemToBeEdited,
   onSetFormOnScreen,
-  onRemoveFromLibrary
+  onRemoveFromLibrary,
+  onCheckItem
 }) {
   return (
     <Grid>
@@ -16,6 +17,7 @@ export default function LibraryCards({
           item={item}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onRemoveFromLibrary={onRemoveFromLibrary}
+          onCheckItem={onCheckItem}
           onSetFormOnScreen={onSetFormOnScreen}
         />
       ))}
