@@ -4,6 +4,8 @@ import WatchlistCardDetails from './WatchlistCardDetails';
 
 import { displayButtonText } from '../lib/displayCard';
 
+import checkIcon from '../images/001-check.svg';
+
 export default function WatchlistCard({
   item,
   onCheckItem,
@@ -21,11 +23,14 @@ export default function WatchlistCard({
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
       <WatchlistCardDetails item={item} />
       <Buttons>
-        <button onClick={() => onCheckItem(item)}>
+        {/* <button onClick={() => onCheckItem(item)}>
           {displayButtonText(item.category)}
         </button>
         <button onClick={() => handleClickOnEdit(item)}>bearbeiten</button>
-        <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>
+        <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button> */}
+        <button>
+          <img src={checkIcon} alt="" />
+        </button>
       </Buttons>
     </Card>
   );
@@ -57,8 +62,13 @@ const Buttons = styled.div`
     cursor: pointer;
     border: none;
     border-radius: 0.4rem;
-    background: var(--secondary);
+    xbackground: var(--secondary);
+    background: none;
     padding: 0.2rem 0.3rem;
     font-size: 1rem;
+  }
+
+  img {
+    width: 2.2rem;
   }
 `;
