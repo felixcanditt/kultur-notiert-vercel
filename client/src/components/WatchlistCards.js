@@ -29,5 +29,5 @@ const Grid = styled.section`
   margin-top: 3rem;
   display: grid;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 `;

@@ -17,10 +17,10 @@ export default function Watchlist({
 
   return (
     <main>
-      <Div>
+      <TitleWrapper>
         <h2>Merkliste </h2>
         <button onClick={() => setFormOnScreen(true)}>+</button>
-      </Div>
+      </TitleWrapper>
 
       {formOnScreen && (
         <FormWrapper>
@@ -44,7 +44,7 @@ export default function Watchlist({
   );
 }
 
-const Div = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;

@@ -32,6 +32,8 @@ export default function WatchlistCard({
 
 const Card = styled.article`
   width: 85vw;
+  max-width: 20rem;
+
   box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
   border-radius: 1.8rem;
   padding: 2rem;
