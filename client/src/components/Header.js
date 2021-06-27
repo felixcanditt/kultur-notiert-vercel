@@ -18,6 +18,6 @@ const HeaderStyled = styled.header`
   z-index: 1000;
 
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   color: var(--grey-lightest);
 `;

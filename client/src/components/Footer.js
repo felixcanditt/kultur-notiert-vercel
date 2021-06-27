@@ -2,18 +2,22 @@ import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import houseIcon from '../images/house.svg';
+import notesIcon from '../images/taking-notes.svg';
+import bookshelfIcon from '../images/bookshelf.svg';
+
 export default function Footer() {
   return (
     <FooterStyled>
       <Nav>
         <NavLink className="link" exact to="/">
-          Home
+          <img src={houseIcon} alt="" />
         </NavLink>
         <NavLink className="link" to="/watchlist">
-          Merkliste
+          <img src={notesIcon} alt="" />
         </NavLink>
         <NavLink className="link" to="/library">
-          Meine Sammlung
+          <img src={bookshelfIcon} alt="" />
         </NavLink>
       </Nav>
     </FooterStyled>
@@ -31,18 +35,21 @@ const FooterStyled = styled.footer`
 `;
 
 const Nav = styled.nav`
-  padding: 0.5rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  place-items: center;
-  text-align: center;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-around;
 
   .link {
-    text-decoration: none;
-    color: var(--grey-dark);
+    opacity: 50%;
+    width: 3rem;
+    height: 3rem;
   }
 
   .active {
-    color: var(--grey-lightest);
+    opacity: 100%;
+  }
+
+  img {
+    width: 3rem;
   }
 `;

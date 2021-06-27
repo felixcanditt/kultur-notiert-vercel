@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import WatchlistFormOptions from './WatchlistFormOptions';
 
-import closeIcon from '../images/005-close.svg';
+import closeIcon from '../images/close.svg';
 
 export default function WatchlistForm({
   onSetFormOnScreen,

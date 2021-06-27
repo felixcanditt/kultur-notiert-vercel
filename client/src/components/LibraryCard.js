@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-import { displayButtonText } from '../lib/displayCard';
 import { displayCategory } from '../lib/displayCard';
 
 import starIcon from '../images/star.svg';
-import checkIcon from '../images/002-check-1.svg';
-import editIcon from '../images/006-feather.svg';
-import removeIcon from '../images/003-remove.svg';
+import checkmarkIcon from '../images/checkmark-green.svg';
+import pencilIcon from '../images/pencil.svg';
+import removeIcon from '../images/remove.svg';
 
 export default function LibraryCard({
   item,
@@ -61,9 +60,9 @@ export default function LibraryCard({
         ''
       )}
       <Buttons>
-        <img src={checkIcon} alt="" onClick={() => onCheckItem(item)} />
+        <img src={checkmarkIcon} alt="" onClick={() => onCheckItem(item)} />
 
-        <img src={editIcon} alt="" onClick={() => handleClickOnEdit(item)} />
+        <img src={pencilIcon} alt="" onClick={() => handleClickOnEdit(item)} />
 
         <img
           src={removeIcon}

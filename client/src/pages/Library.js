@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import LibraryForm from '../components/LibraryForm';
 import LibraryCards from '../components/LibraryCards';
 
-import plusIcon from '../images/004-plus.svg';
+import plusIcon from '../images/plus.svg';
 
 export default function Library({
   library,

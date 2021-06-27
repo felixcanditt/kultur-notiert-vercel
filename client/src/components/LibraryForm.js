@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import LibraryFormStars from './LibraryFormStars';
 
-import closeIcon from '../images/005-close.svg';
+import closeIcon from '../images/close.svg';
 
 export default function LibraryForm({
   onSetFormOnScreen,

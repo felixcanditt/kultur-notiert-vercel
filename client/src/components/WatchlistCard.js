@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
 
-import checkIcon from '../images/001-check.svg';
-import editIcon from '../images/006-feather.svg';
-import removeIcon from '../images/003-remove.svg';
+import checkmarkIcon from '../images/checkmark-white.svg';
+import pencilIcon from '../images/pencil.svg';
+import removeIcon from '../images/remove.svg';
 
 export default function WatchlistCard({
   item,
@@ -23,9 +23,9 @@ export default function WatchlistCard({
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
       <WatchlistCardDetails item={item} />
       <Buttons>
-        <img src={checkIcon} alt="" onClick={() => onCheckItem(item)} />
+        <img src={checkmarkIcon} alt="" onClick={() => onCheckItem(item)} />
 
-        <img src={editIcon} alt="" onClick={() => handleClickOnEdit(item)} />
+        <img src={pencilIcon} alt="" onClick={() => handleClickOnEdit(item)} />
 
         <img
           src={removeIcon}

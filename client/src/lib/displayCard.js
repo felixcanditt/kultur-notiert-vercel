@@ -15,19 +15,3 @@ export function displayCategory(savedCategory) {
     getText['noSavedData']
   );
 }
-
-export function displayButtonText(savedCategory) {
-  const getText = {
-    book: 'gelesen',
-    movie: 'gesehen',
-    series: 'gesehen',
-    stage: 'gesehen',
-    exhibition: 'besucht',
-    festival: 'besucht',
-    noSavedData: 'gesehen'
-  };
-
-  return getText[savedCategory]
-    ? getText[savedCategory]
-    : getText['noSavedData'];
-}

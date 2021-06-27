@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WatchlistForm from '../components/WatchlistForm';
 import WatchlistCards from '../components/WatchlistCards';
 
-import plusIcon from '../images/004-plus.svg';
+import plusIcon from '../images/plus.svg';
 
 export default function Watchlist({
   watchlist,
