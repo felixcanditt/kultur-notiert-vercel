@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import LibraryFormStars from './LibraryFormStars';
 
+import closeIcon from '../images/close.svg';
+
 export default function LibraryForm({
   onSetFormOnScreen,
   onAddToLibrary,
@@ -15,8 +17,7 @@ export default function LibraryForm({
     title: '',
     category: '',
     rating: 0,
-    notes: '',
-    isWatched: true
+    notes: ''
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
@@ -66,12 +67,12 @@ export default function LibraryForm({
 
   return (
     <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
-      <button className="closeButton" onClick={handleFormCancelation}>
-        x
-      </button>
-      <h3>
-        {itemToBeEdited ? 'Eintrag bearbeiten' : 'Neuen Eintrag hinzufügen'}
-      </h3>
+      <CloseButton
+        src={closeIcon}
+        alt="Fenster schliessen"
+        onClick={handleFormCancelation}
+      ></CloseButton>
+      <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
 
       <label>
         <span>Titel</span>
@@ -134,13 +135,7 @@ const Form = styled.form`
   padding: 2rem;
 
   display: grid;
-  gap: 1.5rem;
-
-  .closeButton {
-    justify-self: end;
-    border: none;
-    font-size: 1.7rem;
-  }
+  gap: 0.7rem;
 
   h3 {
     margin-bottom: 0.5rem;
@@ -172,6 +167,11 @@ const Notes = styled.div`
     resize: none;
     height: 5rem;
   }
+`;
+
+const CloseButton = styled.img`
+  justify-self: end;
+  width: 1rem;
 `;
 
 const Buttons = styled.div`

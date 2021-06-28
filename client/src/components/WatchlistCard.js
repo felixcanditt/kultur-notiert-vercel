@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
 
-import { displayButtonText } from '../lib/displayCard';
+import checkmarkIcon from '../images/checkmark-unchecked.svg';
+import pencilIcon from '../images/pencil.svg';
+import removeIcon from '../images/remove.svg';
 
 export default function WatchlistCard({
   item,
@@ -21,11 +23,23 @@ export default function WatchlistCard({
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
       <WatchlistCardDetails item={item} />
       <Buttons>
-        <button onClick={() => onCheckItem(item)}>
-          {displayButtonText(item.category)}
-        </button>
-        <button onClick={() => handleClickOnEdit(item)}>bearbeiten</button>
-        <button onClick={() => onRemoveFromWatchlist(item)}>löschen</button>
+        <img
+          src={checkmarkIcon}
+          alt="Haekchen setzen"
+          onClick={() => onCheckItem(item)}
+        />
+
+        <img
+          src={pencilIcon}
+          alt="Eintrag bearbeiten"
+          onClick={() => handleClickOnEdit(item)}
+        />
+
+        <img
+          src={removeIcon}
+          alt="Eintrag entfernen"
+          onClick={() => onRemoveFromWatchlist(item)}
+        />
       </Buttons>
     </Card>
   );
@@ -53,12 +67,8 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-around;
 
-  button {
+  img {
     cursor: pointer;
-    border: none;
-    border-radius: 0.4rem;
-    background: var(--secondary);
-    padding: 0.2rem 0.3rem;
-    font-size: 1rem;
+    width: 2.2rem;
   }
 `;

@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import { displayCategory } from '../lib/displayCard';
 
 import starIcon from '../images/star.svg';
+import checkmarkIcon from '../images/checkmark-checked.svg';
+import pencilIcon from '../images/pencil.svg';
+import removeIcon from '../images/remove.svg';
 
 export default function LibraryCard({
   item,
+  onCheckItem,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromLibrary
@@ -14,7 +18,7 @@ export default function LibraryCard({
     return (
       <img
         src={starIcon}
-        alt="Stern zeigt die Bewertung an"
+        alt="Eintrag mit Sternen bewerten"
         style={
           item.rating >= positionOfClickedStar
             ? { opacity: '100%' }
@@ -56,8 +60,23 @@ export default function LibraryCard({
         ''
       )}
       <Buttons>
-        <button onClick={() => handleClickOnEdit(item)}>bearbeiten</button>
-        <button onClick={() => onRemoveFromLibrary(item)}>löschen</button>
+        <img
+          src={checkmarkIcon}
+          alt="Haekchen setzen"
+          onClick={() => onCheckItem(item)}
+        />
+
+        <img
+          src={pencilIcon}
+          alt="Eintrag bearbeiten"
+          onClick={() => handleClickOnEdit(item)}
+        />
+
+        <img
+          src={removeIcon}
+          alt="Eintrag entfernen"
+          onClick={() => onRemoveFromLibrary(item)}
+        />
       </Buttons>
     </Card>
   );
@@ -71,7 +90,6 @@ const Card = styled.article`
   border-radius: 1.8rem;
   padding: 2rem;
   background: var(--secondary-lightest);
-
   display: grid;
   gap: 0.5rem;
 
@@ -95,12 +113,8 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-around;
 
-  button {
+  img {
     cursor: pointer;
-    border: none;
-    border-radius: 0.4rem;
-    background: var(--secondary);
-    padding: 0.2rem 0.3rem;
-    font-size: 1rem;
+    width: 2.2rem;
   }
 `;

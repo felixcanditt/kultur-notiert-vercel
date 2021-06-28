@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import WatchlistForm from '../components/WatchlistForm';
 import WatchlistCards from '../components/WatchlistCards';
 
+import plusIcon from '../images/plus.svg';
+
 export default function Watchlist({
   watchlist,
   onAddToWatchlist,
@@ -19,7 +21,11 @@ export default function Watchlist({
     <main>
       <TitleWrapper>
         <h2>Merkliste</h2>
-        <button onClick={() => setFormOnScreen(true)}>+</button>
+        <img
+          src={plusIcon}
+          alt="Neuen Eintrag zur Merkliste hinzufügen"
+          onClick={() => setFormOnScreen(true)}
+        />
       </TitleWrapper>
 
       {formOnScreen && (
@@ -56,14 +62,9 @@ const TitleWrapper = styled.div`
     margin: 0;
   }
 
-  button {
-    height: 3rem;
+  img {
+    cursor: pointer;
     width: 3rem;
-    border-radius: 50%;
-    border: none;
-    background: var(--secondary-dark);
-    color: var(--primary-lightest);
-    font-size: 2rem;
   }
 `;
 

@@ -4,13 +4,16 @@ import styled from 'styled-components';
 import LibraryForm from '../components/LibraryForm';
 import LibraryCards from '../components/LibraryCards';
 
+import plusIcon from '../images/plus.svg';
+
 export default function Library({
   library,
   onAddToLibrary,
   itemToBeEdited,
   onSetItemToBeEdited,
   onEditLibrary,
-  onRemoveFromLibrary
+  onRemoveFromLibrary,
+  onCheckItem
 }) {
   const [formOnScreen, setFormOnScreen] = useState(false);
 
@@ -18,7 +21,11 @@ export default function Library({
     <main>
       <TitleWrapper>
         <h2>Meine Sammlung</h2>
-        <button onClick={() => setFormOnScreen(true)}>+</button>
+        <img
+          src={plusIcon}
+          alt="Neuen Eintrag zu Meiner Sammlung hinzufügen"
+          onClick={() => setFormOnScreen(true)}
+        />
       </TitleWrapper>
 
       {formOnScreen && (
@@ -38,30 +45,24 @@ export default function Library({
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromLibrary={onRemoveFromLibrary}
+        onCheckItem={onCheckItem}
       />
     </main>
   );
 }
 
 const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  display: grid;
+  place-items: center;
   gap: 0.5rem;
 
   h2 {
     margin: 0;
   }
 
-  button {
-    height: 3rem;
+  img {
+    cursor: pointer;
     width: 3rem;
-    border-radius: 50%;
-    border: none;
-    background: var(--secondary-dark);
-    color: var(--primary-lightest);
-    font-size: 2rem;
   }
 `;
 
