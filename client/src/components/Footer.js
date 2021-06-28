@@ -37,7 +37,7 @@ const FooterStyled = styled.footer`
 const Nav = styled.nav`
   padding: 1rem 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   .link {
     opacity: 50%;
