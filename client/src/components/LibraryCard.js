@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { displayCategory } from '../lib/displayCard';
 
 import starIcon from '../images/star.svg';
-import checkmarkIcon from '../images/checkmark-green.svg';
+import checkmarkIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 

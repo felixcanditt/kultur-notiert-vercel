@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
 
-import checkmarkIcon from '../images/checkmark-white.svg';
+import checkmarkIcon from '../images/checkmark-unchecked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 
