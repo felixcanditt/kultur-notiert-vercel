@@ -69,12 +69,10 @@ export default function LibraryForm({
     <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
       <CloseButton
         src={closeIcon}
-        alt=""
+        alt="Fenster schliessen"
         onClick={handleFormCancelation}
       ></CloseButton>
-      <h3>
-        {itemToBeEdited ? 'Eintrag bearbeiten' : 'Neuen Eintrag hinzufügen'}
-      </h3>
+      <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
 
       <label>
         <span>Titel</span>

@@ -21,7 +21,11 @@ export default function Library({
     <main>
       <TitleWrapper>
         <h2>Meine Sammlung</h2>
-        <img src={plusIcon} alt="" onClick={() => setFormOnScreen(true)} />
+        <img
+          src={plusIcon}
+          alt="Neuen Eintrag zu Meiner Sammlung hinzufügen"
+          onClick={() => setFormOnScreen(true)}
+        />
       </TitleWrapper>
 
       {formOnScreen && (

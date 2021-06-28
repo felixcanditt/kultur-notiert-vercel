@@ -11,13 +11,13 @@ export default function Footer() {
     <FooterStyled>
       <Nav>
         <NavLink className="link" exact to="/">
-          <img src={houseIcon} alt="" />
+          <img src={houseIcon} alt="Zur Hauptseite gehen" />
         </NavLink>
         <NavLink className="link" to="/watchlist">
-          <img src={notesIcon} alt="" />
+          <img src={notesIcon} alt="Zur Merkliste gehen" />
         </NavLink>
         <NavLink className="link" to="/library">
-          <img src={bookshelfIcon} alt="" />
+          <img src={bookshelfIcon} alt="Zu Meiner Sammlung gehen" />
         </NavLink>
       </Nav>
     </FooterStyled>

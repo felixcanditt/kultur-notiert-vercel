@@ -18,7 +18,7 @@ export default function LibraryCard({
     return (
       <img
         src={starIcon}
-        alt="Stern zeigt die Bewertung an"
+        alt="Eintrag mit Sternen bewerten"
         style={
           item.rating >= positionOfClickedStar
             ? { opacity: '100%' }
@@ -60,13 +60,21 @@ export default function LibraryCard({
         ''
       )}
       <Buttons>
-        <img src={checkmarkIcon} alt="" onClick={() => onCheckItem(item)} />
+        <img
+          src={checkmarkIcon}
+          alt="Haekchen setzen"
+          onClick={() => onCheckItem(item)}
+        />
 
-        <img src={pencilIcon} alt="" onClick={() => handleClickOnEdit(item)} />
+        <img
+          src={pencilIcon}
+          alt="Eintrag bearbeiten"
+          onClick={() => handleClickOnEdit(item)}
+        />
 
         <img
           src={removeIcon}
-          alt=""
+          alt="Eintrag entfernen"
           onClick={() => onRemoveFromLibrary(item)}
         />
       </Buttons>

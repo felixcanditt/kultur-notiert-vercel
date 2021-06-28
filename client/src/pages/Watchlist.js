@@ -21,7 +21,11 @@ export default function Watchlist({
     <main>
       <TitleWrapper>
         <h2>Merkliste</h2>
-        <img src={plusIcon} alt="" onClick={() => setFormOnScreen(true)} />
+        <img
+          src={plusIcon}
+          alt="Neuen Eintrag zur Merkliste hinzufügen"
+          onClick={() => setFormOnScreen(true)}
+        />
       </TitleWrapper>
 
       {formOnScreen && (
