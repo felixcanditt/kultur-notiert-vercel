@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LibraryForm from '../components/LibraryForm';
@@ -7,6 +7,8 @@ import LibraryCards from '../components/LibraryCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Library({
+  onSetPage,
+  isPage,
   library,
   onAddToLibrary,
   itemToBeEdited,
@@ -15,6 +17,10 @@ export default function Library({
   onRemoveFromLibrary,
   onCheckItem
 }) {
+  useEffect(() => {
+    onSetPage('library');
+  }, []);
+
   const [formOnScreen, setFormOnScreen] = useState(false);
 
   return (
@@ -39,6 +45,7 @@ export default function Library({
       )}
 
       <LibraryCards
+        isPage={isPage}
         library={library}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}

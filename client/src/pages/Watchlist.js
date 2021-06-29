@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
@@ -7,6 +7,8 @@ import WatchlistCards from '../components/WatchlistCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Watchlist({
+  onSetPage,
+  isPage,
   watchlist,
   onAddToWatchlist,
   itemToBeEdited,
@@ -15,6 +17,10 @@ export default function Watchlist({
   onRemoveFromWatchlist,
   onCheckItem
 }) {
+  useEffect(() => {
+    onSetPage('watchlist');
+  }, []);
+
   const [formOnScreen, setFormOnScreen] = useState(false);
 
   return (
@@ -39,6 +45,7 @@ export default function Watchlist({
       )}
 
       <WatchlistCards
+        isPage={isPage}
         watchlist={watchlist}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}

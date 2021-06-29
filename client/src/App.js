@@ -21,7 +21,8 @@ export default function App() {
 
   const [itemToBeEdited, setItemToBeEdited] = useState();
 
-  const [isHome, setHome] = useState(false)
+  const [isPage, setPage] = useState('home');
+  console.log(isPage);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
@@ -83,11 +84,24 @@ export default function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home {setHome=(true)}/>
+          <Home
+            onSetPage={setPage}
+            watchlist={watchlist}
+            library={library}
+            onCheckItem={checkItem}
+            onEditWatchlist={editWatchlist}
+            onRemoveFromWatchlist={removeFromWatchlist}
+            onEditLibrary={editLibrary}
+            onRemoveFromLibrary={removeFromLibrary}
+            onSetItemToBeEdited={setItemToBeEdited}
+            itemToBeEdited={itemToBeEdited}
+          />
         </Route>
 
         <Route path="/watchlist">
           <Watchlist
+            onSetPage={setPage}
+            isPage={isPage}
             watchlist={watchlist}
             onAddToWatchlist={addToWatchlist}
             itemToBeEdited={itemToBeEdited}
@@ -100,6 +114,8 @@ export default function App() {
 
         <Route path="/library">
           <Library
+            onSetPage={setPage}
+            isPage={isPage}
             library={library}
             onAddToLibrary={addToLibrary}
             itemToBeEdited={itemToBeEdited}
