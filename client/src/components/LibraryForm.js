@@ -67,62 +67,77 @@ export default function LibraryForm({
   }
 
   return (
-    <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
-      <CloseButton
-        src={closeIcon}
-        alt="Fenster schliessen"
-        onClick={handleFormCancelation}
-      ></CloseButton>
-      <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
+    <FormWrapper>
+      <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
+        <CloseButton
+          src={closeIcon}
+          alt="Fenster schliessen"
+          onClick={handleFormCancelation}
+        ></CloseButton>
+        <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
 
-      <label>
-        <span>Titel</span>
-        <input
-          type="text"
-          name="title"
-          onChange={updateFormItem}
-          value={formItem.title}
-        />
-      </label>
+        <label>
+          <span>Titel</span>
+          <input
+            type="text"
+            name="title"
+            onChange={updateFormItem}
+            value={formItem.title}
+          />
+        </label>
 
-      <label>
-        <span>Kategorie</span>
-        <select
-          name="category"
-          onChange={updateFormItem}
-          value={formItem.category}
-        >
-          <option value=""></option>
-          <option value="book">Buch</option>
-          <option value="movie">Film</option>
-          <option value="series">Serie</option>
-          <option value="stage">Bühne</option>
-          <option value="exhibition">Ausstellung</option>
-          <option value="festival">Festival</option>
-        </select>
-      </label>
+        <label>
+          <span>Kategorie</span>
+          <select
+            name="category"
+            onChange={updateFormItem}
+            value={formItem.category}
+          >
+            <option value=""></option>
+            <option value="book">Buch</option>
+            <option value="movie">Film</option>
+            <option value="series">Serie</option>
+            <option value="stage">Bühne</option>
+            <option value="exhibition">Ausstellung</option>
+            <option value="festival">Festival</option>
+          </select>
+        </label>
 
-      <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
+        <LibraryFormStars formItem={formItem} onSetFormItem={setFormItem} />
 
-      <Notes>
-        <label htmlFor="notes">Notizen</label>
-        <textarea
-          id="notes"
-          name="notes"
-          onChange={updateFormItem}
-          value={formItem.notes}
-        ></textarea>
-      </Notes>
+        <Notes>
+          <label htmlFor="notes">Notizen</label>
+          <textarea
+            id="notes"
+            name="notes"
+            onChange={updateFormItem}
+            value={formItem.notes}
+          ></textarea>
+        </Notes>
 
-      <Buttons>
-        <button type="reset" onClick={handleFormReset}>
-          zurücksetzen
-        </button>
-        <button>speichern</button>
-      </Buttons>
-    </Form>
+        <Buttons>
+          <button type="reset" onClick={handleFormReset}>
+            zurücksetzen
+          </button>
+          <button>speichern</button>
+        </Buttons>
+      </Form>
+    </FormWrapper>
   );
 }
+
+const FormWrapper = styled.div`
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(0.6rem);
+`;
 
 const Form = styled.form`
   width: 90vw;

@@ -29,15 +29,13 @@ export default function Library({
       </TitleWrapper>
 
       {formOnScreen && (
-        <FormWrapper>
-          <LibraryForm
-            onSetFormOnScreen={setFormOnScreen}
-            onAddToLibrary={onAddToLibrary}
-            itemToBeEdited={itemToBeEdited}
-            onSetItemToBeEdited={onSetItemToBeEdited}
-            onEditLibrary={onEditLibrary}
-          />
-        </FormWrapper>
+        <LibraryForm
+          onSetFormOnScreen={setFormOnScreen}
+          onAddToLibrary={onAddToLibrary}
+          itemToBeEdited={itemToBeEdited}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onEditLibrary={onEditLibrary}
+        />
       )}
 
       <LibraryCards
@@ -64,17 +62,4 @@ const TitleWrapper = styled.div`
     cursor: pointer;
     width: 3rem;
   }
-`;
-
-const FormWrapper = styled.div`
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(0.6rem);
 `;

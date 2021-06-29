@@ -29,15 +29,13 @@ export default function Watchlist({
       </TitleWrapper>
 
       {formOnScreen && (
-        <FormWrapper>
-          <WatchlistForm
-            onSetFormOnScreen={setFormOnScreen}
-            onAddToWatchlist={onAddToWatchlist}
-            itemToBeEdited={itemToBeEdited}
-            onSetItemToBeEdited={onSetItemToBeEdited}
-            onEditWatchlist={onEditWatchlist}
-          />
-        </FormWrapper>
+        <WatchlistForm
+          onSetFormOnScreen={setFormOnScreen}
+          onAddToWatchlist={onAddToWatchlist}
+          itemToBeEdited={itemToBeEdited}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onEditWatchlist={onEditWatchlist}
+        />
       )}
 
       <WatchlistCards
@@ -66,17 +64,4 @@ const TitleWrapper = styled.div`
     cursor: pointer;
     width: 3rem;
   }
-`;
-
-const FormWrapper = styled.div`
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(0.6rem);
 `;
