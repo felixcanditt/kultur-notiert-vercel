@@ -52,7 +52,7 @@ export default function App() {
 
   function checkItem(checkedItem) {
     if (watchlist.find((item) => item.id === checkedItem.id)) {
-      const checkedItemWithRating = { ...checkedItem, ['rating']: 0 };
+      const checkedItemWithRating = { ...checkedItem, rating: 0 };
       setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);
     } else if (library.find((item) => item.id === checkedItem.id)) {

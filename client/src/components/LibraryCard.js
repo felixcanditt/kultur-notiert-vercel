@@ -39,7 +39,7 @@ export default function LibraryCard({
 
       {item.category && <CardCategory item={item} />}
 
-      {item.rating != 0 && (
+      {item.rating !== 0 && (
         <Stars>
           {displayStar(1)}
           {displayStar(2)}
