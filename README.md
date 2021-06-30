@@ -8,13 +8,11 @@ You will end up with your personal culture watchlist (e.g. books, movies, exhibi
 
 Once read or watched or visited, you can store these cultural experiences in your personal collection. Feel free to add a rating or notes.
 
-Maybe connect with your friends to see what's on their cultural agenda? Let's see if I'll make it till there ;-)
-
-xxxxx
-
-Just started, all work in progress as you can see.
-
 Enjoy <3
+
+## You can see my deployed app here:
+
+![Link to Kultur Notiert](kultur-notiert.vercel.app)
 
 ## How to install and run this app
 
