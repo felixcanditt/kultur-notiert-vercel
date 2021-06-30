@@ -43,11 +43,10 @@ body {
 }
 
 main {
-  margin: 5rem 0 7rem 0;
+  margin: 5.6rem 0 8.5rem 0;
 }
 
 h1, 
-h2,
 h3 {
   line-height: 1.2;
   
@@ -55,7 +54,7 @@ h3 {
 
 h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  line-height: 1.3;
   font-size: 2.125rem
 }
 
