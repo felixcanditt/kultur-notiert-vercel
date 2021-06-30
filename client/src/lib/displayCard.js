@@ -26,11 +26,7 @@ export function displayCategoryIcon(savedCategory) {
     categoryAlt = 'Kategorie Ausstellung';
   } else if (savedCategory === 'festival') {
     categoryIcon = confettiIcon;
-<<<<<<< HEAD
     categoryAlt = 'Kategorie Festival';
-=======
-    categoryAlt = 'Kategorie Ausstellung';
->>>>>>> main
   }
 
   return <img src={categoryIcon} alt={categoryAlt} />;
