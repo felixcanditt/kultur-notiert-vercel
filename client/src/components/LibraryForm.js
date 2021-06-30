@@ -97,6 +97,7 @@ export default function LibraryForm({
             <option value="book">Buch</option>
             <option value="movie">Film</option>
             <option value="series">Serie</option>
+            <option value="music">Musik</option>
             <option value="stage">Bühne</option>
             <option value="exhibition">Ausstellung</option>
             <option value="festival">Festival</option>

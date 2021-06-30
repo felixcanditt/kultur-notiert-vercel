@@ -13,7 +13,6 @@ export default function CardCategory({ item }) {
   );
 }
 const CategoryContainer = styled.div`
-  margin-left: 0.2rem;
   display: flex;
 `;
 const CategoryPill = styled.div`

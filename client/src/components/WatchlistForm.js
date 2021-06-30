@@ -19,11 +19,13 @@ export default function WatchlistForm({
     category: '',
     author: '',
     director: '',
+    creator: '',
     location: '',
     time: ''
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
+  console.log(formItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
@@ -46,6 +48,7 @@ export default function WatchlistForm({
       category: selectedCategory,
       author: '',
       director: '',
+      creator: '',
       location: '',
       time: ''
     };
@@ -115,9 +118,11 @@ export default function WatchlistForm({
             <option value="book">Buch</option>
             <option value="movie">Film</option>
             <option value="series">Serie</option>
+            <option value="music">Musik</option>
             <option value="stage">Bühne</option>
             <option value="exhibition">Ausstellung</option>
             <option value="festival">Festival</option>
+            <option value="miscellaneous">Sonstiges</option>
           </select>
         </label>
 
