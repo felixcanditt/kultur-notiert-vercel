@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import CardCategory from './CardCategory';
 
 import { displayDetails } from '../lib/displayCard';
