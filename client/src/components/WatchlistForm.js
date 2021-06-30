@@ -25,8 +25,6 @@ export default function WatchlistForm({
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
-  console.log(formItem);
-
   useEffect(() => {
     if (itemToBeEdited) {
       setFormItem(itemToBeEdited);
