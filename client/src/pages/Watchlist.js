@@ -19,6 +19,7 @@ export default function Watchlist({
 }) {
   useEffect(() => {
     onSetPage('watchlist');
+    onSetItemToBeEdited('');
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);

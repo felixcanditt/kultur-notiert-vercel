@@ -19,6 +19,7 @@ export default function Library({
 }) {
   useEffect(() => {
     onSetPage('library');
+    onSetItemToBeEdited('');
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);

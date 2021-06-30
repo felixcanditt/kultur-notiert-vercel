@@ -10,43 +10,29 @@ export default function WatchlistCards({
   onRemoveFromWatchlist,
   onCheckItem
 }) {
-  const watchlistNewest = watchlist.slice(0, 2);
-
-  function displayCards() {
-    if (isPage === 'watchlist') {
-      return (
-        <>
-          {watchlist.map((item) => (
-            <WatchlistCard
-              key={item.id}
-              item={item}
-              onSetItemToBeEdited={onSetItemToBeEdited}
-              onRemoveFromWatchlist={onRemoveFromWatchlist}
-              onCheckItem={onCheckItem}
-              onSetFormOnScreen={onSetFormOnScreen}
-            />
-          ))}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {watchlistNewest.map((item) => (
-            <WatchlistCard
-              key={item.id}
-              item={item}
-              onSetItemToBeEdited={onSetItemToBeEdited}
-              onRemoveFromWatchlist={onRemoveFromWatchlist}
-              onCheckItem={onCheckItem}
-              onSetFormOnScreen={onSetFormOnScreen}
-            />
-          ))}
-        </>
-      );
-    }
+  function listToBeRendered() {
+    const watchlistNewest = watchlist.slice(0, 2);
+    let relevantList;
+    isPage === 'watchlist'
+      ? (relevantList = watchlist)
+      : (relevantList = watchlistNewest);
+    return relevantList;
   }
 
-  return <Grid>{displayCards()}</Grid>;
+  return (
+    <Grid>
+      {listToBeRendered().map((item) => (
+        <WatchlistCard
+          key={item.id}
+          item={item}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onRemoveFromWatchlist={onRemoveFromWatchlist}
+          onCheckItem={onCheckItem}
+          onSetFormOnScreen={onSetFormOnScreen}
+        />
+      ))}
+    </Grid>
+  );
 }
 
 const Grid = styled.section`

@@ -10,43 +10,29 @@ export default function LibraryCards({
   onRemoveFromLibrary,
   onCheckItem
 }) {
-  const libraryNewest = library.slice(0, 2);
-
-  function displayCards() {
-    if (isPage === 'library') {
-      return (
-        <>
-          {library.map((item) => (
-            <LibraryCard
-              key={item.id}
-              item={item}
-              onSetItemToBeEdited={onSetItemToBeEdited}
-              onRemoveFromLibrary={onRemoveFromLibrary}
-              onCheckItem={onCheckItem}
-              onSetFormOnScreen={onSetFormOnScreen}
-            />
-          ))}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {libraryNewest.map((item) => (
-            <LibraryCard
-              key={item.id}
-              item={item}
-              onSetItemToBeEdited={onSetItemToBeEdited}
-              onRemoveFromLibrary={onRemoveFromLibrary}
-              onCheckItem={onCheckItem}
-              onSetFormOnScreen={onSetFormOnScreen}
-            />
-          ))}
-        </>
-      );
-    }
+  function listToBeRendered() {
+    const libraryNewest = library.slice(0, 2);
+    let relevantList;
+    isPage === 'library'
+      ? (relevantList = library)
+      : (relevantList = libraryNewest);
+    return relevantList;
   }
 
-  return <Grid>{displayCards()}</Grid>;
+  return (
+    <Grid>
+      {listToBeRendered().map((item) => (
+        <LibraryCard
+          key={item.id}
+          item={item}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onRemoveFromLibrary={onRemoveFromLibrary}
+          onCheckItem={onCheckItem}
+          onSetFormOnScreen={onSetFormOnScreen}
+        />
+      ))}
+    </Grid>
+  );
 }
 
 const Grid = styled.section`

@@ -19,10 +19,9 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
 
-  const [itemToBeEdited, setItemToBeEdited] = useState();
+  const [itemToBeEdited, setItemToBeEdited] = useState('');
 
   const [isPage, setPage] = useState('home');
-  console.log(isPage);
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
@@ -86,6 +85,7 @@ export default function App() {
         <Route exact path="/">
           <Home
             onSetPage={setPage}
+            isPage={isPage}
             watchlist={watchlist}
             library={library}
             onCheckItem={checkItem}

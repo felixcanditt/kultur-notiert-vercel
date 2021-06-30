@@ -11,22 +11,22 @@ export function displayCategoryIcon(savedCategory) {
 
   if (savedCategory === 'book') {
     categoryIcon = bookIcon;
-    categoryAlt = 'Buch als Zeichen für die Kategorie Buch';
+    categoryAlt = 'Kategorie Buch';
   } else if (savedCategory === 'movie') {
     categoryIcon = cameraIcon;
-    categoryAlt = 'Kamera als Zeichen für die Kategorie Film';
+    categoryAlt = 'Kategorie Film';
   } else if (savedCategory === 'series') {
     categoryIcon = televisionIcon;
-    categoryAlt = 'Fernseher als Zeichen für die Kategorie Serie';
+    categoryAlt = 'Kategorie Serie';
   } else if (savedCategory === 'stage') {
     categoryIcon = curtainIcon;
-    categoryAlt = 'Vorhang als Zeichen für die Kategorie Bühne';
+    categoryAlt = 'Kategorie Bühne';
   } else if (savedCategory === 'exhibition') {
     categoryIcon = venusIcon;
-    categoryAlt = 'Statue als Zeichen für die Kategorie Ausstellung';
+    categoryAlt = 'Kategorie Ausstellung';
   } else if (savedCategory === 'festival') {
     categoryIcon = confettiIcon;
-    categoryAlt = 'Statue als Zeichen für die Kategorie Ausstellung';
+    categoryAlt = 'Kategorie Festival';
   }
 
   return <img src={categoryIcon} alt={categoryAlt} />;

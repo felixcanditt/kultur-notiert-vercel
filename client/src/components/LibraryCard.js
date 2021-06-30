@@ -37,9 +37,9 @@ export default function LibraryCard({
     <Card>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
-      <CardCategory item={item} />
+      {item.category && <CardCategory item={item} />}
 
-      {item.rating ? (
+      {item.rating !== 0 && (
         <Stars>
           {displayStar(1)}
           {displayStar(2)}
@@ -47,18 +47,15 @@ export default function LibraryCard({
           {displayStar(4)}
           {displayStar(5)}
         </Stars>
-      ) : (
-        ''
       )}
 
-      {item.notes ? (
+      {item.notes && (
         <p>
           Meine Notizen: <br />
           {item.notes}
         </p>
-      ) : (
-        ''
       )}
+
       <Buttons>
         <img
           src={checkmarkIcon}

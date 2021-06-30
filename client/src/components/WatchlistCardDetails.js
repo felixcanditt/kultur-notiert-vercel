@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import CardCategory from './CardCategory';
 
 import { displayDetails } from '../lib/displayCard';
@@ -7,7 +5,7 @@ import { displayDetails } from '../lib/displayCard';
 export default function WatchlistCardDetails({ item }) {
   return (
     <>
-      <CardCategory item={item} />
+      {item.category && <CardCategory item={item} />}
 
       {displayDetails(item)}
     </>
