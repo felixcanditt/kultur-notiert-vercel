@@ -55,20 +55,20 @@ const Card = styled.article`
   background: var(--secondary-lightest);
 
   display: grid;
-  gap: 0.5rem;
+  gap: 0.2rem;
 
   h4 {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
 const Buttons = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   display: flex;
   justify-content: space-around;
 
   img {
     cursor: pointer;
-    width: 2.2rem;
+    width: 2.1rem;
   }
 `;

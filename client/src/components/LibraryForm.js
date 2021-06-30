@@ -152,10 +152,10 @@ const Form = styled.form`
   padding: 2rem;
 
   display: grid;
-  gap: 0.7rem;
+  gap: 0.9rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     text-align: center;
   }
 
@@ -176,6 +176,12 @@ const Form = styled.form`
   }
 `;
 
+const CloseButton = styled.img`
+  margin: -0.3rem 0 -0.2rem 0;
+  justify-self: end;
+  width: 1rem;
+`;
+
 const Notes = styled.div`
   display: grid;
   gap: 0.5rem;
@@ -186,13 +192,8 @@ const Notes = styled.div`
   }
 `;
 
-const CloseButton = styled.img`
-  justify-self: end;
-  width: 1rem;
-`;
-
 const Buttons = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   display: flex;
   justify-content: space-around;
 
