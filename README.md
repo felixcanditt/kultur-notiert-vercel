@@ -12,7 +12,7 @@ Enjoy <3
 
 ## You can see my deployed app here:
 
-![Link to Kultur Notiert](https://kultur-notiert.vercel.app/)
+[Link to Kultur Notiert](https://kultur-notiert.vercel.app/)
 
 ## How to install and run this app
 
