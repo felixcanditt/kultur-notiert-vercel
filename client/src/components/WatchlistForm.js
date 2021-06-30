@@ -15,6 +15,7 @@ export default function WatchlistForm({
 }) {
   const initialFormItem = {
     title: '',
+    id: '',
     category: '',
     author: '',
     director: '',
@@ -41,8 +42,8 @@ export default function WatchlistForm({
 
     const itemWithCategory = {
       title: formItem.title,
+      id: formItem.id,
       category: selectedCategory,
-      isWatched: false,
       author: '',
       director: '',
       location: '',

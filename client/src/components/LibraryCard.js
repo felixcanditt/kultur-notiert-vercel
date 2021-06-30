@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { displayCategory } from '../lib/displayCard';
+import CardCategory from './CardCategory';
 
 import starIcon from '../images/star.svg';
 import checkmarkIcon from '../images/checkmark-checked.svg';
@@ -37,7 +37,7 @@ export default function LibraryCard({
     <Card>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
-      {displayCategory(item.category)}
+      <CardCategory item={item} />
 
       {item.rating ? (
         <Stars>
