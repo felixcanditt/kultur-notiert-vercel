@@ -40,7 +40,9 @@ export default function Home({
   return (
     <>
       <main>
-        <h2>Meine letzten Einträge</h2>
+        <h2>
+          Meine letzten <br /> Einträge
+        </h2>
 
         <WatchlistCards
           watchlist={watchlist}

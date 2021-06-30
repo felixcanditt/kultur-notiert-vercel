@@ -13,7 +13,7 @@ export default function CardCategory({ item }) {
   );
 }
 const CategoryContainer = styled.div`
-  margin-left: 0.2rem;
+  margin-bottom: 0.8rem;
   display: flex;
 `;
 const CategoryPill = styled.div`
@@ -23,9 +23,9 @@ const CategoryPill = styled.div`
 
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 
   img {
-    width: 2.2rem;
+    width: 2.4rem;
   }
 `;

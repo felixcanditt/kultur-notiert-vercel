@@ -71,6 +71,41 @@ export default function InputOptions({ formItem, onUpdateFormItem }) {
         </>
       );
     } else if (
+      formItem.category === 'music' ||
+      formItem.category === 'miscellaneous'
+    ) {
+      return (
+        <>
+          <label>
+            <span>Von:</span>
+            <input
+              type="text"
+              name="creator"
+              onChange={onUpdateFormItem}
+              value={formItem.creator}
+            />
+          </label>
+          <label>
+            <span>Wo?</span>
+            <input
+              type="text"
+              name="location"
+              onChange={onUpdateFormItem}
+              value={formItem.location}
+            />
+          </label>
+          <label>
+            <span>Wann?</span>
+            <input
+              type="text"
+              name="time"
+              onChange={onUpdateFormItem}
+              value={formItem.time}
+            />
+          </label>
+        </>
+      );
+    } else if (
       formItem.category === 'stage' ||
       formItem.category === 'festival'
     ) {

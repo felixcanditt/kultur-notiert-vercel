@@ -62,11 +62,7 @@ const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  gap: 2rem;
-
-  h2 {
-    margin: 0;
-  }
+  gap: 1.8rem;
 
   img {
     cursor: pointer;

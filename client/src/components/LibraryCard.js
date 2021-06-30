@@ -87,16 +87,17 @@ const Card = styled.article`
   border-radius: 1.8rem;
   padding: 2rem;
   background: var(--secondary-lightest);
+
   display: grid;
-  gap: 0.5rem;
+  gap: 0.2rem;
 
   h4 {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
 const Stars = styled.div`
-  margin: 1rem 0;
+  margin: 0.2rem 0 1.1rem 0;
   display: flex;
   gap: 1rem;
 
@@ -106,12 +107,12 @@ const Stars = styled.div`
 `;
 
 const Buttons = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   display: flex;
   justify-content: space-around;
 
   img {
     cursor: pointer;
-    width: 2.2rem;
+    width: 2.1rem;
   }
 `;

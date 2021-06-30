@@ -60,11 +60,7 @@ export default function Library({
 const TitleWrapper = styled.div`
   display: grid;
   place-items: center;
-  gap: 0.5rem;
-
-  h2 {
-    margin: 0;
-  }
+  gap: 0.8rem;
 
   img {
     cursor: pointer;
