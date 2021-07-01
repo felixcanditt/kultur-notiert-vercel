@@ -17,7 +17,7 @@ const CategoryContainer = styled.div`
   display: flex;
 `;
 const CategoryPill = styled.div`
-  border-radius: 2rem;
+  border-radius: 1.1rem;
   background-color: var(--secondary);
   padding: 0.5rem 0.7rem;
 
