@@ -3,15 +3,25 @@ import styled from 'styled-components';
 import WatchlistCard from './WatchlistCard';
 
 export default function WatchlistCards({
+  currentPage,
   watchlist,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
   onCheckItem
 }) {
+  function listToBeRendered() {
+    const watchlistNewest = watchlist.slice(0, 2);
+    let relevantList;
+    currentPage === 'watchlist'
+      ? (relevantList = watchlist)
+      : (relevantList = watchlistNewest);
+    return relevantList;
+  }
+
   return (
     <Grid>
-      {watchlist.map((item) => (
+      {listToBeRendered().map((item) => (
         <WatchlistCard
           key={item.id}
           item={item}

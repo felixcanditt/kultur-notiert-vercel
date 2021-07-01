@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
@@ -7,6 +7,8 @@ import WatchlistCards from '../components/WatchlistCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Watchlist({
+  onSetCurrentPage,
+  currentPage,
   watchlist,
   onAddToWatchlist,
   itemToBeEdited,
@@ -15,6 +17,11 @@ export default function Watchlist({
   onRemoveFromWatchlist,
   onCheckItem
 }) {
+  useEffect(() => {
+    onSetCurrentPage('watchlist');
+    onSetItemToBeEdited('');
+  }, []);
+
   const [formOnScreen, setFormOnScreen] = useState(false);
 
   return (
@@ -29,18 +36,17 @@ export default function Watchlist({
       </TitleWrapper>
 
       {formOnScreen && (
-        <FormWrapper>
-          <WatchlistForm
-            onSetFormOnScreen={setFormOnScreen}
-            onAddToWatchlist={onAddToWatchlist}
-            itemToBeEdited={itemToBeEdited}
-            onSetItemToBeEdited={onSetItemToBeEdited}
-            onEditWatchlist={onEditWatchlist}
-          />
-        </FormWrapper>
+        <WatchlistForm
+          onSetFormOnScreen={setFormOnScreen}
+          onAddToWatchlist={onAddToWatchlist}
+          itemToBeEdited={itemToBeEdited}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onEditWatchlist={onEditWatchlist}
+        />
       )}
 
       <WatchlistCards
+        currentPage={currentPage}
         watchlist={watchlist}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
@@ -56,27 +62,10 @@ const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  gap: 2rem;
-
-  h2 {
-    margin: 0;
-  }
+  gap: 1.8rem;
 
   img {
     cursor: pointer;
     width: 3rem;
   }
-`;
-
-const FormWrapper = styled.div`
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(0.6rem);
 `;

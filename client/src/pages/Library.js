@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LibraryForm from '../components/LibraryForm';
@@ -7,6 +7,8 @@ import LibraryCards from '../components/LibraryCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Library({
+  onSetCurrentPage,
+  currentPage,
   library,
   onAddToLibrary,
   itemToBeEdited,
@@ -15,6 +17,11 @@ export default function Library({
   onRemoveFromLibrary,
   onCheckItem
 }) {
+  useEffect(() => {
+    onSetCurrentPage('library');
+    onSetItemToBeEdited('');
+  }, []);
+
   const [formOnScreen, setFormOnScreen] = useState(false);
 
   return (
@@ -29,18 +36,17 @@ export default function Library({
       </TitleWrapper>
 
       {formOnScreen && (
-        <FormWrapper>
-          <LibraryForm
-            onSetFormOnScreen={setFormOnScreen}
-            onAddToLibrary={onAddToLibrary}
-            itemToBeEdited={itemToBeEdited}
-            onSetItemToBeEdited={onSetItemToBeEdited}
-            onEditLibrary={onEditLibrary}
-          />
-        </FormWrapper>
+        <LibraryForm
+          onSetFormOnScreen={setFormOnScreen}
+          onAddToLibrary={onAddToLibrary}
+          itemToBeEdited={itemToBeEdited}
+          onSetItemToBeEdited={onSetItemToBeEdited}
+          onEditLibrary={onEditLibrary}
+        />
       )}
 
       <LibraryCards
+        currentPage={currentPage}
         library={library}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
@@ -54,27 +60,10 @@ export default function Library({
 const TitleWrapper = styled.div`
   display: grid;
   place-items: center;
-  gap: 0.5rem;
-
-  h2 {
-    margin: 0;
-  }
+  gap: 0.8rem;
 
   img {
     cursor: pointer;
     width: 3rem;
   }
-`;
-
-const FormWrapper = styled.div`
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(0.6rem);
 `;

@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 
 import CardCategory from './CardCategory';
 
 import starIcon from '../images/star.svg';
+import arrowDownIcon from '../images/arrow-down.svg';
+import arrowUpIcon from '../images/arrow-up.svg';
 import checkmarkIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
@@ -14,6 +18,8 @@ export default function LibraryCard({
   onSetFormOnScreen,
   onRemoveFromLibrary
 }) {
+  const [notesOnScreen, setNotesOnScreen] = useState(false);
+
   function displayStar(positionOfClickedStar) {
     return (
       <img
@@ -37,9 +43,9 @@ export default function LibraryCard({
     <Card>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
-      <CardCategory item={item} />
+      {item.category && <CardCategory item={item} />}
 
-      {item.rating ? (
+      {item.rating !== 0 && (
         <Stars>
           {displayStar(1)}
           {displayStar(2)}
@@ -47,18 +53,21 @@ export default function LibraryCard({
           {displayStar(4)}
           {displayStar(5)}
         </Stars>
-      ) : (
-        ''
       )}
 
-      {item.notes ? (
-        <p>
-          Meine Notizen: <br />
-          {item.notes}
-        </p>
-      ) : (
-        ''
+      {item.notes && (
+        <ShowNotesButton>
+          <img
+            src={notesOnScreen ? arrowUpIcon : arrowDownIcon}
+            alt="Meine Notizen anzeigen"
+            onClick={() => setNotesOnScreen(!notesOnScreen)}
+          />
+          <span>Meine Notizen</span>
+        </ShowNotesButton>
       )}
+
+      {item.notes && notesOnScreen && <p>{item.notes}</p>}
+
       <Buttons>
         <img
           src={checkmarkIcon}
@@ -90,16 +99,17 @@ const Card = styled.article`
   border-radius: 1.8rem;
   padding: 2rem;
   background: var(--secondary-lightest);
+
   display: grid;
-  gap: 0.5rem;
+  gap: 0.2rem;
 
   h4 {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
 const Stars = styled.div`
-  margin: 1rem 0;
+  margin: 0.2rem 0 1.1rem 0;
   display: flex;
   gap: 1rem;
 
@@ -108,13 +118,25 @@ const Stars = styled.div`
   }
 `;
 
+const ShowNotesButton = styled.div`
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  img {
+    cursor: pointer;
+    width: 2rem;
+  }
+`;
+
 const Buttons = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   display: flex;
   justify-content: space-around;
 
   img {
     cursor: pointer;
-    width: 2.2rem;
+    width: 2.1rem;
   }
 `;

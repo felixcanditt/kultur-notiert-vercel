@@ -35,7 +35,7 @@ const FooterStyled = styled.footer`
 `;
 
 const Nav = styled.nav`
-  padding: 1rem 0;
+  padding: 0.9rem 0;
   display: flex;
   justify-content: space-evenly;
 
@@ -50,6 +50,6 @@ const Nav = styled.nav`
   }
 
   img {
-    width: 3rem;
+    width: 2.8rem;
   }
 `;

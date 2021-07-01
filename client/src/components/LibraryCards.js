@@ -3,15 +3,25 @@ import styled from 'styled-components';
 import LibraryCard from './LibraryCard';
 
 export default function LibraryCards({
+  currentPage,
   library,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromLibrary,
   onCheckItem
 }) {
+  function listToBeRendered() {
+    const libraryNewest = library.slice(0, 2);
+    let relevantList;
+    currentPage === 'library'
+      ? (relevantList = library)
+      : (relevantList = libraryNewest);
+    return relevantList;
+  }
+
   return (
     <Grid>
-      {library.map((item) => (
+      {listToBeRendered().map((item) => (
         <LibraryCard
           key={item.id}
           item={item}

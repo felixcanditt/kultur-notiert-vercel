@@ -19,12 +19,12 @@ export default function WatchlistForm({
     category: '',
     author: '',
     director: '',
+    creator: '',
     location: '',
     time: ''
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
-
   useEffect(() => {
     if (itemToBeEdited) {
       setFormItem(itemToBeEdited);
@@ -46,6 +46,7 @@ export default function WatchlistForm({
       category: selectedCategory,
       author: '',
       director: '',
+      creator: '',
       location: '',
       time: ''
     };
@@ -85,55 +86,72 @@ export default function WatchlistForm({
   }
 
   return (
-    <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
-      <CloseButton
-        src={closeIcon}
-        alt="Fenster schliessen"
-        onClick={handleFormCancelation}
-      ></CloseButton>
-      <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
+    <FormWrapper>
+      <Form onKeyDown={handleKeyDown} onSubmit={handleFormSubmission}>
+        <CloseButton
+          src={closeIcon}
+          alt="Fenster schliessen"
+          onClick={handleFormCancelation}
+        ></CloseButton>
+        <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
 
-      <label>
-        <span>Titel</span>
-        <input
-          type="text"
-          name="title"
-          onChange={updateFormItem}
-          value={formItem.title}
+        <label>
+          <span>Titel</span>
+          <input
+            type="text"
+            name="title"
+            onChange={updateFormItem}
+            value={formItem.title}
+          />
+        </label>
+
+        <label>
+          <span>Kategorie</span>
+          <select
+            name="category"
+            onChange={selectCategory}
+            value={formItem.category}
+          >
+            <option value=""></option>
+            <option value="book">Buch</option>
+            <option value="movie">Film</option>
+            <option value="series">Serie</option>
+            <option value="music">Musik</option>
+            <option value="stage">Bühne</option>
+            <option value="exhibition">Ausstellung</option>
+            <option value="festival">Festival</option>
+            <option value="miscellaneous">Sonstiges</option>
+          </select>
+        </label>
+
+        <WatchlistFormOptions
+          formItem={formItem}
+          onUpdateFormItem={updateFormItem}
         />
-      </label>
 
-      <label>
-        <span>Kategorie</span>
-        <select
-          name="category"
-          onChange={selectCategory}
-          value={formItem.category}
-        >
-          <option value=""></option>
-          <option value="book">Buch</option>
-          <option value="movie">Film</option>
-          <option value="series">Serie</option>
-          <option value="stage">Bühne</option>
-          <option value="exhibition">Ausstellung</option>
-          <option value="festival">Festival</option>
-        </select>
-      </label>
-
-      <WatchlistFormOptions
-        formItem={formItem}
-        onUpdateFormItem={updateFormItem}
-      />
-
-      <Buttons>
-        <button type="reset" onClick={handleFormReset}>
-          zurücksetzen
-        </button>
-        <button>speichern</button>
-      </Buttons>
-    </Form>
+        <Buttons>
+          <button type="reset" onClick={handleFormReset}>
+            zurücksetzen
+          </button>
+          <button>speichern</button>
+        </Buttons>
+      </Form>
+    </FormWrapper>
   );
 }
+
+const FormWrapper = styled.div`
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(0.6rem);
+`;
 
 const Form = styled.form`
   width: 90vw;
@@ -147,10 +165,10 @@ const Form = styled.form`
   padding: 2rem;
 
   display: grid;
-  gap: 0.7rem;
+  gap: 0.9rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     text-align: center;
   }
 
@@ -171,12 +189,13 @@ const Form = styled.form`
 `;
 
 const CloseButton = styled.img`
+  margin: -0.3rem 0 -0.2rem 0;
   justify-self: end;
   width: 1rem;
 `;
 
 const Buttons = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   display: flex;
   justify-content: space-around;
 

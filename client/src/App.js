@@ -19,7 +19,9 @@ export default function App() {
     loadFromLocalStorage('kulturNotiertLibrary') ?? []
   );
 
-  const [itemToBeEdited, setItemToBeEdited] = useState();
+  const [itemToBeEdited, setItemToBeEdited] = useState('');
+
+  const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
@@ -49,8 +51,16 @@ export default function App() {
   }
 
   function checkItem(checkedItem) {
+    function currentRating() {
+      return checkedItem.rating ? checkedItem.rating : 0;
+    }
+
     if (watchlist.find((item) => item.id === checkedItem.id)) {
-      setLibrary([checkedItem, ...library]);
+      const checkedItemWithRating = {
+        ...checkedItem,
+        rating: currentRating()
+      };
+      setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);
     } else if (library.find((item) => item.id === checkedItem.id)) {
       setWatchlist([checkedItem, ...watchlist]);
@@ -81,11 +91,25 @@ export default function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home
+            onSetCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            watchlist={watchlist}
+            library={library}
+            onCheckItem={checkItem}
+            onEditWatchlist={editWatchlist}
+            onRemoveFromWatchlist={removeFromWatchlist}
+            onEditLibrary={editLibrary}
+            onRemoveFromLibrary={removeFromLibrary}
+            onSetItemToBeEdited={setItemToBeEdited}
+            itemToBeEdited={itemToBeEdited}
+          />
         </Route>
 
         <Route path="/watchlist">
           <Watchlist
+            onSetCurrentPage={setCurrentPage}
+            currentPage={currentPage}
             watchlist={watchlist}
             onAddToWatchlist={addToWatchlist}
             itemToBeEdited={itemToBeEdited}
@@ -98,6 +122,8 @@ export default function App() {
 
         <Route path="/library">
           <Library
+            onSetCurrentPage={setCurrentPage}
+            currentPage={currentPage}
             library={library}
             onAddToLibrary={addToLibrary}
             itemToBeEdited={itemToBeEdited}
