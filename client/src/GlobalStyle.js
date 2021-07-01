@@ -8,7 +8,7 @@ export default createGlobalStyle`
   --grey-darkest: hsl(330, 10%, 10%);
   --grey-light: hsl(330, 10%, 85%);
   --grey-lightest: hsl(330, 10%, 96%);
-  --primary: hsl(330,100%,72%);
+  --primary: hotpink;
   --primary-darkest: hsl(330,100%,10%);
   --primary-dark: hsl(330,100%,25%);
   --primary-light: hsl(330,100%,85%);
