@@ -101,6 +101,7 @@ export default function LibraryForm({
             <option value="stage">Bühne</option>
             <option value="exhibition">Ausstellung</option>
             <option value="festival">Festival</option>
+            <option value="miscellaneous">Sonstiges</option>
           </select>
         </label>
 
