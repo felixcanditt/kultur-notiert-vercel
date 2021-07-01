@@ -20,6 +20,7 @@ export default function Home({
   useEffect(() => {
     onSetCurrentPage('home');
     onSetItemToBeEdited('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
@@ -35,6 +36,7 @@ export default function Home({
     } else {
       setFormToBeShown('none');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formOnScreen]);
 
   return (

@@ -20,6 +20,7 @@ export default function Watchlist({
   useEffect(() => {
     onSetCurrentPage('watchlist');
     onSetItemToBeEdited('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);

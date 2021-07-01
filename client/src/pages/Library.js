@@ -20,6 +20,7 @@ export default function Library({
   useEffect(() => {
     onSetCurrentPage('library');
     onSetItemToBeEdited('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
