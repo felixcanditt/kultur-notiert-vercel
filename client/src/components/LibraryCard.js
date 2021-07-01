@@ -95,7 +95,10 @@ const Card = styled.article`
   width: 85vw;
   max-width: 20rem;
 
-  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey-light);
+  box-shadow: var(--grey-light) 0px 12.5px 25px -5px,
+    var(--secondary-darkest) 0px 7.5px 15px -7.5px,
+    var(--grey-light) 0px -2px 6px 0px inset;
+
   border-radius: 1.8rem;
   padding: 2rem;
   background: var(--secondary-lightest);
