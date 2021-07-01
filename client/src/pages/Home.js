@@ -6,7 +6,7 @@ import WatchlistForm from '../components/WatchlistForm';
 import LibraryForm from '../components/LibraryForm';
 
 export default function Home({
-  onSetPage,
+  onSetCurrentPage,
   watchlist,
   library,
   onCheckItem,
@@ -18,7 +18,7 @@ export default function Home({
   itemToBeEdited
 }) {
   useEffect(() => {
-    onSetPage('home');
+    onSetCurrentPage('home');
     onSetItemToBeEdited('');
   }, []);
 

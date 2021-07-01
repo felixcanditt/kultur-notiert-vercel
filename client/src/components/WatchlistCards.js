@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import WatchlistCard from './WatchlistCard';
 
 export default function WatchlistCards({
-  isPage,
+  currentPage,
   watchlist,
   onSetItemToBeEdited,
   onSetFormOnScreen,
@@ -13,7 +13,7 @@ export default function WatchlistCards({
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    isPage === 'watchlist'
+    currentPage === 'watchlist'
       ? (relevantList = watchlist)
       : (relevantList = watchlistNewest);
     return relevantList;

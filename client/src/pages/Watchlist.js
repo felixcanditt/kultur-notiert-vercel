@@ -7,8 +7,8 @@ import WatchlistCards from '../components/WatchlistCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Watchlist({
-  onSetPage,
-  isPage,
+  onSetCurrentPage,
+  currentPage,
   watchlist,
   onAddToWatchlist,
   itemToBeEdited,
@@ -18,7 +18,7 @@ export default function Watchlist({
   onCheckItem
 }) {
   useEffect(() => {
-    onSetPage('watchlist');
+    onSetCurrentPage('watchlist');
     onSetItemToBeEdited('');
   }, []);
 
@@ -46,7 +46,7 @@ export default function Watchlist({
       )}
 
       <WatchlistCards
-        isPage={isPage}
+        currentPage={currentPage}
         watchlist={watchlist}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}

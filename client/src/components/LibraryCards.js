@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LibraryCard from './LibraryCard';
 
 export default function LibraryCards({
-  isPage,
+  currentPage,
   library,
   onSetItemToBeEdited,
   onSetFormOnScreen,
@@ -13,7 +13,7 @@ export default function LibraryCards({
   function listToBeRendered() {
     const libraryNewest = library.slice(0, 2);
     let relevantList;
-    isPage === 'library'
+    currentPage === 'library'
       ? (relevantList = library)
       : (relevantList = libraryNewest);
     return relevantList;

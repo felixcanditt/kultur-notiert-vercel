@@ -7,8 +7,8 @@ import LibraryCards from '../components/LibraryCards';
 import plusIcon from '../images/plus.svg';
 
 export default function Library({
-  onSetPage,
-  isPage,
+  onSetCurrentPage,
+  currentPage,
   library,
   onAddToLibrary,
   itemToBeEdited,
@@ -18,7 +18,7 @@ export default function Library({
   onCheckItem
 }) {
   useEffect(() => {
-    onSetPage('library');
+    onSetCurrentPage('library');
     onSetItemToBeEdited('');
   }, []);
 
@@ -46,7 +46,7 @@ export default function Library({
       )}
 
       <LibraryCards
-        isPage={isPage}
+        currentPage={currentPage}
         library={library}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
