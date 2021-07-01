@@ -157,7 +157,10 @@ const Form = styled.form`
   width: 90vw;
   max-width: 25rem;
 
-  box-shadow: 0.3rem 0.3rem 0.8rem var(--grey);
+  box-shadow: var(--primary-dark) 0px 12.5px 25px -5px,
+    var(--primary-lightest) 0px 7.5px 15px -7.5px,
+    var(--grey) 0px -2px 6px 0px inset;
+
   border-radius: 1.8rem;
 
   background-color: var(--primary-lightest);
