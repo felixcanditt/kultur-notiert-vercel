@@ -189,6 +189,7 @@ const Form = styled.form`
 `;
 
 const CloseButton = styled.img`
+  cursor: pointer;
   margin: -0.3rem 0 -0.2rem 0;
   justify-self: end;
   width: 1rem;
