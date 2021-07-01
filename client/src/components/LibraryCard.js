@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 
 import CardCategory from './CardCategory';
 
 import starIcon from '../images/star.svg';
+import arrowDownIcon from '../images/arrow-down.svg';
+import arrowUpIcon from '../images/arrow-up.svg';
 import checkmarkIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
@@ -14,6 +18,8 @@ export default function LibraryCard({
   onSetFormOnScreen,
   onRemoveFromLibrary
 }) {
+  const [notesOnScreen, setNotesOnScreen] = useState(false);
+
   function displayStar(positionOfClickedStar) {
     return (
       <img
@@ -50,11 +56,17 @@ export default function LibraryCard({
       )}
 
       {item.notes && (
-        <p>
-          Meine Notizen: <br />
-          {item.notes}
-        </p>
+        <ShowNotesButton>
+          <img
+            src={notesOnScreen ? arrowUpIcon : arrowDownIcon}
+            alt="Meine Notizen anzeigen"
+            onClick={() => setNotesOnScreen(!notesOnScreen)}
+          />
+          <span>Meine Notizen</span>
+        </ShowNotesButton>
       )}
+
+      {item.notes && notesOnScreen && <p>{item.notes}</p>}
 
       <Buttons>
         <img
@@ -103,6 +115,18 @@ const Stars = styled.div`
 
   img {
     width: 2.2rem;
+  }
+`;
+
+const ShowNotesButton = styled.div`
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  img {
+    cursor: pointer;
+    width: 2rem;
   }
 `;
 
