@@ -1,6 +1,3 @@
-![Felix_Canditt_KulturNotiert](https://user-images.githubusercontent.com/82392063/124245712-88790100-db20-11eb-8975-2d5e13936bad.gif)
-
-
 # Hiii & Welcome
 
 ## Kultur Notiert is my capstone project for neuefische Web Development Bootcamp
