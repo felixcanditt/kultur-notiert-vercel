@@ -1,3 +1,6 @@
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/82392063/124247302-0ab5f500-db22-11eb-8e84-2e2df5edc796.gif)
+
+
 # Hiii & Welcome
 
 ## Kultur Notiert is my capstone project for neuefische Web Development Bootcamp
