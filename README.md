@@ -33,4 +33,4 @@ This is the repository for the app version running with localStorage and deploye
 
 After cloning this repository, simply run `npm install` in the main directory – this will also install all dependencies of `client`.
 
-Then start the app by entering `npm run client`.
+Then start the app by entering `npm run client` and open http://localhost:3000/ to view it in the browser.
