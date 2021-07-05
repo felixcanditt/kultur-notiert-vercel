@@ -25,13 +25,13 @@ If you add entries to this app version, they are stored in an online database an
 
 You can have your own Kultur Notiert version that stores your entries on your device only and doesn't post them online. To do so, click [this link](https://kultur-notiert.vercel.app/).
 
-## Tech Stack
-
-React / React Router / styled-components / npm / localStorage
-
 ## About this repository
 
 This is the repository for the app version running with localStorage and deployed on Vercel. To see the version using MongoDB and Heroku, visit [this repository](https://github.com/felixcanditt/kultur-notiert).
+
+## Tech Stack
+
+React / React Router / styled-components / npm / localStorage
 
 ## How to install and run this app
 
