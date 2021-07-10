@@ -34,7 +34,7 @@ select,
 textarea, 
 button {
   font-size: 1.25rem;
-  font-family: 'Nunito', sans-serif;
+  font-family: sans-serif, 'Nunito';
   color: var(--grey-darkest);
 }
 
