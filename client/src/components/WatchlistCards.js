@@ -1,27 +1,36 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import WatchlistCard from './WatchlistCard';
+import WatchlistCard from "./WatchlistCard";
 
 export default function WatchlistCards({
   currentPage,
   watchlist,
+  selectedFilter,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    currentPage === 'watchlist'
-      ? (relevantList = watchlist)
-      : (relevantList = watchlistNewest);
+    if (currentPage === "watchlist") {
+      if (selectedFilter === "showAll") {
+        relevantList = watchlist;
+      } else {
+        relevantList = watchlist.filter(
+          (watchlistItem) => watchlistItem.category === selectedFilter
+        );
+      }
+    } else {
+      relevantList = watchlistNewest;
+    }
     return relevantList;
   }
 
   return (
     <Grid>
-      {listToBeRendered().map((item) => (
+      {listToBeRendered(selectedFilter).map((item) => (
         <WatchlistCard
           key={item.id}
           item={item}

@@ -1,34 +1,34 @@
-import { Route, Switch } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import Home from './pages/Home';
-import Watchlist from './pages/Watchlist';
-import Library from './pages/Library';
+import Home from "./pages/Home";
+import Watchlist from "./pages/Watchlist";
+import Library from "./pages/Library";
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-import { updateLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+import { updateLocalStorage, loadFromLocalStorage } from "./lib/localStorage";
 
 export default function App() {
   const [watchlist, setWatchlist] = useState(
-    loadFromLocalStorage('kulturNotiertWatchlist') ?? []
+    loadFromLocalStorage("kulturNotiertWatchlist") ?? []
   );
 
   const [library, setLibrary] = useState(
-    loadFromLocalStorage('kulturNotiertLibrary') ?? []
+    loadFromLocalStorage("kulturNotiertLibrary") ?? []
   );
 
-  const [itemToBeEdited, setItemToBeEdited] = useState('');
+  const [itemToBeEdited, setItemToBeEdited] = useState("");
 
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   useEffect(() => {
-    updateLocalStorage('kulturNotiertWatchlist', watchlist);
+    updateLocalStorage("kulturNotiertWatchlist", watchlist);
   }, [watchlist]);
 
   useEffect(() => {
-    updateLocalStorage('kulturNotiertLibrary', library);
+    updateLocalStorage("kulturNotiertLibrary", library);
   }, [library]);
 
   function addToWatchlist(newItem) {
@@ -58,7 +58,7 @@ export default function App() {
     if (watchlist.find((item) => item.id === checkedItem.id)) {
       const checkedItemWithRating = {
         ...checkedItem,
-        rating: currentRating()
+        rating: currentRating(),
       };
       setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);

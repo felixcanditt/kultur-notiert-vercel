@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-import WatchlistForm from '../components/WatchlistForm';
-import WatchlistCards from '../components/WatchlistCards';
+import WatchlistForm from "../components/WatchlistForm";
+import WatchlistCards from "../components/WatchlistCards";
 
-import plusIcon from '../images/plus.svg';
+import plusIcon from "../images/plus.svg";
 
 export default function Watchlist({
   onSetCurrentPage,
@@ -15,15 +15,20 @@ export default function Watchlist({
   onSetItemToBeEdited,
   onEditWatchlist,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
   useEffect(() => {
-    onSetCurrentPage('watchlist');
-    onSetItemToBeEdited('');
+    onSetCurrentPage("watchlist");
+    onSetItemToBeEdited("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
+  const [selectedFilter, setFilter] = useState("showAll");
+
+  function handleClickOnFilter(selectedCategory) {
+    setFilter(selectedCategory);
+  }
 
   return (
     <main>
@@ -46,9 +51,26 @@ export default function Watchlist({
         />
       )}
 
+      <button onClick={() => handleClickOnFilter("showAll")}>
+        alle anzeigen
+      </button>
+      <button onClick={() => handleClickOnFilter("book")}>Buch</button>
+      <button onClick={() => handleClickOnFilter("movie")}>Film</button>
+      <button onClick={() => handleClickOnFilter("series")}>Serie</button>
+      <button onClick={() => handleClickOnFilter("music")}>Musik</button>
+      <button onClick={() => handleClickOnFilter("stage")}>Bühne</button>
+      <button onClick={() => handleClickOnFilter("exhibition")}>
+        Ausstellung
+      </button>
+      <button onClick={() => handleClickOnFilter("festival")}>Festival</button>
+      <button onClick={() => handleClickOnFilter("miscellaneous")}>
+        Sonstiges
+      </button>
+
       <WatchlistCards
         currentPage={currentPage}
         watchlist={watchlist}
+        selectedFilter={selectedFilter}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromWatchlist={onRemoveFromWatchlist}
