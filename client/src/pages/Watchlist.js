@@ -1,10 +1,20 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import WatchlistForm from "../components/WatchlistForm";
-import WatchlistCards from "../components/WatchlistCards";
+import WatchlistForm from '../components/WatchlistForm';
+import WatchlistCards from '../components/WatchlistCards';
 
-import plusIcon from "../images/plus.svg";
+import { displayCategoryIcon } from '../lib/displayCard';
+
+import plusIcon from '../images/plus.svg';
+import bookIcon from '../images/book.svg';
+import cameraIcon from '../images/camera.svg';
+import televisionIcon from '../images/television.svg';
+import musicIcon from '../images/music.svg';
+import curtainIcon from '../images/curtain.svg';
+import venusIcon from '../images/venus-de-milo.svg';
+import confettiIcon from '../images/confetti.svg';
+import maskIcon from '../images/mask.svg';
 
 export default function Watchlist({
   onSetCurrentPage,
@@ -18,16 +28,18 @@ export default function Watchlist({
   onCheckItem,
 }) {
   useEffect(() => {
-    onSetCurrentPage("watchlist");
-    onSetItemToBeEdited("");
+    onSetCurrentPage('watchlist');
+    onSetItemToBeEdited('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
-  const [selectedFilter, setFilter] = useState("showAll");
+  const [selectedFilter, setFilter] = useState('showAll');
 
   function handleClickOnFilter(selectedCategory) {
-    setFilter(selectedCategory);
+    selectedFilter === selectedCategory
+      ? setFilter('showAll')
+      : setFilter(selectedCategory);
   }
 
   return (
@@ -51,21 +63,58 @@ export default function Watchlist({
         />
       )}
 
-      <button onClick={() => handleClickOnFilter("showAll")}>
-        alle anzeigen
-      </button>
-      <button onClick={() => handleClickOnFilter("book")}>Buch</button>
-      <button onClick={() => handleClickOnFilter("movie")}>Film</button>
-      <button onClick={() => handleClickOnFilter("series")}>Serie</button>
-      <button onClick={() => handleClickOnFilter("music")}>Musik</button>
-      <button onClick={() => handleClickOnFilter("stage")}>Bühne</button>
-      <button onClick={() => handleClickOnFilter("exhibition")}>
-        Ausstellung
-      </button>
-      <button onClick={() => handleClickOnFilter("festival")}>Festival</button>
-      <button onClick={() => handleClickOnFilter("miscellaneous")}>
-        Sonstiges
-      </button>
+      <FilterContainer>
+        <Filters>
+          <FilterButton
+            className={selectedFilter === 'book' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('book')}
+          >
+            {displayCategoryIcon('book')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'movie' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('movie')}
+          >
+            {displayCategoryIcon('movie')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'series' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('series')}
+          >
+            {displayCategoryIcon('series')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'music' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('music')}
+          >
+            {displayCategoryIcon('music')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'stage' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('stage')}
+          >
+            {displayCategoryIcon('stage')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'exhibition' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('exhibition')}
+          >
+            {displayCategoryIcon('exhibition')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'festival' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('festival')}
+          >
+            {displayCategoryIcon('festival')}
+          </FilterButton>
+          <FilterButton
+            className={selectedFilter === 'miscellaneous' ? 'isSelected' : ''}
+            onClick={() => handleClickOnFilter('miscellaneous')}
+          >
+            {displayCategoryIcon('miscellaneous')}
+          </FilterButton>
+        </Filters>
+      </FilterContainer>
 
       <WatchlistCards
         currentPage={currentPage}
@@ -90,5 +139,34 @@ const TitleWrapper = styled.div`
   img {
     cursor: pointer;
     width: 3rem;
+  }
+`;
+
+const FilterContainer = styled.div`
+  margin: 3rem 1.1rem 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const Filters = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+
+  .isSelected {
+    background-color: var(--secondary);
+  }
+`;
+
+const FilterButton = styled.div`
+  border-radius: 1.1rem;
+  background-color: var(--grey-light);
+  padding: 0.5rem 0.7rem;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 2rem;
   }
 `;

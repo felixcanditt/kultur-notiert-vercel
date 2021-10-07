@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import WatchlistCard from "./WatchlistCard";
+import WatchlistCard from './WatchlistCard';
 
 export default function WatchlistCards({
   currentPage,
@@ -14,8 +14,8 @@ export default function WatchlistCards({
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    if (currentPage === "watchlist") {
-      if (selectedFilter === "showAll") {
+    if (currentPage === 'watchlist') {
+      if (selectedFilter === 'showAll') {
         relevantList = watchlist;
       } else {
         relevantList = watchlist.filter(
