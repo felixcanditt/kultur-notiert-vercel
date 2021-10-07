@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
 import WatchlistCards from '../components/WatchlistCards';
-
 import { displayCategoryIcon } from '../lib/displayCard';
 
 import plusIcon from '../images/plus.svg';
@@ -26,12 +25,22 @@ export default function Watchlist({
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
-  const [selectedFilter, setFilter] = useState('showAll');
+  const [currentFilter, setFilter] = useState('noFilter');
 
-  function handleClickOnFilter(selectedCategory) {
-    selectedFilter === selectedCategory
-      ? setFilter('showAll')
-      : setFilter(selectedCategory);
+  function displayFilterButton(clickedButton) {
+    function handleClickOnButton(selectedFilter) {
+      currentFilter === selectedFilter
+        ? setFilter('noFilter')
+        : setFilter(selectedFilter);
+    }
+    return (
+      <FilterButton
+        className={currentFilter === clickedButton ? 'isSelected' : ''}
+        onClick={() => handleClickOnButton(clickedButton)}
+      >
+        {displayCategoryIcon(clickedButton)}
+      </FilterButton>
+    );
   }
 
   return (
@@ -57,61 +66,21 @@ export default function Watchlist({
 
       <FilterContainer>
         <Filters>
-          <FilterButton
-            className={selectedFilter === 'book' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('book')}
-          >
-            {displayCategoryIcon('book')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'movie' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('movie')}
-          >
-            {displayCategoryIcon('movie')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'series' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('series')}
-          >
-            {displayCategoryIcon('series')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'music' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('music')}
-          >
-            {displayCategoryIcon('music')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'stage' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('stage')}
-          >
-            {displayCategoryIcon('stage')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'exhibition' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('exhibition')}
-          >
-            {displayCategoryIcon('exhibition')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'festival' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('festival')}
-          >
-            {displayCategoryIcon('festival')}
-          </FilterButton>
-          <FilterButton
-            className={selectedFilter === 'miscellaneous' ? 'isSelected' : ''}
-            onClick={() => handleClickOnFilter('miscellaneous')}
-          >
-            {displayCategoryIcon('miscellaneous')}
-          </FilterButton>
+          {displayFilterButton('book')}
+          {displayFilterButton('movie')}
+          {displayFilterButton('series')}
+          {displayFilterButton('music')}
+          {displayFilterButton('stage')}
+          {displayFilterButton('exhibition')}
+          {displayFilterButton('festival')}
+          {displayFilterButton('miscellaneous')}
         </Filters>
       </FilterContainer>
 
       <WatchlistCards
         currentPage={currentPage}
         watchlist={watchlist}
-        selectedFilter={selectedFilter}
+        currentFilter={currentFilter}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromWatchlist={onRemoveFromWatchlist}
@@ -135,7 +104,7 @@ const TitleWrapper = styled.div`
 `;
 
 const FilterContainer = styled.div`
-  margin: 3rem 1.1rem 0;
+  margin: 2.2rem 1.1rem 0;
   display: flex;
   justify-content: center;
 `;
@@ -151,10 +120,10 @@ const Filters = styled.div`
 `;
 
 const FilterButton = styled.div`
+  cursor: pointer;
   border-radius: 1.1rem;
   background-color: var(--grey-light);
   padding: 0.5rem 0.7rem;
-
   display: flex;
   align-items: center;
 

@@ -5,7 +5,7 @@ import WatchlistCard from './WatchlistCard';
 export default function WatchlistCards({
   currentPage,
   watchlist,
-  selectedFilter,
+  currentFilter,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
@@ -15,11 +15,11 @@ export default function WatchlistCards({
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
     if (currentPage === 'watchlist') {
-      if (selectedFilter === 'showAll') {
+      if (currentFilter === 'noFilter') {
         relevantList = watchlist;
       } else {
         relevantList = watchlist.filter(
-          (watchlistItem) => watchlistItem.category === selectedFilter
+          (watchlistItem) => watchlistItem.category === currentFilter
         );
       }
     } else {
@@ -30,7 +30,7 @@ export default function WatchlistCards({
 
   return (
     <Grid>
-      {listToBeRendered(selectedFilter).map((item) => (
+      {listToBeRendered(currentFilter).map((item) => (
         <WatchlistCard
           key={item.id}
           item={item}
