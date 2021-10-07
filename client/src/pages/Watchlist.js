@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
+import Filters from '../components/Filters';
 import WatchlistCards from '../components/WatchlistCards';
-import { displayCategoryIcon } from '../lib/displayCard';
 
 import plusIcon from '../images/plus.svg';
 
@@ -27,22 +27,6 @@ export default function Watchlist({
   const [formOnScreen, setFormOnScreen] = useState(false);
   const [currentFilter, setFilter] = useState('noFilter');
 
-  function displayFilterButton(clickedButton) {
-    function handleClickOnButton(selectedFilter) {
-      currentFilter === selectedFilter
-        ? setFilter('noFilter')
-        : setFilter(selectedFilter);
-    }
-    return (
-      <FilterButton
-        className={currentFilter === clickedButton ? 'isSelected' : ''}
-        onClick={() => handleClickOnButton(clickedButton)}
-      >
-        {displayCategoryIcon(clickedButton)}
-      </FilterButton>
-    );
-  }
-
   return (
     <main>
       <TitleWrapper>
@@ -64,18 +48,7 @@ export default function Watchlist({
         />
       )}
 
-      <FilterContainer>
-        <Filters>
-          {displayFilterButton('book')}
-          {displayFilterButton('movie')}
-          {displayFilterButton('series')}
-          {displayFilterButton('music')}
-          {displayFilterButton('stage')}
-          {displayFilterButton('exhibition')}
-          {displayFilterButton('festival')}
-          {displayFilterButton('miscellaneous')}
-        </Filters>
-      </FilterContainer>
+      <Filters currentFilter={currentFilter} onSetFilter={setFilter} />
 
       <WatchlistCards
         currentPage={currentPage}
@@ -100,34 +73,5 @@ const TitleWrapper = styled.div`
   img {
     cursor: pointer;
     width: 3rem;
-  }
-`;
-
-const FilterContainer = styled.div`
-  margin: 2.2rem 1.1rem 0;
-  display: flex;
-  justify-content: center;
-`;
-
-const Filters = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-
-  .isSelected {
-    background-color: var(--secondary);
-  }
-`;
-
-const FilterButton = styled.div`
-  cursor: pointer;
-  border-radius: 1.1rem;
-  background-color: var(--grey-light);
-  padding: 0.5rem 0.7rem;
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 2rem;
   }
 `;
