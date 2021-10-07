@@ -7,14 +7,6 @@ import WatchlistCards from '../components/WatchlistCards';
 import { displayCategoryIcon } from '../lib/displayCard';
 
 import plusIcon from '../images/plus.svg';
-import bookIcon from '../images/book.svg';
-import cameraIcon from '../images/camera.svg';
-import televisionIcon from '../images/television.svg';
-import musicIcon from '../images/music.svg';
-import curtainIcon from '../images/curtain.svg';
-import venusIcon from '../images/venus-de-milo.svg';
-import confettiIcon from '../images/confetti.svg';
-import maskIcon from '../images/mask.svg';
 
 export default function Watchlist({
   onSetCurrentPage,
