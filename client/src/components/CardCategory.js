@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { displayCategoryIcon, displayCategory } from "../lib/displayCard";
+import { displayCategoryIcon, displayCategory } from '../lib/displayCard';
 
 export default function CardCategory({ item }) {
   return (
