@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
+import Filters from '../components/Filters';
 import WatchlistCards from '../components/WatchlistCards';
 
 import plusIcon from '../images/plus.svg';
@@ -15,7 +16,7 @@ export default function Watchlist({
   onSetItemToBeEdited,
   onEditWatchlist,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
   useEffect(() => {
     onSetCurrentPage('watchlist');
@@ -24,6 +25,7 @@ export default function Watchlist({
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
+  const [currentFilter, setFilter] = useState('noFilter');
 
   return (
     <main>
@@ -46,9 +48,12 @@ export default function Watchlist({
         />
       )}
 
+      <Filters currentFilter={currentFilter} onSetFilter={setFilter} />
+
       <WatchlistCards
         currentPage={currentPage}
         watchlist={watchlist}
+        currentFilter={currentFilter}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromWatchlist={onRemoveFromWatchlist}

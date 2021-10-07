@@ -5,23 +5,32 @@ import WatchlistCard from './WatchlistCard';
 export default function WatchlistCards({
   currentPage,
   watchlist,
+  currentFilter,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    currentPage === 'watchlist'
-      ? (relevantList = watchlist)
-      : (relevantList = watchlistNewest);
+    if (currentPage === 'watchlist') {
+      if (currentFilter === 'noFilter') {
+        relevantList = watchlist;
+      } else {
+        relevantList = watchlist.filter(
+          (watchlistItem) => watchlistItem.category === currentFilter
+        );
+      }
+    } else {
+      relevantList = watchlistNewest;
+    }
     return relevantList;
   }
 
   return (
     <Grid>
-      {listToBeRendered().map((item) => (
+      {listToBeRendered(currentFilter).map((item) => (
         <WatchlistCard
           key={item.id}
           item={item}

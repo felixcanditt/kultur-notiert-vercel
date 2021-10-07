@@ -58,7 +58,7 @@ export default function App() {
     if (watchlist.find((item) => item.id === checkedItem.id)) {
       const checkedItemWithRating = {
         ...checkedItem,
-        rating: currentRating()
+        rating: currentRating(),
       };
       setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);
