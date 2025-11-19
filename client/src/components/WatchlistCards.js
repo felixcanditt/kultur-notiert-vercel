@@ -5,16 +5,21 @@ import WatchlistCard from "./WatchlistCard";
 export default function WatchlistCards({
   currentPage,
   watchlist,
+  filter,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
   onCheckItem,
 }) {
+  const filteredList = watchlist.filter((item) => item.category === filter);
+
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
     currentPage === "watchlist"
-      ? (relevantList = watchlist)
+      ? filter
+        ? (relevantList = filteredList)
+        : (relevantList = watchlist)
       : (relevantList = watchlistNewest);
     return relevantList;
   }
