@@ -26,8 +26,8 @@ export default function Watchlist({
   const [formOnScreen, setFormOnScreen] = useState(false);
   const [filter, setFilter] = useState("");
 
-  function filterList() {
-    setFilter("book");
+  function filterList(selectedFilter) {
+    setFilter(selectedFilter);
   }
 
   return (
@@ -51,7 +51,9 @@ export default function Watchlist({
         />
       )}
 
-      <button onClick={filterList}>Filter Bücher</button>
+      <button onClick={() => filterList("book")}>Bücher</button>
+      <button onClick={() => filterList("movie")}>Film</button>
+      <button onClick={() => filterList("")}>X</button>
 
       <WatchlistCards
         currentPage={currentPage}

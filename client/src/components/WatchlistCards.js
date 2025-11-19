@@ -16,7 +16,6 @@ export default function WatchlistCards({
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    console.log(filteredList);
     currentPage === "watchlist"
       ? filter
         ? (relevantList = filteredList)
