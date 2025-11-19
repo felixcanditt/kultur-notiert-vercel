@@ -27,7 +27,7 @@ export default function Watchlist({
   const [filter, setFilter] = useState("");
 
   function filterList() {
-    setFilter("books");
+    setFilter("book");
   }
 
   return (

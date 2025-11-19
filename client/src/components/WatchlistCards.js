@@ -11,16 +11,15 @@ export default function WatchlistCards({
   onRemoveFromWatchlist,
   onCheckItem,
 }) {
-  console.log(watchlist);
-
-  const books = watchlist.filter((item) => item.category === "book");
+  const filteredList = watchlist.filter((item) => item.category === filter);
 
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
+    console.log(filteredList);
     currentPage === "watchlist"
-      ? filter === "books"
-        ? (relevantList = books)
+      ? filter
+        ? (relevantList = filteredList)
         : (relevantList = watchlist)
       : (relevantList = watchlistNewest);
     return relevantList;
