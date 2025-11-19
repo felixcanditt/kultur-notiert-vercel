@@ -1,20 +1,27 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import WatchlistCard from './WatchlistCard';
+import WatchlistCard from "./WatchlistCard";
 
 export default function WatchlistCards({
   currentPage,
+  filter,
   watchlist,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
+  console.log(watchlist);
+
+  const books = watchlist.filter((item) => item.category === "book");
+
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    currentPage === 'watchlist'
-      ? (relevantList = watchlist)
+    currentPage === "watchlist"
+      ? filter === "books"
+        ? (relevantList = books)
+        : (relevantList = watchlist)
       : (relevantList = watchlistNewest);
     return relevantList;
   }

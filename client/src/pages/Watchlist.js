@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-import WatchlistForm from '../components/WatchlistForm';
-import WatchlistCards from '../components/WatchlistCards';
+import WatchlistForm from "../components/WatchlistForm";
+import WatchlistCards from "../components/WatchlistCards";
 
-import plusIcon from '../images/plus.svg';
+import plusIcon from "../images/plus.svg";
 
 export default function Watchlist({
   onSetCurrentPage,
@@ -15,15 +15,20 @@ export default function Watchlist({
   onSetItemToBeEdited,
   onEditWatchlist,
   onRemoveFromWatchlist,
-  onCheckItem
+  onCheckItem,
 }) {
   useEffect(() => {
-    onSetCurrentPage('watchlist');
-    onSetItemToBeEdited('');
+    onSetCurrentPage("watchlist");
+    onSetItemToBeEdited("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
+  const [filter, setFilter] = useState("");
+
+  function filterList() {
+    setFilter("books");
+  }
 
   return (
     <main>
@@ -46,8 +51,11 @@ export default function Watchlist({
         />
       )}
 
+      <button onClick={filterList}>Filter Bücher</button>
+
       <WatchlistCards
         currentPage={currentPage}
+        filter={filter}
         watchlist={watchlist}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
