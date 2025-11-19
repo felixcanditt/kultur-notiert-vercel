@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import WatchlistForm from "../components/WatchlistForm";
+import WatchlistFilters from "../components/WatchlistFilters";
 import WatchlistCards from "../components/WatchlistCards";
 
 import plusIcon from "../images/plus.svg";
@@ -26,10 +27,6 @@ export default function Watchlist({
   const [formOnScreen, setFormOnScreen] = useState(false);
   const [filter, setFilter] = useState("");
 
-  function filterList(selectedFilter) {
-    setFilter(selectedFilter);
-  }
-
   return (
     <main>
       <TitleWrapper>
@@ -51,9 +48,7 @@ export default function Watchlist({
         />
       )}
 
-      <button onClick={() => filterList("book")}>Bücher</button>
-      <button onClick={() => filterList("movie")}>Film</button>
-      <button onClick={() => filterList("")}>X</button>
+      <WatchlistFilters onSetFilter={setFilter}></WatchlistFilters>
 
       <WatchlistCards
         currentPage={currentPage}
