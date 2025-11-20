@@ -1,15 +1,6 @@
-export default function WatchlistFilters({ onSetFilter }) {
-  const categories = [
-    {
-      name: "book",
-      text: "Buch",
-    },
-    {
-      name: "movie",
-      text: "Film",
-    },
-  ];
+import { categories } from "../lib/categories";
 
+export default function WatchlistFilters({ onSetFilter }) {
   function filterList(selectedFilter) {
     onSetFilter(selectedFilter);
   }
