@@ -1,12 +1,30 @@
 export default function WatchlistFilters({ onSetFilter }) {
+  const categories = [
+    {
+      name: "book",
+      text: "Buch",
+    },
+    {
+      name: "movie",
+      text: "Film",
+    },
+  ];
+
   function filterList(selectedFilter) {
     onSetFilter(selectedFilter);
   }
   return (
     <>
-      <button onClick={() => filterList("book")}>Bücher</button>
-      <button onClick={() => filterList("movie")}>Film</button>
-      <button onClick={() => filterList("")}>X</button>
+      <ul>
+        {categories.map((item) => (
+          <li>
+            <button onClick={() => filterList(item.name)}>{item.text}</button>
+          </li>
+        ))}
+        <li>
+          <button onClick={() => filterList("")}>X</button>
+        </li>
+      </ul>
     </>
   );
 }
