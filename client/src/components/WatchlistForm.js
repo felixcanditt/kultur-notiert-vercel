@@ -1,27 +1,27 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import WatchlistFormOptions from './WatchlistFormOptions';
-
-import closeIcon from '../images/close.svg';
+import WatchlistFormOptions from "./WatchlistFormOptions";
+import { categories } from "../lib/categories";
+import closeIcon from "../images/close.svg";
 
 export default function WatchlistForm({
   onSetFormOnScreen,
   onAddToWatchlist,
   itemToBeEdited,
   onSetItemToBeEdited,
-  onEditWatchlist
+  onEditWatchlist,
 }) {
   const initialFormItem = {
-    title: '',
-    id: '',
-    category: '',
-    author: '',
-    director: '',
-    creator: '',
-    location: '',
-    time: ''
+    title: "",
+    id: "",
+    category: "",
+    author: "",
+    director: "",
+    creator: "",
+    location: "",
+    time: "",
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
@@ -44,11 +44,11 @@ export default function WatchlistForm({
       title: formItem.title,
       id: formItem.id,
       category: selectedCategory,
-      author: '',
-      director: '',
-      creator: '',
-      location: '',
-      time: ''
+      author: "",
+      director: "",
+      creator: "",
+      location: "",
+      time: "",
     };
 
     setFormItem(itemWithCategory);
@@ -80,7 +80,7 @@ export default function WatchlistForm({
   }
 
   function handleKeyDown(event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleFormSubmission(event);
     }
   }
@@ -93,7 +93,7 @@ export default function WatchlistForm({
           alt="Fenster schliessen"
           onClick={handleFormCancelation}
         ></CloseButton>
-        <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
+        <h3>{itemToBeEdited ? "Eintrag bearbeiten" : "Eintrag hinzufügen"}</h3>
 
         <label>
           <span>Titel</span>
@@ -113,14 +113,9 @@ export default function WatchlistForm({
             value={formItem.category}
           >
             <option value=""></option>
-            <option value="book">Buch</option>
-            <option value="movie">Film</option>
-            <option value="series">Serie</option>
-            <option value="music">Musik</option>
-            <option value="stage">Bühne</option>
-            <option value="exhibition">Ausstellung</option>
-            <option value="festival">Festival</option>
-            <option value="miscellaneous">Sonstiges</option>
+            {categories.map((category) => (
+              <option value={category.name}>{category.text}</option>
+            ))}
           </select>
         </label>
 
@@ -157,7 +152,8 @@ const Form = styled.form`
   width: 90vw;
   max-width: 25rem;
 
-  box-shadow: var(--primary-dark) 0px 12.5px 25px -5px,
+  box-shadow:
+    var(--primary-dark) 0px 12.5px 25px -5px,
     var(--primary-lightest) 0px 7.5px 15px -7.5px,
     var(--grey) 0px -2px 6px 0px inset;
 
