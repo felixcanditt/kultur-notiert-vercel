@@ -2,21 +2,26 @@ import styled from 'styled-components';
 
 import { categories } from '../lib/categories';
 
-export default function WatchlistFilters({ onSetFilter }) {
+export default function WatchlistFilters({ filter, onSetFilter }) {
   function filterList(selectedFilter) {
     onSetFilter(selectedFilter);
   }
   return (
     <FilterContainer>
       <FilterBox>
-        {categories.map((item) => (
-          <li>
-            <button onClick={() => filterList(item.name)}>{item.text}</button>
-          </li>
-        ))}
-        <li>
-          <button onClick={() => filterList('')}>Filter entfernen</button>
-        </li>
+        <FilterList>
+          {categories.map((item) => (
+            <li>
+              <FilterButton
+                className={filter === item.name ? 'active' : ''}
+                onClick={() => filterList(item.name)}
+              >
+                {item.text}
+              </FilterButton>
+            </li>
+          ))}
+        </FilterList>
+        <span onClick={() => filterList('')}>Filter entfernen</span>
       </FilterBox>
     </FilterContainer>
   );
@@ -28,18 +33,28 @@ const FilterContainer = styled.div`
   justify-content: center;
 `;
 
-const FilterBox = styled.ul`
+const FilterBox = styled.div`
+  width: 85vw;
+  max-width: 20rem;
+`;
+
+const FilterList = styled.ul`
+  margin-bottom: 0.5rem;
   width: 85vw;
   max-width: 20rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+`;
 
-  button {
-    cursor: pointer;
-    border-radius: 8px;
-    border-width: 1.5px;
-    padding: 2px 6px 3px;
-    background-color: var(--grey-lightest);
+const FilterButton = styled.button`
+  cursor: pointer;
+  border-radius: 8px;
+  border-width: 1.5px;
+  padding: 2px 6px 3px;
+  background-color: var(--grey-lightest);
+
+  &.active {
+    background-color: var(--primary-light);
   }
 `;
