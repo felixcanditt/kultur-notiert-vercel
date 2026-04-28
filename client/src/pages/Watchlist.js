@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import WatchlistForm from "../components/WatchlistForm";
-import WatchlistCards from "../components/WatchlistCards";
+import WatchlistForm from '../components/WatchlistForm';
+import Filters from '../components/Filters';
+import WatchlistCards from '../components/WatchlistCards';
 
-import plusIcon from "../images/plus.svg";
+import plusIcon from '../images/plus.svg';
 
 export default function Watchlist({
   onSetCurrentPage,
@@ -18,12 +19,13 @@ export default function Watchlist({
   onCheckItem,
 }) {
   useEffect(() => {
-    onSetCurrentPage("watchlist");
-    onSetItemToBeEdited("");
+    onSetCurrentPage('watchlist');
+    onSetItemToBeEdited('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
+  const [filter, setFilter] = useState('');
 
   return (
     <main>
@@ -46,9 +48,12 @@ export default function Watchlist({
         />
       )}
 
+      <Filters filter={filter} onSetFilter={setFilter}></Filters>
+
       <WatchlistCards
         currentPage={currentPage}
         watchlist={watchlist}
+        filter={filter}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromWatchlist={onRemoveFromWatchlist}

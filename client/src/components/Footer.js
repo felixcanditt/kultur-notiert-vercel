@@ -25,7 +25,7 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.footer`
-  background: var(--primary);
+  background: var(--primary-light);
 
   position: fixed;
   bottom: 0;

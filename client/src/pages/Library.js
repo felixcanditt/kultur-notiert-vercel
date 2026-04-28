@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LibraryForm from '../components/LibraryForm';
+import Filters from '../components/Filters';
 import LibraryCards from '../components/LibraryCards';
 
 import plusIcon from '../images/plus.svg';
@@ -15,7 +16,7 @@ export default function Library({
   onSetItemToBeEdited,
   onEditLibrary,
   onRemoveFromLibrary,
-  onCheckItem
+  onCheckItem,
 }) {
   useEffect(() => {
     onSetCurrentPage('library');
@@ -24,6 +25,7 @@ export default function Library({
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
+  const [filter, setFilter] = useState('');
 
   return (
     <main>
@@ -46,9 +48,12 @@ export default function Library({
         />
       )}
 
+      <Filters filter={filter} onSetFilter={setFilter}></Filters>
+
       <LibraryCards
         currentPage={currentPage}
         library={library}
+        filter={filter}
         onSetItemToBeEdited={onSetItemToBeEdited}
         onSetFormOnScreen={setFormOnScreen}
         onRemoveFromLibrary={onRemoveFromLibrary}

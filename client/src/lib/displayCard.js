@@ -1,3 +1,4 @@
+import { categories } from './categories';
 import bookIcon from '../images/book.svg';
 import cameraIcon from '../images/camera.svg';
 import televisionIcon from '../images/television.svg';
@@ -41,23 +42,10 @@ export function displayCategoryIcon(savedCategory) {
 }
 
 export function displayCategory(savedCategory) {
-  const getText = {
-    book: 'Buch',
-    movie: 'Film',
-    series: 'Serie',
-    music: 'Musik',
-    stage: 'Bühne',
-    exhibition: 'Ausstellung',
-    festival: 'Festival',
-    miscellaneous: 'Sonstiges',
-    noSavedData: ''
-  };
-
-  return getText[savedCategory] ? (
-    <p>{getText[savedCategory]}</p>
-  ) : (
-    getText['noSavedData']
+  const categoryToBeDisplayed = categories.find(
+    (item) => item.name === savedCategory,
   );
+  return categoryToBeDisplayed.text;
 }
 
 export function displayDetails(savedItem) {

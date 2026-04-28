@@ -9,7 +9,7 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.header`
-  background: var(--primary);
+  background: var(--primary-light);
 
   position: fixed;
   top: 0;
@@ -23,6 +23,8 @@ const HeaderStyled = styled.header`
   letter-spacing: 4px;
   color: var(--grey-lightest);
 
-  text-shadow: -2px 2px 0px var(--primary-light), -4px 4px 0px var(--primary),
+  text-shadow:
+    -2px 2px 0px var(--primary-light),
+    -4px 4px 0px var(--primary),
     -6px 6px 0px var(--primary-dark);
 `;
