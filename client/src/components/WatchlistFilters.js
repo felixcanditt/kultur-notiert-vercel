@@ -1,27 +1,43 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-
 import { categories } from '../lib/categories';
+import closeIcon from '../images/close.svg';
 
 export default function WatchlistFilters({ filter, onSetFilter }) {
+  const [showFilters, setShowFilters] = useState(false);
+
+  function toggleFilters() {
+    setShowFilters((prev) => !prev);
+  }
+
   function filterList(selectedFilter) {
     onSetFilter(selectedFilter);
   }
+
   return (
     <FilterContainer>
       <FilterBox>
-        <FilterList>
-          {categories.map((item) => (
-            <li>
-              <FilterButton
-                className={filter === item.name ? 'active' : ''}
-                onClick={() => filterList(item.name)}
-              >
-                {item.text}
-              </FilterButton>
-            </li>
-          ))}
-        </FilterList>
-        <span onClick={() => filterList('')}>Filter entfernen</span>
+        <div onClick={toggleFilters}>
+          <h3>Filter</h3>
+          <PlusButton src={closeIcon} alt="Filter anzeigen"></PlusButton>
+        </div>
+        {showFilters && (
+          <div>
+            <FilterList>
+              {categories.map((item) => (
+                <li>
+                  <FilterButton
+                    className={filter === item.name ? 'active' : ''}
+                    onClick={() => filterList(item.name)}
+                  >
+                    {item.text}
+                  </FilterButton>
+                </li>
+              ))}
+            </FilterList>
+            <span onClick={() => filterList('')}>Filter entfernen</span>
+          </div>
+        )}
       </FilterBox>
     </FilterContainer>
   );
@@ -44,6 +60,11 @@ const FilterBox = styled.div`
       text-decoration: underline;
     }
   }
+`;
+
+const PlusButton = styled.img`
+  cursor: pointer;
+  width: 1rem;
 `;
 
 const FilterList = styled.ul`
