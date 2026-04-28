@@ -40,6 +40,6 @@ const FilterBox = styled.ul`
     border-radius: 8px;
     border-width: 1.5px;
     padding: 2px 6px 3px;
-    background-color: var(--primary-lightest);
+    background-color: var(--grey-lightest);
   }
 `;
