@@ -16,14 +16,18 @@ export default function WatchlistFilters({ filter, onSetFilter }) {
 
   return (
     <FilterContainer>
-      <FilterBox>
-        <div onClick={toggleFilters}>
+      <FilterContent>
+        <FilterHeader onClick={toggleFilters}>
           <h3>Filter</h3>
-          <PlusButton src={closeIcon} alt="Filter anzeigen"></PlusButton>
-        </div>
+          <img
+            src={closeIcon}
+            alt="Filter anzeigen"
+            className={showFilters ? 'showFilters' : ''}
+          ></img>
+        </FilterHeader>
         {showFilters && (
-          <div>
-            <FilterList>
+          <FilterDetails>
+            <ul>
               {categories.map((item) => (
                 <li>
                   <FilterButton
@@ -34,24 +38,50 @@ export default function WatchlistFilters({ filter, onSetFilter }) {
                   </FilterButton>
                 </li>
               ))}
-            </FilterList>
+            </ul>
             <span onClick={() => filterList('')}>Filter entfernen</span>
-          </div>
+          </FilterDetails>
         )}
-      </FilterBox>
+      </FilterContent>
     </FilterContainer>
   );
 }
 
 const FilterContainer = styled.div`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: flex;
   justify-content: center;
 `;
 
-const FilterBox = styled.div`
+const FilterContent = styled.div`
   width: 85vw;
   max-width: 20rem;
+`;
+
+const FilterHeader = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 1rem;
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+
+    &.showFilters {
+      transform: rotate(0deg);
+    }
+  }
+`;
+
+const FilterDetails = styled.div`
+  margin-top: 1rem;
+  ul {
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 
   span {
     cursor: pointer;
@@ -60,20 +90,6 @@ const FilterBox = styled.div`
       text-decoration: underline;
     }
   }
-`;
-
-const PlusButton = styled.img`
-  cursor: pointer;
-  width: 1rem;
-`;
-
-const FilterList = styled.ul`
-  margin-bottom: 0.5rem;
-  width: 85vw;
-  max-width: 20rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 `;
 
 const FilterButton = styled.button`

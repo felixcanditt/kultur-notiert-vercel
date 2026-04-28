@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import WatchlistCard from "./WatchlistCard";
+import WatchlistCard from './WatchlistCard';
 
 export default function WatchlistCards({
   currentPage,
@@ -16,7 +16,7 @@ export default function WatchlistCards({
   function listToBeRendered() {
     const watchlistNewest = watchlist.slice(0, 2);
     let relevantList;
-    currentPage === "watchlist"
+    currentPage === 'watchlist'
       ? filter
         ? (relevantList = filteredList)
         : (relevantList = watchlist)
@@ -41,7 +41,7 @@ export default function WatchlistCards({
 }
 
 const Grid = styled.section`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: grid;
   justify-content: center;
   gap: 3rem;
