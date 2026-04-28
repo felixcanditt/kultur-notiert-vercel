@@ -1,34 +1,34 @@
 export const categories = [
   {
-    name: "book",
-    text: "Buch",
+    name: 'book',
+    text: 'Buch',
   },
   {
-    name: "movie",
-    text: "Film",
+    name: 'movie',
+    text: 'Film',
   },
   {
-    name: "series",
-    text: "Serie",
+    name: 'series',
+    text: 'Serie',
   },
   {
-    name: "music",
-    text: "Musik",
+    name: 'music',
+    text: 'Musik',
   },
   {
-    name: "stage",
-    text: "Bühne",
+    name: 'stage',
+    text: 'Bühne',
   },
   {
-    name: "exhibition",
-    text: "Ausstellung",
+    name: 'exhibition',
+    text: 'Ausstellung',
   },
   {
-    name: "festival",
-    text: "Festival",
+    name: 'festival',
+    text: 'Festival',
   },
   {
-    name: "miscellaneous",
-    text: "Sonstiges",
+    name: 'miscellaneous',
+    text: 'Sonstiges',
   },
 ];

@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import WatchlistFormOptions from "./WatchlistFormOptions";
-import { categories } from "../lib/categories";
-import closeIcon from "../images/close.svg";
+import WatchlistFormOptions from './WatchlistFormOptions';
+import { categories } from '../lib/categories';
+import closeIcon from '../images/close.svg';
 
 export default function WatchlistForm({
   onSetFormOnScreen,
@@ -14,14 +14,14 @@ export default function WatchlistForm({
   onEditWatchlist,
 }) {
   const initialFormItem = {
-    title: "",
-    id: "",
-    category: "",
-    author: "",
-    director: "",
-    creator: "",
-    location: "",
-    time: "",
+    title: '',
+    id: '',
+    category: '',
+    author: '',
+    director: '',
+    creator: '',
+    location: '',
+    time: '',
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
@@ -44,11 +44,11 @@ export default function WatchlistForm({
       title: formItem.title,
       id: formItem.id,
       category: selectedCategory,
-      author: "",
-      director: "",
-      creator: "",
-      location: "",
-      time: "",
+      author: '',
+      director: '',
+      creator: '',
+      location: '',
+      time: '',
     };
 
     setFormItem(itemWithCategory);
@@ -80,7 +80,7 @@ export default function WatchlistForm({
   }
 
   function handleKeyDown(event) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleFormSubmission(event);
     }
   }
@@ -93,7 +93,7 @@ export default function WatchlistForm({
           alt="Fenster schliessen"
           onClick={handleFormCancelation}
         ></CloseButton>
-        <h3>{itemToBeEdited ? "Eintrag bearbeiten" : "Eintrag hinzufügen"}</h3>
+        <h3>{itemToBeEdited ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}</h3>
 
         <label>
           <span>Titel</span>
