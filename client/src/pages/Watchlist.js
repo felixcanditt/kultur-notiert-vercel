@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm';
-import WatchlistFilters from '../components/WatchlistFilters';
+import Filters from '../components/Filters';
 import WatchlistCards from '../components/WatchlistCards';
 
 import plusIcon from '../images/plus.svg';
@@ -48,10 +48,7 @@ export default function Watchlist({
         />
       )}
 
-      <WatchlistFilters
-        filter={filter}
-        onSetFilter={setFilter}
-      ></WatchlistFilters>
+      <Filters filter={filter} onSetFilter={setFilter}></Filters>
 
       <WatchlistCards
         currentPage={currentPage}

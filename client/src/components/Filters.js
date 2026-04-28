@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { categories } from '../lib/categories';
 import closeIcon from '../images/close.svg';
 
-export default function WatchlistFilters({ filter, onSetFilter }) {
+export default function Filters({ filter, onSetFilter }) {
   const [showFilters, setShowFilters] = useState(false);
 
   function toggleFilters() {
@@ -28,7 +28,7 @@ export default function WatchlistFilters({ filter, onSetFilter }) {
           <FilterDetails>
             <ul>
               {categories.map((item) => (
-                <li>
+                <li key={item.name}>
                   <FilterButton
                     className={filter === item.name ? 'active' : ''}
                     onClick={() => filterList(item.name)}
@@ -64,13 +64,12 @@ const FilterHeader = styled.div`
   cursor: pointer;
   border: 1.5px black solid;
   border-radius: 8px;
+  background-color: var(--grey-lightest);
   padding: 2px 6px 3px;
   display: flex;
   gap: 1rem;
 
   &.showFilters {
-    background-color: var(--primary-light) !important;
-
     img {
       transform: rotate(0deg);
     }

@@ -5,16 +5,21 @@ import LibraryCard from './LibraryCard';
 export default function LibraryCards({
   currentPage,
   library,
+  filter,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   onRemoveFromLibrary,
-  onCheckItem
+  onCheckItem,
 }) {
+  const filteredList = library.filter((item) => item.category === filter);
+
   function listToBeRendered() {
     const libraryNewest = library.slice(0, 2);
     let relevantList;
     currentPage === 'library'
-      ? (relevantList = library)
+      ? filter
+        ? (relevantList = filteredList)
+        : (relevantList = library)
       : (relevantList = libraryNewest);
     return relevantList;
   }
