@@ -36,6 +36,14 @@ const FilterContainer = styled.div`
 const FilterBox = styled.div`
   width: 85vw;
   max-width: 20rem;
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const FilterList = styled.ul`
@@ -55,6 +63,10 @@ const FilterButton = styled.button`
   background-color: var(--grey-lightest);
 
   &.active {
-    background-color: var(--primary-light);
+    background-color: var(--primary-light) !important;
+  }
+
+  &:hover {
+    background-color: var(--grey-light);
   }
 `;
