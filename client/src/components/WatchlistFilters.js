@@ -34,4 +34,12 @@ const FilterBox = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+
+  button {
+    cursor: pointer;
+    border-radius: 8px;
+    border-width: 1.5px;
+    padding: 2px 6px 3px;
+    background-color: var(--primary-lightest);
+  }
 `;
