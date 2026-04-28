@@ -17,13 +17,12 @@ export default function WatchlistFilters({ filter, onSetFilter }) {
   return (
     <FilterContainer>
       <FilterContent>
-        <FilterHeader onClick={toggleFilters}>
-          <h3>Filter</h3>
-          <img
-            src={closeIcon}
-            alt="Filter anzeigen"
-            className={showFilters ? 'showFilters' : ''}
-          ></img>
+        <FilterHeader
+          onClick={toggleFilters}
+          className={showFilters ? 'showFilters' : ''}
+        >
+          <h4>Filter</h4>
+          <img src={closeIcon} alt="Filter anzeigen"></img>
         </FilterHeader>
         {showFilters && (
           <FilterDetails>
@@ -56,21 +55,35 @@ const FilterContainer = styled.div`
 const FilterContent = styled.div`
   width: 85vw;
   max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 `;
 
 const FilterHeader = styled.div`
   cursor: pointer;
+  border: 1.5px black solid;
+  border-radius: 8px;
+  padding: 2px 6px 3px;
   display: flex;
   gap: 1rem;
+
+  &.showFilters {
+    background-color: var(--primary-light) !important;
+
+    img {
+      transform: rotate(0deg);
+    }
+  }
+
+  &:hover {
+    background-color: var(--grey-light);
+  }
 
   img {
     width: 1rem;
     transition: transform 0.3s ease;
     transform: rotate(-45deg);
-
-    &.showFilters {
-      transform: rotate(0deg);
-    }
   }
 `;
 
