@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 
 import WatchlistCardDetails from './WatchlistCardDetails';
@@ -11,8 +13,10 @@ export default function WatchlistCard({
   onCheckItem,
   onSetItemToBeEdited,
   onSetFormOnScreen,
-  onRemoveFromWatchlist
+  onRemoveFromWatchlist,
 }) {
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+
   function handleClickOnEdit(clickedItem) {
     onSetItemToBeEdited(clickedItem);
     onSetFormOnScreen(true);
@@ -38,9 +42,16 @@ export default function WatchlistCard({
         <img
           src={removeIcon}
           alt="Eintrag entfernen"
-          onClick={() => onRemoveFromWatchlist(item)}
+          onClick={() => setShowConfirmDelete(true)}
         />
       </Buttons>
+      {showConfirmDelete && (
+        <ConfirmDelete>
+          <p>Willst du diesen Eintrag löschen?</p>
+          <button onClick={() => onRemoveFromWatchlist(item)}>Ja</button>
+          <button onClick={() => setShowConfirmDelete(false)}>Nein</button>
+        </ConfirmDelete>
+      )}
     </Card>
   );
 }
@@ -49,7 +60,8 @@ const Card = styled.article`
   width: 85vw;
   max-width: 20rem;
 
-  box-shadow: var(--grey-light) 0px 12.5px 25px -5px,
+  box-shadow:
+    var(--grey-light) 0px 12.5px 25px -5px,
     var(--secondary-darkest) 0px 7.5px 15px -7.5px,
     var(--grey-light) 0px -2px 6px 0px inset;
 
@@ -73,5 +85,27 @@ const Buttons = styled.div`
   img {
     cursor: pointer;
     width: 2.1rem;
+  }
+`;
+
+const ConfirmDelete = styled.div`
+  margin-top: 1rem;
+
+  button {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    border-width: 1.5px;
+    padding: 2px 6px 3px;
+    background-color: var(--grey-lightest);
+
+    &.active {
+      background-color: var(--primary-light) !important;
+    }
+
+    &:hover {
+      background-color: var(--grey-light);
+    }
   }
 `;
