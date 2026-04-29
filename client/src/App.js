@@ -12,11 +12,11 @@ import { updateLocalStorage, loadFromLocalStorage } from './lib/localStorage';
 
 export default function App() {
   const [watchlist, setWatchlist] = useState(
-    loadFromLocalStorage('kulturNotiertWatchlist') ?? []
+    loadFromLocalStorage('kulturNotiertWatchlist') ?? [],
   );
 
   const [library, setLibrary] = useState(
-    loadFromLocalStorage('kulturNotiertLibrary') ?? []
+    loadFromLocalStorage('kulturNotiertLibrary') ?? [],
   );
 
   const [itemToBeEdited, setItemToBeEdited] = useState('');
@@ -37,7 +37,7 @@ export default function App() {
 
   function editWatchlist(editedItem) {
     const updatedWatchlist = watchlist.filter(
-      (item) => item.id !== editedItem.id
+      (item) => item.id !== editedItem.id,
     );
     setWatchlist([editedItem, ...updatedWatchlist]);
     setItemToBeEdited();
@@ -45,7 +45,7 @@ export default function App() {
 
   function removeFromWatchlist(itemToBeRemoved) {
     const updatedWatchlist = watchlist.filter(
-      (item) => item.id !== itemToBeRemoved.id
+      (item) => item.id !== itemToBeRemoved.id,
     );
     setWatchlist(updatedWatchlist);
   }
@@ -58,7 +58,7 @@ export default function App() {
     if (watchlist.find((item) => item.id === checkedItem.id)) {
       const checkedItemWithRating = {
         ...checkedItem,
-        rating: currentRating()
+        rating: currentRating(),
       };
       setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);
@@ -80,7 +80,7 @@ export default function App() {
 
   function removeFromLibrary(itemToBeRemoved) {
     const updatedLibrary = library.filter(
-      (item) => item.id !== itemToBeRemoved.id
+      (item) => item.id !== itemToBeRemoved.id,
     );
     setLibrary(updatedLibrary);
   }
@@ -97,8 +97,10 @@ export default function App() {
             watchlist={watchlist}
             library={library}
             onCheckItem={checkItem}
+            onAddToWatchlist={addToWatchlist}
             onEditWatchlist={editWatchlist}
             onRemoveFromWatchlist={removeFromWatchlist}
+            onAddToLibrary={addToLibrary}
             onEditLibrary={editLibrary}
             onRemoveFromLibrary={removeFromLibrary}
             onSetItemToBeEdited={setItemToBeEdited}

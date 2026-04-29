@@ -10,12 +10,14 @@ export default function Home({
   watchlist,
   library,
   onCheckItem,
+  onAddToWatchlist,
   onEditWatchlist,
   onRemoveFromWatchlist,
+  onAddToLibrary,
   onEditLibrary,
   onRemoveFromLibrary,
   onSetItemToBeEdited,
-  itemToBeEdited
+  itemToBeEdited,
 }) {
   useEffect(() => {
     onSetCurrentPage('home');
@@ -65,6 +67,7 @@ export default function Home({
         {formToBeShown === 'watchlist' && (
           <WatchlistForm
             onSetFormOnScreen={setFormOnScreen}
+            onAddToWatchlist={onAddToWatchlist}
             itemToBeEdited={itemToBeEdited}
             onSetItemToBeEdited={onSetItemToBeEdited}
             onEditWatchlist={onEditWatchlist}
@@ -73,6 +76,7 @@ export default function Home({
         {formToBeShown === 'library' && (
           <LibraryForm
             onSetFormOnScreen={setFormOnScreen}
+            onAddToLibrary={onAddToLibrary}
             itemToBeEdited={itemToBeEdited}
             onSetItemToBeEdited={onSetItemToBeEdited}
             onEditLibrary={onEditLibrary}
