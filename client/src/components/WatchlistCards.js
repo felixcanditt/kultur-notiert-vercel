@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import WatchlistCard from './WatchlistCard';
 import Card from './Card';
 
 export default function WatchlistCards({

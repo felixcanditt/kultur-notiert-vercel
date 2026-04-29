@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import LibraryCard from './LibraryCard';
 import Card from './Card';
 
 export default function LibraryCards({
