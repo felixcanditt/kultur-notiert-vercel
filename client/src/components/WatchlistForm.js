@@ -114,7 +114,9 @@ export default function WatchlistForm({
           >
             <option value=""></option>
             {categories.map((category) => (
-              <option value={category.name}>{category.text}</option>
+              <option key={category.name} value={category.name}>
+                {category.text}
+              </option>
             ))}
           </select>
         </label>
