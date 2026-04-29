@@ -1,39 +1,24 @@
 import { useState } from 'react';
-
 import styled from 'styled-components';
 
-import CardCategory from './CardCategory';
-
-import starIcon from '../images/star.svg';
-import arrowDownIcon from '../images/arrow-down.svg';
-import arrowUpIcon from '../images/arrow-up.svg';
-import checkmarkIcon from '../images/checkmark-checked.svg';
+import uncheckedIcon from '../images/checkmark-unchecked.svg';
+import checkedIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 
-export default function LibraryCard({
+import CardCategory from './CardCategory';
+import { displayWatchlistDetails } from '../lib/displayCard';
+import LibraryCardDetails from './LibraryCardDetails';
+
+export default function Card({
+  cardType,
   item,
   onCheckItem,
   onSetItemToBeEdited,
   onSetFormOnScreen,
-  onRemoveFromLibrary,
+  deleteItem,
 }) {
-  const [notesOnScreen, setNotesOnScreen] = useState(false);
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
-
-  function displayStar(positionOfClickedStar) {
-    return (
-      <img
-        src={starIcon}
-        alt="Eintrag mit Sternen bewerten"
-        style={
-          item.rating >= positionOfClickedStar
-            ? { opacity: '100%' }
-            : { opacity: '25%' }
-        }
-      />
-    );
-  }
 
   function handleClickOnEdit(clickedItem) {
     onSetItemToBeEdited(clickedItem);
@@ -41,37 +26,18 @@ export default function LibraryCard({
   }
 
   return (
-    <Card>
+    <ListItem>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
       {item.category && <CardCategory item={item} />}
 
-      {item.rating !== 0 && (
-        <Stars>
-          {displayStar(1)}
-          {displayStar(2)}
-          {displayStar(3)}
-          {displayStar(4)}
-          {displayStar(5)}
-        </Stars>
-      )}
+      {cardType === 'watchlist' && displayWatchlistDetails(item)}
 
-      {item.notes && (
-        <ShowNotesButton>
-          <img
-            src={notesOnScreen ? arrowUpIcon : arrowDownIcon}
-            alt="Meine Notizen anzeigen"
-            onClick={() => setNotesOnScreen(!notesOnScreen)}
-          />
-          <span>Meine Notizen</span>
-        </ShowNotesButton>
-      )}
-
-      {item.notes && notesOnScreen && <p>{item.notes}</p>}
+      {cardType === 'library' && <LibraryCardDetails item={item} />}
 
       <Buttons>
         <img
-          src={checkmarkIcon}
+          src={cardType === 'watchlist' ? uncheckedIcon : checkedIcon}
           alt="Haekchen setzen"
           onClick={() => onCheckItem(item)}
         />
@@ -92,15 +58,15 @@ export default function LibraryCard({
       {showConfirmDelete && (
         <ConfirmDelete>
           <p>Willst du diesen Eintrag löschen?</p>
-          <button onClick={() => onRemoveFromLibrary(item)}>Ja</button>
+          <button onClick={() => deleteItem(item)}>Ja</button>
           <button onClick={() => setShowConfirmDelete(false)}>Nein</button>
         </ConfirmDelete>
       )}
-    </Card>
+    </ListItem>
   );
 }
 
-const Card = styled.article`
+const ListItem = styled.div`
   width: 85vw;
   max-width: 20rem;
 
@@ -118,28 +84,6 @@ const Card = styled.article`
 
   h4 {
     margin-bottom: 0.7rem;
-  }
-`;
-
-const Stars = styled.div`
-  margin: 0.2rem 0 1.1rem 0;
-  display: flex;
-  gap: 1rem;
-
-  img {
-    width: 2.2rem;
-  }
-`;
-
-const ShowNotesButton = styled.div`
-  margin: 0.4rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-
-  img {
-    cursor: pointer;
-    width: 2rem;
   }
 `;
 
