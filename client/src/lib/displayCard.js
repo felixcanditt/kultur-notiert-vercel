@@ -48,7 +48,7 @@ export function displayCategory(savedCategory) {
   return categoryToBeDisplayed.text;
 }
 
-export function displayDetails(savedItem) {
+export function displayWatchlistDetails(savedItem) {
   if (savedItem.category === 'book') {
     return <>{savedItem.author && <p>von {savedItem.author}</p>}</>;
   } else if (savedItem.category === 'movie') {
