@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import WatchlistCard from './WatchlistCard';
+import Card from './Card';
 
 export default function WatchlistCards({
   currentPage,
@@ -27,11 +28,12 @@ export default function WatchlistCards({
   return (
     <Grid>
       {listToBeRendered().map((item) => (
-        <WatchlistCard
+        <Card
           key={item.id}
+          cardType="watchlist"
           item={item}
           onSetItemToBeEdited={onSetItemToBeEdited}
-          onRemoveFromWatchlist={onRemoveFromWatchlist}
+          deleteItem={onRemoveFromWatchlist}
           onCheckItem={onCheckItem}
           onSetFormOnScreen={onSetFormOnScreen}
         />

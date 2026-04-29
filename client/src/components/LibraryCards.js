@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import LibraryCard from './LibraryCard';
+import Card from './Card';
 
 export default function LibraryCards({
   currentPage,
@@ -27,11 +28,12 @@ export default function LibraryCards({
   return (
     <Grid>
       {listToBeRendered().map((item) => (
-        <LibraryCard
+        <Card
           key={item.id}
+          cardType="library"
           item={item}
           onSetItemToBeEdited={onSetItemToBeEdited}
-          onRemoveFromLibrary={onRemoveFromLibrary}
+          deleteItem={onRemoveFromLibrary}
           onCheckItem={onCheckItem}
           onSetFormOnScreen={onSetFormOnScreen}
         />

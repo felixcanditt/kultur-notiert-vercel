@@ -1,17 +1,22 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import CardCategory from './CardCategory';
-
-import checkmarkIcon from '../images/checkmark-unchecked.svg';
+import uncheckedIcon from '../images/checkmark-unchecked.svg';
+import checkedIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 
+import CardCategory from './CardCategory';
+import { displayWatchlistDetails } from '../lib/displayCard';
+import LibraryCardDetails from './LibraryCardDetails';
+
 export default function Card({
+  cardType,
   item,
   onCheckItem,
   onSetItemToBeEdited,
   onSetFormOnScreen,
+  deleteItem,
 }) {
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
@@ -21,14 +26,18 @@ export default function Card({
   }
 
   return (
-    <Card>
+    <ListItem>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
       {item.category && <CardCategory item={item} />}
 
+      {cardType === 'watchlist' && displayWatchlistDetails(item)}
+
+      {cardType === 'library' && <LibraryCardDetails item={item} />}
+
       <Buttons>
         <img
-          src={checkmarkIcon}
+          src={cardType === 'watchlist' ? uncheckedIcon : checkedIcon}
           alt="Haekchen setzen"
           onClick={() => onCheckItem(item)}
         />
@@ -49,15 +58,15 @@ export default function Card({
       {showConfirmDelete && (
         <ConfirmDelete>
           <p>Willst du diesen Eintrag löschen?</p>
-          <button onClick={() => onRemoveFromWatchlist(item)}>Ja</button>
+          <button onClick={() => deleteItem(item)}>Ja</button>
           <button onClick={() => setShowConfirmDelete(false)}>Nein</button>
         </ConfirmDelete>
       )}
-    </Card>
+    </ListItem>
   );
 }
 
-const Card = styled.div`
+const ListItem = styled.div`
   width: 85vw;
   max-width: 20rem;
 
