@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import { LibraryItem } from '../lib/types';
+
 import starIcon from '../images/star.svg';
 import arrowDownIcon from '../images/arrow-down.svg';
 import arrowUpIcon from '../images/arrow-up.svg';
 
-export default function LibraryCardDetails({ item }) {
+type Props = {
+  item: LibraryItem;
+};
+export default function LibraryCardDetails({ item }: Props) {
   const [notesOnScreen, setNotesOnScreen] = useState(false);
 
-  function displayStar(positionOfClickedStar) {
+  function displayStar(positionOfClickedStar: number) {
     return (
       <img
         src={starIcon}

@@ -8,7 +8,7 @@ import removeIcon from '../images/remove.svg';
 
 import CardCategory from './CardCategory.tsx';
 import { displayWatchlistDetails } from '../lib/displayCard';
-import LibraryCardDetails from './LibraryCardDetails';
+import LibraryCardDetails from './LibraryCardDetails.tsx';
 
 export default function Card({
   cardType,
