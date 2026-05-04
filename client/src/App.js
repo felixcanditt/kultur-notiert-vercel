@@ -6,7 +6,7 @@ import Watchlist from './pages/Watchlist';
 import Library from './pages/Library';
 
 import Header from './components/Header.tsx';
-import Footer from './components/Footer';
+import Footer from './components/Footer.tsx';
 
 import { updateLocalStorage, loadFromLocalStorage } from './lib/localStorage';
 
