@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
+import { CategoryName } from '../lib/types';
 import { displayCategoryIcon, displayCategory } from '../lib/displayCard';
 
-export default function CardCategory({ item }) {
+type Props = {
+  category: CategoryName;
+};
+
+export default function CardCategory({ category }: Props) {
   return (
     <CategoryContainer>
       <CategoryPill>
-        {displayCategoryIcon(item.category)}
-        <span>{displayCategory(item.category)}</span>
+        {displayCategoryIcon(category)}
+        <span>{displayCategory(category)}</span>
       </CategoryPill>
     </CategoryContainer>
   );

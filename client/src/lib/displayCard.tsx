@@ -1,3 +1,4 @@
+import { CategoryName, WatchlistItem } from './types';
 import { categories } from './categories';
 import bookIcon from '../images/book.svg';
 import cameraIcon from '../images/camera.svg';
@@ -8,7 +9,7 @@ import venusIcon from '../images/venus-de-milo.svg';
 import confettiIcon from '../images/confetti.svg';
 import maskIcon from '../images/mask.svg';
 
-export function displayCategoryIcon(savedCategory) {
+export function displayCategoryIcon(savedCategory: CategoryName) {
   let categoryIcon;
   let categoryAlt;
 
@@ -41,14 +42,19 @@ export function displayCategoryIcon(savedCategory) {
   return <img src={categoryIcon} alt={categoryAlt} />;
 }
 
-export function displayCategory(savedCategory) {
+export function displayCategory(savedCategory: CategoryName) {
   const categoryToBeDisplayed = categories.find(
     (item) => item.name === savedCategory,
   );
+
+  if (!categoryToBeDisplayed) {
+    return 'Unbekannt';
+  }
+
   return categoryToBeDisplayed.text;
 }
 
-export function displayWatchlistDetails(savedItem) {
+export function displayWatchlistDetails(savedItem: WatchlistItem) {
   if (savedItem.category === 'book') {
     return <>{savedItem.author && <p>von {savedItem.author}</p>}</>;
   } else if (savedItem.category === 'movie') {
@@ -65,7 +71,7 @@ export function displayWatchlistDetails(savedItem) {
   } else if (savedItem.category === 'music' || 'miscellaneous') {
     return (
       <>
-        {savedItem.musicBy ? <p>von {savedItem.creator}</p> : ''}
+        {savedItem.creator ? <p>von {savedItem.creator}</p> : ''}
         {savedItem.location ? <p>Wo? {savedItem.location}</p> : ''}
         {savedItem.time ? <p>Wann? {savedItem.time}</p> : ''}
       </>

@@ -6,7 +6,7 @@ import checkedIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 
-import CardCategory from './CardCategory';
+import CardCategory from './CardCategory.tsx';
 import { displayWatchlistDetails } from '../lib/displayCard';
 import LibraryCardDetails from './LibraryCardDetails';
 
@@ -29,7 +29,7 @@ export default function Card({
     <ListItem>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
-      {item.category && <CardCategory item={item} />}
+      {item.category && <CardCategory category={item.category} />}
 
       {cardType === 'watchlist' && displayWatchlistDetails(item)}
 
