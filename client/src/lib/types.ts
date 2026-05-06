@@ -1,3 +1,5 @@
+export type CurrentPage = 'home' | 'library' | 'watchlist';
+
 export type CategoryName =
   | 'book'
   | 'movie'

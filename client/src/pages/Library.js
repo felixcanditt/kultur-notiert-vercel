@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import LibraryForm from '../components/LibraryForm.tsx';
 import Filters from '../components/Filters';
-import LibraryCards from '../components/LibraryCards';
+import LibraryCards from '../components/LibraryCards.tsx';
 
 import plusIcon from '../images/plus.svg';
 

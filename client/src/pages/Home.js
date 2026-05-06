@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import WatchlistCards from '../components/WatchlistCards';
-import LibraryCards from '../components/LibraryCards';
+import LibraryCards from '../components/LibraryCards.tsx';
 import WatchlistForm from '../components/WatchlistForm';
 import LibraryForm from '../components/LibraryForm.tsx';
 

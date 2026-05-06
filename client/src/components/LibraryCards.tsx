@@ -1,6 +1,18 @@
 import styled from 'styled-components';
+import Card from './Card';
+import { CurrentPage, ListItem, CategoryName } from '../lib/types';
 
-import Card from './Card.tsx';
+type Props = {
+  item: ListItem;
+  deleteItem: (value: ListItem) => void;
+  onCheckItem: (value: ListItem) => void;
+  onSetItemToBeEdited: (value: ListItem) => void;
+  onSetFormOnScreen: (value: boolean) => void;
+  currentPage: CurrentPage;
+  library: ListItem[];
+  onRemoveFromLibrary: (value: ListItem) => void;
+  filter: CategoryName;
+};
 
 export default function LibraryCards({
   currentPage,
@@ -10,7 +22,7 @@ export default function LibraryCards({
   onSetFormOnScreen,
   onRemoveFromLibrary,
   onCheckItem,
-}) {
+}: Props) {
   const filteredList = library.filter((item) => item.category === filter);
 
   function listToBeRendered() {
