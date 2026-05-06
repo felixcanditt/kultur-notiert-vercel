@@ -3,8 +3,17 @@ import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import WatchlistFormOptions from './WatchlistFormOptions';
+import { ListItem, CategoryName } from '../lib/types';
 import { categories } from '../lib/categories';
 import closeIcon from '../images/close.svg';
+
+type Props = {
+  onSetFormOnScreen: (value: boolean) => void;
+  onAddToWatchlist: (value: ListItem) => void;
+  onEditWatchlist: (value: ListItem) => void;
+  itemToBeEdited: ListItem;
+  onSetItemToBeEdited: (value: null) => void;
+};
 
 export default function WatchlistForm({
   onSetFormOnScreen,
@@ -12,11 +21,11 @@ export default function WatchlistForm({
   itemToBeEdited,
   onSetItemToBeEdited,
   onEditWatchlist,
-}) {
+}: Props) {
   const initialFormItem = {
     title: '',
     id: '',
-    category: '',
+    category: undefined,
     author: '',
     director: '',
     creator: '',
@@ -24,7 +33,7 @@ export default function WatchlistForm({
     time: '',
   };
 
-  const [formItem, setFormItem] = useState(initialFormItem);
+  const [formItem, setFormItem] = useState<ListItem>(initialFormItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
@@ -32,14 +41,18 @@ export default function WatchlistForm({
     }
   }, [itemToBeEdited]);
 
-  function updateFormItem(event) {
+  function updateFormItem(
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
-  function selectCategory(event) {
-    const selectedCategory = event.target.value;
+  function selectCategory(event: React.ChangeEvent<HTMLSelectElement>) {
+    const selectedCategory = event.target.value as CategoryName;
 
     const itemWithCategory = {
       title: formItem.title,
@@ -55,7 +68,7 @@ export default function WatchlistForm({
     setFormItem(itemWithCategory);
   }
 
-  function handleFormSubmission(event) {
+  function handleFormSubmission(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     itemToBeEdited
       ? onEditWatchlist({ ...formItem, listType: 'watchlist' })
@@ -64,10 +77,10 @@ export default function WatchlistForm({
     onSetFormOnScreen(false);
   }
 
-  function handleFormCancelation(event) {
+  function handleFormCancelation(event: React.MouseEvent<HTMLImageElement>) {
     event.preventDefault();
     if (itemToBeEdited) {
-      onSetItemToBeEdited();
+      onSetItemToBeEdited(null);
     }
     setFormItem(initialFormItem);
     onSetFormOnScreen(false);
@@ -75,12 +88,12 @@ export default function WatchlistForm({
 
   function handleFormReset() {
     if (itemToBeEdited) {
-      onSetItemToBeEdited();
+      onSetItemToBeEdited(null);
     }
     setFormItem(initialFormItem);
   }
 
-  function handleKeyDown(event) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLFormElement>) {
     if (event.key === 'Enter') {
       handleFormSubmission(event);
     }

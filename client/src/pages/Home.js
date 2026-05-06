@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import WatchlistCards from '../components/WatchlistCards';
+import WatchlistCards from '../components/WatchlistCards.tsx';
 import LibraryCards from '../components/LibraryCards.tsx';
-import WatchlistForm from '../components/WatchlistForm';
+import WatchlistForm from '../components/WatchlistForm.tsx';
 import LibraryForm from '../components/LibraryForm.tsx';
 
 export default function Home({
