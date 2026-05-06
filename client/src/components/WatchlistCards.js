@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Card from './Card';
+import Card from './Card.tsx';
 
 export default function WatchlistCards({
   currentPage,
@@ -29,7 +29,6 @@ export default function WatchlistCards({
       {listToBeRendered().map((item) => (
         <Card
           key={item.id}
-          cardType="watchlist"
           item={item}
           onSetItemToBeEdited={onSetItemToBeEdited}
           deleteItem={onRemoveFromWatchlist}

@@ -25,6 +25,7 @@ export default function WatchlistForm({
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
+
   useEffect(() => {
     if (itemToBeEdited) {
       setFormItem(itemToBeEdited);
@@ -57,8 +58,8 @@ export default function WatchlistForm({
   function handleFormSubmission(event) {
     event.preventDefault();
     itemToBeEdited
-      ? onEditWatchlist(formItem)
-      : onAddToWatchlist({ ...formItem, id: uuidv4() });
+      ? onEditWatchlist({ ...formItem, listType: 'watchlist' })
+      : onAddToWatchlist({ ...formItem, id: uuidv4(), listType: 'watchlist' });
     setFormItem(initialFormItem);
     onSetFormOnScreen(false);
   }

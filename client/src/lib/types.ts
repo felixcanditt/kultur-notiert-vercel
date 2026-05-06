@@ -24,6 +24,7 @@ export interface Category {
 export interface ListItem {
   title: string;
   id: string;
+  listType?: 'watchlist' | 'library';
   category?: CategoryName;
 
   author?: string;

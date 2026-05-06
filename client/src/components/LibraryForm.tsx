@@ -29,6 +29,7 @@ export default function LibraryForm({
     category: undefined,
     rating: 0,
     notes: '',
+    listType: undefined,
   };
 
   const [formItem, setFormItem] = useState<ListItem>(initialFormItem);
@@ -52,8 +53,8 @@ export default function LibraryForm({
   function handleFormSubmission(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     itemToBeEdited
-      ? onEditLibrary(formItem)
-      : onAddToLibrary({ ...formItem, id: uuidv4() });
+      ? onEditLibrary({ ...formItem, listType: 'library' })
+      : onAddToLibrary({ ...formItem, id: uuidv4(), listType: 'library' });
     setFormItem(initialFormItem);
     onSetFormOnScreen(false);
   }

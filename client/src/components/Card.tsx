@@ -6,38 +6,46 @@ import checkedIcon from '../images/checkmark-checked.svg';
 import pencilIcon from '../images/pencil.svg';
 import removeIcon from '../images/remove.svg';
 
-import CardCategory from './CardCategory.tsx';
+import CardCategory from './CardCategory';
 import { displayWatchlistDetails } from '../lib/displayCard';
-import LibraryCardDetails from './LibraryCardDetails.tsx';
+import LibraryCardDetails from './LibraryCardDetails';
+import { ListItem } from '../lib/types';
+
+type Props = {
+  item: ListItem;
+  deleteItem: (value: ListItem) => void;
+  onCheckItem: (value: ListItem) => void;
+  onSetItemToBeEdited: (value: ListItem) => void;
+  onSetFormOnScreen: (value: boolean) => void;
+};
 
 export default function Card({
-  cardType,
   item,
   onCheckItem,
   onSetItemToBeEdited,
   onSetFormOnScreen,
   deleteItem,
-}) {
+}: Props) {
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
-  function handleClickOnEdit(clickedItem) {
+  function handleClickOnEdit(clickedItem: ListItem) {
     onSetItemToBeEdited(clickedItem);
     onSetFormOnScreen(true);
   }
 
   return (
-    <ListItem>
+    <StyledCard>
       {item.title ? <h4>{item.title}</h4> : <h4>Ohne Titel</h4>}
 
       {item.category && <CardCategory category={item.category} />}
 
-      {cardType === 'watchlist' && displayWatchlistDetails(item)}
+      {item.listType === 'watchlist' && displayWatchlistDetails(item)}
 
-      {cardType === 'library' && <LibraryCardDetails item={item} />}
+      {item.listType === 'library' && <LibraryCardDetails item={item} />}
 
       <Buttons>
         <img
-          src={cardType === 'watchlist' ? uncheckedIcon : checkedIcon}
+          src={item.listType === 'watchlist' ? uncheckedIcon : checkedIcon}
           alt="Haekchen setzen"
           onClick={() => onCheckItem(item)}
         />
@@ -62,11 +70,11 @@ export default function Card({
           <button onClick={() => setShowConfirmDelete(false)}>Nein</button>
         </ConfirmDelete>
       )}
-    </ListItem>
+    </StyledCard>
   );
 }
 
-const ListItem = styled.div`
+const StyledCard = styled.div`
   width: 85vw;
   max-width: 20rem;
 
