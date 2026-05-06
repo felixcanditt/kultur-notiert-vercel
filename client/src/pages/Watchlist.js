@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import WatchlistForm from '../components/WatchlistForm.tsx';
-import Filters from '../components/Filters';
+import Filters from '../components/Filters.tsx';
 import WatchlistCards from '../components/WatchlistCards.tsx';
 
 import plusIcon from '../images/plus.svg';

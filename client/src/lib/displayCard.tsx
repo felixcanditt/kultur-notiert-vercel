@@ -1,4 +1,4 @@
-import { CategoryName, WatchlistItem } from './types';
+import { CategoryName, ListItem } from './types';
 import { categories } from './categories';
 import bookIcon from '../images/book.svg';
 import cameraIcon from '../images/camera.svg';
@@ -54,7 +54,7 @@ export function displayCategory(savedCategory: CategoryName) {
   return categoryToBeDisplayed.text;
 }
 
-export function displayWatchlistDetails(savedItem: WatchlistItem) {
+export function displayWatchlistDetails(savedItem: ListItem) {
   if (savedItem.category === 'book') {
     return <>{savedItem.author && <p>von {savedItem.author}</p>}</>;
   } else if (savedItem.category === 'movie') {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LibraryForm from '../components/LibraryForm.tsx';
-import Filters from '../components/Filters';
+import Filters from '../components/Filters.tsx';
 import LibraryCards from '../components/LibraryCards.tsx';
 
 import plusIcon from '../images/plus.svg';

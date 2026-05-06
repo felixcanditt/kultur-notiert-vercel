@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { categories } from '../lib/categories';
+import { CategoryName } from '../lib/types';
 import closeIcon from '../images/close.svg';
 
-export default function Filters({ filter, onSetFilter }) {
+type Props = {
+  filter: CategoryName;
+  onSetFilter: (value: CategoryName | undefined) => void;
+};
+
+export default function Filters({ filter, onSetFilter }: Props) {
   const [showFilters, setShowFilters] = useState(false);
 
   function toggleFilters() {
     setShowFilters((prev) => !prev);
   }
 
-  function filterList(selectedFilter) {
+  function filterList(selectedFilter: CategoryName | undefined) {
     onSetFilter(selectedFilter);
   }
 
@@ -38,7 +44,7 @@ export default function Filters({ filter, onSetFilter }) {
                 </li>
               ))}
             </ul>
-            <span onClick={() => filterList('')}>Filter entfernen</span>
+            <span onClick={() => filterList(undefined)}>Filter entfernen</span>
           </FilterDetails>
         )}
       </FilterContent>

@@ -5,7 +5,10 @@ type Props = {
   onUpdateFormItem: (value: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function InputOptions({ formItem, onUpdateFormItem }: Props) {
+export default function WatchlistFormOptions({
+  formItem,
+  onUpdateFormItem,
+}: Props) {
   function renderOptions() {
     if (formItem.category === 'book') {
       return (
