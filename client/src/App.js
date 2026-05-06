@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import Home from './pages/Home';
+import Home from './pages/Home.tsx';
 import Watchlist from './pages/Watchlist.tsx';
 import Library from './pages/Library.tsx';
 

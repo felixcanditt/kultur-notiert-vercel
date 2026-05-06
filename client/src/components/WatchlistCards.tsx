@@ -9,7 +9,7 @@ type Props = {
   currentPage: CurrentPage;
   watchlist: ListItem[];
   onRemoveFromWatchlist: (value: ListItem) => void;
-  filter: CategoryName | null;
+  filter?: CategoryName | null;
 };
 
 export default function WatchlistCards({

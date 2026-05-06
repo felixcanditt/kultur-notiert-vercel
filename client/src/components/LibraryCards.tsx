@@ -9,7 +9,7 @@ type Props = {
   currentPage: CurrentPage;
   library: ListItem[];
   onRemoveFromLibrary: (value: ListItem) => void;
-  filter: CategoryName | null;
+  filter?: CategoryName | null;
 };
 
 export default function LibraryCards({

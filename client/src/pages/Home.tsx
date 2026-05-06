@@ -1,9 +1,26 @@
 import { useState, useEffect } from 'react';
 
-import WatchlistCards from '../components/WatchlistCards.tsx';
-import LibraryCards from '../components/LibraryCards.tsx';
-import WatchlistForm from '../components/WatchlistForm.tsx';
-import LibraryForm from '../components/LibraryForm.tsx';
+import WatchlistCards from '../components/WatchlistCards';
+import LibraryCards from '../components/LibraryCards';
+import WatchlistForm from '../components/WatchlistForm';
+import LibraryForm from '../components/LibraryForm';
+import { ListItem, CurrentPage, CategoryName } from '../lib/types';
+
+type Props = {
+  onAddToLibrary: (value: ListItem) => void;
+  onEditLibrary: (value: ListItem) => void;
+  itemToBeEdited: ListItem;
+  onSetItemToBeEdited: (value: null | ListItem) => void;
+  onCheckItem: (value: ListItem) => void;
+  currentPage: CurrentPage;
+  library: ListItem[];
+  watchlist: ListItem[];
+  onAddToWatchlist: (value: ListItem) => void;
+  onEditWatchlist: (value: ListItem) => void;
+  onRemoveFromWatchlist: (value: ListItem) => void;
+  onRemoveFromLibrary: (value: ListItem) => void;
+  onSetCurrentPage: (value: CurrentPage) => void;
+};
 
 export default function Home({
   onSetCurrentPage,
@@ -18,10 +35,10 @@ export default function Home({
   onRemoveFromLibrary,
   onSetItemToBeEdited,
   itemToBeEdited,
-}) {
+}: Props) {
   useEffect(() => {
     onSetCurrentPage('home');
-    onSetItemToBeEdited('');
+    onSetItemToBeEdited(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -49,6 +66,7 @@ export default function Home({
         </h2>
 
         <WatchlistCards
+          currentPage="home"
           watchlist={watchlist}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onSetFormOnScreen={setFormOnScreen}
@@ -57,6 +75,7 @@ export default function Home({
         />
 
         <LibraryCards
+          currentPage="home"
           library={library}
           onSetItemToBeEdited={onSetItemToBeEdited}
           onSetFormOnScreen={setFormOnScreen}
