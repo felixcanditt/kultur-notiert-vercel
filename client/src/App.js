@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Home from './pages/Home';
-import Watchlist from './pages/Watchlist';
+import Watchlist from './pages/Watchlist.tsx';
 import Library from './pages/Library.tsx';
 
 import Header from './components/Header.tsx';

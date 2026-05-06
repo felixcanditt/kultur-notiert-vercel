@@ -1,11 +1,24 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import WatchlistForm from '../components/WatchlistForm.tsx';
-import Filters from '../components/Filters.tsx';
-import WatchlistCards from '../components/WatchlistCards.tsx';
+import WatchlistForm from '../components/WatchlistForm';
+import Filters from '../components/Filters';
+import WatchlistCards from '../components/WatchlistCards';
+import { ListItem, CurrentPage, CategoryName } from '../lib/types';
 
 import plusIcon from '../images/plus.svg';
+
+type Props = {
+  onAddToWatchlist: (value: ListItem) => void;
+  onEditWatchlist: (value: ListItem) => void;
+  itemToBeEdited: ListItem;
+  onSetItemToBeEdited: (value: null | ListItem) => void;
+  onCheckItem: (value: ListItem) => void;
+  currentPage: CurrentPage;
+  watchlist: ListItem[];
+  onRemoveFromWatchlist: (value: ListItem) => void;
+  onSetCurrentPage: (value: CurrentPage) => void;
+};
 
 export default function Watchlist({
   onSetCurrentPage,
@@ -17,15 +30,15 @@ export default function Watchlist({
   onEditWatchlist,
   onRemoveFromWatchlist,
   onCheckItem,
-}) {
+}: Props) {
   useEffect(() => {
     onSetCurrentPage('watchlist');
-    onSetItemToBeEdited('');
+    onSetItemToBeEdited(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [formOnScreen, setFormOnScreen] = useState(false);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState<CategoryName | null>(null);
 
   return (
     <main>

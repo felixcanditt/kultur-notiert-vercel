@@ -3,8 +3,6 @@ import Card from './Card';
 import { CurrentPage, ListItem, CategoryName } from '../lib/types';
 
 type Props = {
-  item: ListItem;
-  deleteItem: (value: ListItem) => void;
   onCheckItem: (value: ListItem) => void;
   onSetItemToBeEdited: (value: ListItem) => void;
   onSetFormOnScreen: (value: boolean) => void;
