@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import LibraryFormStars from './LibraryFormStars';
+import LibraryFormStars from './LibraryFormStars.tsx';
 
 import closeIcon from '../images/close.svg';
 
@@ -11,14 +11,14 @@ export default function LibraryForm({
   onAddToLibrary,
   itemToBeEdited,
   onSetItemToBeEdited,
-  onEditLibrary
+  onEditLibrary,
 }) {
   const initialFormItem = {
     title: '',
     id: '',
     category: '',
     rating: 0,
-    notes: ''
+    notes: '',
   };
 
   const [formItem, setFormItem] = useState(initialFormItem);
@@ -145,7 +145,8 @@ const Form = styled.form`
   width: 90vw;
   max-width: 25rem;
 
-  box-shadow: var(--primary-dark) 0px 12.5px 25px -5px,
+  box-shadow:
+    var(--primary-dark) 0px 12.5px 25px -5px,
     var(--primary-lightest) 0px 7.5px 15px -7.5px,
     var(--grey) 0px -2px 6px 0px inset;
 

@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { LibraryItem } from '../lib/types';
 import starIcon from '../images/star.svg';
 
-export default function LibraryFormStars({ formItem, onSetFormItem }) {
-  function displayStar(positionOfClickedStar) {
-    function rateFormItem(submittedRating) {
+type Props = {
+  formItem: LibraryItem;
+  onSetFormItem: (item: LibraryItem) => void;
+};
+
+export default function LibraryFormStars({ formItem, onSetFormItem }: Props) {
+  function displayStar(positionOfClickedStar: number) {
+    function rateFormItem(submittedRating: number) {
       formItem.rating === submittedRating
         ? onSetFormItem({ ...formItem, rating: 0 })
         : onSetFormItem({ ...formItem, rating: submittedRating });
