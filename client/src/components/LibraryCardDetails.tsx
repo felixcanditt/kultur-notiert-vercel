@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { LibraryItem } from '../lib/types';
+import { ListItem } from '../lib/types';
 
 import starIcon from '../images/star.svg';
 import arrowDownIcon from '../images/arrow-down.svg';
 import arrowUpIcon from '../images/arrow-up.svg';
 
 type Props = {
-  item: LibraryItem;
+  item: ListItem;
 };
 export default function LibraryCardDetails({ item }: Props) {
   const [notesOnScreen, setNotesOnScreen] = useState<boolean>(false);
@@ -19,7 +19,7 @@ export default function LibraryCardDetails({ item }: Props) {
         src={starIcon}
         alt="Eintrag mit Sternen bewerten"
         style={
-          item.rating >= positionOfClickedStar
+          item.rating && item.rating >= positionOfClickedStar
             ? { opacity: '100%' }
             : { opacity: '25%' }
         }

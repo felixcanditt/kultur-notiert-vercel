@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { LibraryItem } from '../lib/types';
+import { ListItem } from '../lib/types';
 import starIcon from '../images/star.svg';
 
 type Props = {
-  formItem: LibraryItem;
-  onSetFormItem: (item: LibraryItem) => void;
+  formItem: ListItem;
+  onSetFormItem: (item: ListItem) => void;
 };
 
 export default function LibraryFormStars({ formItem, onSetFormItem }: Props) {
@@ -21,7 +21,7 @@ export default function LibraryFormStars({ formItem, onSetFormItem }: Props) {
         alt="Stern zum Bewerten"
         onClick={() => rateFormItem(positionOfClickedStar)}
         style={
-          formItem.rating >= positionOfClickedStar
+          formItem.rating && formItem.rating >= positionOfClickedStar
             ? { opacity: '100%' }
             : { opacity: '25%' }
         }

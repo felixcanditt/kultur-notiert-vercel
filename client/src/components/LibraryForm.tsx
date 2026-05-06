@@ -3,15 +3,16 @@ import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import LibraryFormStars from './LibraryFormStars';
-import { LibraryItem } from '../lib/types';
+import { ListItem } from '../lib/types';
+import { categories } from '../lib/categories';
 
 import closeIcon from '../images/close.svg';
 
 type Props = {
   onSetFormOnScreen: (value: boolean) => void;
-  onAddToLibrary: (value: LibraryItem) => void;
-  onEditLibrary: (value: LibraryItem) => void;
-  itemToBeEdited: LibraryItem;
+  onAddToLibrary: (value: ListItem) => void;
+  onEditLibrary: (value: ListItem) => void;
+  itemToBeEdited: ListItem;
   onSetItemToBeEdited: (value: null) => void;
 };
 
@@ -22,15 +23,15 @@ export default function LibraryForm({
   onSetItemToBeEdited,
   onEditLibrary,
 }: Props) {
-  const initialFormItem: LibraryItem = {
+  const initialFormItem: ListItem = {
     title: '',
     id: '',
-    category: '',
+    category: undefined,
     rating: 0,
     notes: '',
   };
 
-  const [formItem, setFormItem] = useState<LibraryItem>(initialFormItem);
+  const [formItem, setFormItem] = useState<ListItem>(initialFormItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
@@ -107,14 +108,12 @@ export default function LibraryForm({
             value={formItem.category}
           >
             <option value=""></option>
-            <option value="book">Buch</option>
-            <option value="movie">Film</option>
-            <option value="series">Serie</option>
-            <option value="music">Musik</option>
-            <option value="stage">Bühne</option>
-            <option value="exhibition">Ausstellung</option>
-            <option value="festival">Festival</option>
-            <option value="miscellaneous">Sonstiges</option>
+
+            {categories.map((category) => (
+              <option key={category.name} value={category.name}>
+                {category.text}
+              </option>
+            ))}
           </select>
         </label>
 
