@@ -11,7 +11,7 @@ import plusIcon from '../images/plus.svg';
 type Props = {
   onAddToLibrary: (value: ListItem) => void;
   onEditLibrary: (value: ListItem) => void;
-  itemToBeEdited: ListItem;
+  itemToBeEdited: ListItem | null;
   onSetItemToBeEdited: (value: null | ListItem) => void;
   onCheckItem: (value: ListItem) => void;
   currentPage: CurrentPage;

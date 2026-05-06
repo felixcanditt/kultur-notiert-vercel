@@ -1,27 +1,30 @@
 import { Route, Switch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import Home from './pages/Home.tsx';
-import Watchlist from './pages/Watchlist.tsx';
-import Library from './pages/Library.tsx';
+import Home from './pages/Home';
+import Watchlist from './pages/Watchlist';
+import Library from './pages/Library';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import Header from './components/Header.tsx';
-import Footer from './components/Footer.tsx';
-
-import { updateLocalStorage, loadFromLocalStorage } from './lib/localStorage';
+import {
+  updateLocalStorage,
+  loadFromLocalStorage,
+} from './lib/localStorage.js';
+import { CurrentPage, ListItem } from './lib/types.js';
 
 export default function App() {
-  const [watchlist, setWatchlist] = useState(
+  const [watchlist, setWatchlist] = useState<ListItem[]>(
     loadFromLocalStorage('kulturNotiertWatchlist') ?? [],
   );
 
-  const [library, setLibrary] = useState(
+  const [library, setLibrary] = useState<ListItem[]>(
     loadFromLocalStorage('kulturNotiertLibrary') ?? [],
   );
 
-  const [itemToBeEdited, setItemToBeEdited] = useState('');
+  const [itemToBeEdited, setItemToBeEdited] = useState<ListItem | null>(null);
 
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState<CurrentPage>('home');
 
   useEffect(() => {
     updateLocalStorage('kulturNotiertWatchlist', watchlist);
@@ -31,32 +34,32 @@ export default function App() {
     updateLocalStorage('kulturNotiertLibrary', library);
   }, [library]);
 
-  function addToWatchlist(newItem) {
+  function addToWatchlist(newItem: ListItem) {
     setWatchlist([newItem, ...watchlist]);
   }
 
-  function editWatchlist(editedItem) {
+  function editWatchlist(editedItem: ListItem) {
     const updatedWatchlist = watchlist.filter(
       (item) => item.id !== editedItem.id,
     );
     setWatchlist([editedItem, ...updatedWatchlist]);
-    setItemToBeEdited();
+    setItemToBeEdited(null);
   }
 
-  function removeFromWatchlist(itemToBeRemoved) {
+  function removeFromWatchlist(itemToBeRemoved: ListItem) {
     const updatedWatchlist = watchlist.filter(
       (item) => item.id !== itemToBeRemoved.id,
     );
     setWatchlist(updatedWatchlist);
   }
 
-  function checkItem(checkedItem) {
+  function checkItem(checkedItem: ListItem) {
     function currentRating() {
       return checkedItem.rating ? checkedItem.rating : 0;
     }
 
     if (watchlist.find((item) => item.id === checkedItem.id)) {
-      const checkedItemWithRating = {
+      const checkedItemWithRating: ListItem = {
         ...checkedItem,
         rating: currentRating(),
         listType: 'library',
@@ -69,17 +72,17 @@ export default function App() {
     }
   }
 
-  function addToLibrary(newItem) {
+  function addToLibrary(newItem: ListItem) {
     setLibrary([newItem, ...library]);
   }
 
-  function editLibrary(editedItem) {
+  function editLibrary(editedItem: ListItem) {
     const editedLibrary = library.filter((item) => item.id !== editedItem.id);
     setLibrary([editedItem, ...editedLibrary]);
-    setItemToBeEdited();
+    setItemToBeEdited(null);
   }
 
-  function removeFromLibrary(itemToBeRemoved) {
+  function removeFromLibrary(itemToBeRemoved: ListItem) {
     const updatedLibrary = library.filter(
       (item) => item.id !== itemToBeRemoved.id,
     );

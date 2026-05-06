@@ -11,7 +11,7 @@ import plusIcon from '../images/plus.svg';
 type Props = {
   onAddToWatchlist: (value: ListItem) => void;
   onEditWatchlist: (value: ListItem) => void;
-  itemToBeEdited: ListItem;
+  itemToBeEdited: ListItem | null;
   onSetItemToBeEdited: (value: null | ListItem) => void;
   onCheckItem: (value: ListItem) => void;
   currentPage: CurrentPage;

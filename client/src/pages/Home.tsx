@@ -4,12 +4,12 @@ import WatchlistCards from '../components/WatchlistCards';
 import LibraryCards from '../components/LibraryCards';
 import WatchlistForm from '../components/WatchlistForm';
 import LibraryForm from '../components/LibraryForm';
-import { ListItem, CurrentPage, CategoryName } from '../lib/types';
+import { ListItem, CurrentPage } from '../lib/types';
 
 type Props = {
   onAddToLibrary: (value: ListItem) => void;
   onEditLibrary: (value: ListItem) => void;
-  itemToBeEdited: ListItem;
+  itemToBeEdited: ListItem | null;
   onSetItemToBeEdited: (value: null | ListItem) => void;
   onCheckItem: (value: ListItem) => void;
   currentPage: CurrentPage;

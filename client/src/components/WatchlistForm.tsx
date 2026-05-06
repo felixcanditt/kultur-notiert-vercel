@@ -11,7 +11,7 @@ type Props = {
   onSetFormOnScreen: (value: boolean) => void;
   onAddToWatchlist: (value: ListItem) => void;
   onEditWatchlist: (value: ListItem) => void;
-  itemToBeEdited: ListItem;
+  itemToBeEdited: ListItem | null;
   onSetItemToBeEdited: (value: null) => void;
 };
 

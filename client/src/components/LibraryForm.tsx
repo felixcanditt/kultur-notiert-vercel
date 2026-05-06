@@ -12,7 +12,7 @@ type Props = {
   onSetFormOnScreen: (value: boolean) => void;
   onAddToLibrary: (value: ListItem) => void;
   onEditLibrary: (value: ListItem) => void;
-  itemToBeEdited: ListItem;
+  itemToBeEdited: ListItem | null;
   onSetItemToBeEdited: (value: null) => void;
 };
 
