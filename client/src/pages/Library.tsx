@@ -1,11 +1,24 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import LibraryForm from '../components/LibraryForm.tsx';
-import Filters from '../components/Filters.tsx';
-import LibraryCards from '../components/LibraryCards.tsx';
+import LibraryForm from '../components/LibraryForm';
+import Filters from '../components/Filters';
+import LibraryCards from '../components/LibraryCards';
+import { ListItem, CurrentPage, CategoryName } from '../lib/types';
 
 import plusIcon from '../images/plus.svg';
+
+type Props = {
+  onAddToLibrary: (value: ListItem) => void;
+  onEditLibrary: (value: ListItem) => void;
+  itemToBeEdited: ListItem;
+  onSetItemToBeEdited: (value: null | ListItem) => void;
+  onCheckItem: (value: ListItem) => void;
+  currentPage: CurrentPage;
+  library: ListItem[];
+  onRemoveFromLibrary: (value: ListItem) => void;
+  onSetCurrentPage: (value: CurrentPage) => void;
+};
 
 export default function Library({
   onSetCurrentPage,
@@ -17,15 +30,15 @@ export default function Library({
   onEditLibrary,
   onRemoveFromLibrary,
   onCheckItem,
-}) {
+}: Props) {
   useEffect(() => {
     onSetCurrentPage('library');
-    onSetItemToBeEdited('');
+    onSetItemToBeEdited(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [formOnScreen, setFormOnScreen] = useState(false);
-  const [filter, setFilter] = useState('');
+  const [formOnScreen, setFormOnScreen] = useState<boolean>(false);
+  const [filter, setFilter] = useState<CategoryName | null>(null);
 
   return (
     <main>

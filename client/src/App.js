@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Home from './pages/Home';
 import Watchlist from './pages/Watchlist';
-import Library from './pages/Library';
+import Library from './pages/Library.tsx';
 
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';

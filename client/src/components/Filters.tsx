@@ -5,18 +5,18 @@ import { CategoryName } from '../lib/types';
 import closeIcon from '../images/close.svg';
 
 type Props = {
-  filter: CategoryName;
-  onSetFilter: (value: CategoryName | undefined) => void;
+  filter: CategoryName | null;
+  onSetFilter: (value: CategoryName | null) => void;
 };
 
 export default function Filters({ filter, onSetFilter }: Props) {
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   function toggleFilters() {
     setShowFilters((prev) => !prev);
   }
 
-  function filterList(selectedFilter: CategoryName | undefined) {
+  function filterList(selectedFilter: CategoryName | null) {
     onSetFilter(selectedFilter);
   }
 
@@ -44,7 +44,7 @@ export default function Filters({ filter, onSetFilter }: Props) {
                 </li>
               ))}
             </ul>
-            <span onClick={() => filterList(undefined)}>Filter entfernen</span>
+            <span onClick={() => filterList(null)}>Filter entfernen</span>
           </FilterDetails>
         )}
       </FilterContent>
