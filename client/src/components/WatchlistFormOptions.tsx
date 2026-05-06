@@ -1,4 +1,11 @@
-export default function InputOptions({ formItem, onUpdateFormItem }) {
+import { ListItem } from '../lib/types';
+
+type Props = {
+  formItem: ListItem;
+  onUpdateFormItem: (value: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function InputOptions({ formItem, onUpdateFormItem }: Props) {
   function renderOptions() {
     if (formItem.category === 'book') {
       return (
