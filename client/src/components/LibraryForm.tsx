@@ -12,7 +12,7 @@ type Props = {
   onAddToLibrary: (value: LibraryItem) => void;
   onEditLibrary: (value: LibraryItem) => void;
   itemToBeEdited: LibraryItem;
-  onSetItemToBeEdited: (value: LibraryItem) => void;
+  onSetItemToBeEdited: (value: null) => void;
 };
 
 export default function LibraryForm({
@@ -60,7 +60,7 @@ export default function LibraryForm({
   function handleFormCancelation(event: React.MouseEvent<HTMLImageElement>) {
     event.preventDefault();
     if (itemToBeEdited) {
-      onSetItemToBeEdited();
+      onSetItemToBeEdited(null);
     }
     setFormItem(initialFormItem);
     onSetFormOnScreen(false);
@@ -68,7 +68,7 @@ export default function LibraryForm({
 
   function handleFormReset() {
     if (itemToBeEdited) {
-      onSetItemToBeEdited();
+      onSetItemToBeEdited(null);
     }
     setFormItem(initialFormItem);
   }

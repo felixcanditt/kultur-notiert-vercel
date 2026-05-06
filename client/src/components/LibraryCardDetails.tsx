@@ -11,7 +11,7 @@ type Props = {
   item: LibraryItem;
 };
 export default function LibraryCardDetails({ item }: Props) {
-  const [notesOnScreen, setNotesOnScreen] = useState(false);
+  const [notesOnScreen, setNotesOnScreen] = useState<boolean>(false);
 
   function displayStar(positionOfClickedStar: number) {
     return (

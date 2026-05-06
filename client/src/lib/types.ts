@@ -21,13 +21,13 @@ export interface Category {
     | 'Sonstiges';
 }
 
-interface BaseItem {
+export interface BaseListItem {
   title: string;
   id: string;
   category: string;
 }
 
-export interface WatchlistItem extends BaseItem {
+export interface WatchlistItem extends BaseListItem {
   author: string;
   director: string;
   creator: string;
@@ -35,7 +35,7 @@ export interface WatchlistItem extends BaseItem {
   time: string;
 }
 
-export interface LibraryItem extends BaseItem {
+export interface LibraryItem extends BaseListItem {
   rating: number;
   notes: string;
 }
