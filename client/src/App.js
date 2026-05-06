@@ -59,11 +59,12 @@ export default function App() {
       const checkedItemWithRating = {
         ...checkedItem,
         rating: currentRating(),
+        listType: 'library',
       };
       setLibrary([checkedItemWithRating, ...library]);
       removeFromWatchlist(checkedItem);
     } else if (library.find((item) => item.id === checkedItem.id)) {
-      setWatchlist([checkedItem, ...watchlist]);
+      setWatchlist([{ ...checkedItem, listType: 'watchlist' }, ...watchlist]);
       removeFromLibrary(checkedItem);
     }
   }
