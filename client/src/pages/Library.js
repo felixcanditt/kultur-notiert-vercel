@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import LibraryForm from '../components/LibraryForm';
+import LibraryForm from '../components/LibraryForm.tsx';
 import Filters from '../components/Filters';
 import LibraryCards from '../components/LibraryCards';
 

@@ -2,9 +2,18 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import LibraryFormStars from './LibraryFormStars.tsx';
+import LibraryFormStars from './LibraryFormStars';
+import { LibraryItem } from '../lib/types';
 
 import closeIcon from '../images/close.svg';
+
+type Props = {
+  onSetFormOnScreen: (value: boolean) => void;
+  onAddToLibrary: (value: LibraryItem) => void;
+  onEditLibrary: (value: LibraryItem) => void;
+  itemToBeEdited: LibraryItem;
+  onSetItemToBeEdited: (value: LibraryItem) => void;
+};
 
 export default function LibraryForm({
   onSetFormOnScreen,
@@ -12,8 +21,8 @@ export default function LibraryForm({
   itemToBeEdited,
   onSetItemToBeEdited,
   onEditLibrary,
-}) {
-  const initialFormItem = {
+}: Props) {
+  const initialFormItem: LibraryItem = {
     title: '',
     id: '',
     category: '',
@@ -21,7 +30,7 @@ export default function LibraryForm({
     notes: '',
   };
 
-  const [formItem, setFormItem] = useState(initialFormItem);
+  const [formItem, setFormItem] = useState<LibraryItem>(initialFormItem);
 
   useEffect(() => {
     if (itemToBeEdited) {
@@ -29,13 +38,17 @@ export default function LibraryForm({
     }
   }, [itemToBeEdited]);
 
-  function updateFormItem(event) {
+  function updateFormItem(
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     setFormItem({ ...formItem, [inputName]: inputValue });
   }
 
-  function handleFormSubmission(event) {
+  function handleFormSubmission(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     itemToBeEdited
       ? onEditLibrary(formItem)
@@ -44,7 +57,7 @@ export default function LibraryForm({
     onSetFormOnScreen(false);
   }
 
-  function handleFormCancelation(event) {
+  function handleFormCancelation(event: React.MouseEvent<HTMLImageElement>) {
     event.preventDefault();
     if (itemToBeEdited) {
       onSetItemToBeEdited();
@@ -60,7 +73,7 @@ export default function LibraryForm({
     setFormItem(initialFormItem);
   }
 
-  function handleKeyDown(event) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLFormElement>) {
     if (event.key === 'Enter') {
       handleFormSubmission(event);
     }

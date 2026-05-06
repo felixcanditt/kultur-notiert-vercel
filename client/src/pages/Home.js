@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import WatchlistCards from '../components/WatchlistCards';
 import LibraryCards from '../components/LibraryCards';
 import WatchlistForm from '../components/WatchlistForm';
-import LibraryForm from '../components/LibraryForm';
+import LibraryForm from '../components/LibraryForm.tsx';
 
 export default function Home({
   onSetCurrentPage,
